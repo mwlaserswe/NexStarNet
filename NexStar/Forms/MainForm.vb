@@ -581,7 +581,7 @@ openErr:
 
     Private Sub InitNexStarComm()
 
-        '        On Error GoTo v24error
+        On Error GoTo v24error
 
         '        NexStarPortNr = 8
         '        NexStarBaudrate = 9600
@@ -635,6 +635,14 @@ openErr:
 
         Exit Sub
 
+v24error:
+        MsgBox("Port kann nicht geöffnet werden")
+
+        SimOffline = True
+        My.Settings.SimOffline = SimOffline
+        My.Settings.Save()
+
+        On Error Resume Next
 
 
     End Sub
