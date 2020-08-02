@@ -79,6 +79,12 @@
     <Compile Include="Forms\FrmCommunication.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\FrmMoveTelescope.Designer.vb">
+      <DependentUpon>FrmMoveTelescope.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmMoveTelescope.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Forms\FrmCommunication.resx">
       <DependentUpon>FrmCommunication.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmMoveTelescope.resx">
+      <DependentUpon>FrmMoveTelescope.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>

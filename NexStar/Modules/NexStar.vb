@@ -35,6 +35,11 @@ Module NexStar
         Dim a As Long
         Dim e As Long
 
+        If (Value < 0) Or (Value > 1677216) Then
+            MsgBox("Position Overflow")
+            Exit Function
+        End If
+
         X = Value
 
         For i = 1 To 3

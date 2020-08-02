@@ -256,7 +256,7 @@ Partial Class MainForm
         '
         Me.C_MoveTelescope.Location = New System.Drawing.Point(91, 544)
         Me.C_MoveTelescope.Name = "C_MoveTelescope"
-        Me.C_MoveTelescope.Size = New System.Drawing.Size(143, 64)
+        Me.C_MoveTelescope.Size = New System.Drawing.Size(143, 82)
         Me.C_MoveTelescope.TabIndex = 2
         Me.C_MoveTelescope.Text = "Move Telescope"
         Me.C_MoveTelescope.UseVisualStyleBackColor = True

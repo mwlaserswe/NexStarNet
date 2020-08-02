@@ -188,7 +188,7 @@ Public Class MainForm
     End Sub
 
     Private Sub C_MoveTelescope_Click(sender As Object, e As EventArgs) Handles C_MoveTelescope.Click
-        'SWE    MoveTelescope.Show
+        FrmMoveTelescope.Show()
     End Sub
 
     Private Sub C_Set_ObserverLocation_Click(sender As Object, e As EventArgs) Handles C_Set_ObserverLocation.Click

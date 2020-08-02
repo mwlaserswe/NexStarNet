@@ -27,3 +27,4 @@ D:\Eigene Dateien\Projekte privat\Visual Studio\VB-Projekt_01\NexStarNet.git\Nex
 D:\Eigene Dateien\Projekte privat\Visual Studio\VB-Projekt_01\NexStarNet.git\NexStar\bin\Debug\NexStar.pdb
 D:\Eigene Dateien\Projekte privat\Visual Studio\VB-Projekt_01\NexStarNet.git\NexStar\bin\Debug\NexStar.xml
 D:\Eigene Dateien\Projekte privat\Visual Studio\VB-Projekt_01\NexStarNet.git\NexStar\obj\Debug\NexStar.FrmCommunication.resources
+D:\Eigene Dateien\Projekte privat\Visual Studio\VB-Projekt_01\NexStarNet.git\NexStar\obj\Debug\NexStar.FrmMoveTelescope.resources
