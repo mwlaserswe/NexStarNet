@@ -26,7 +26,7 @@ Public Class FrmMoveTelescope
 
     Private Sub FrmMoveTelescope_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         InitMoveGalvo()
-        'SWE MoveGalvoStartToolStripMenuItem.PerformClick()
+        MoveGalvoStartToolStripMenuItem1.PerformClick()
     End Sub
 
 

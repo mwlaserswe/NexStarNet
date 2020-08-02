@@ -22,7 +22,7 @@ NexStar
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
-<member name="F:NexStar.Utilities.NexStarComm">
+<member name="F:NexStar.Utilities.ReadBufferSize">
 Private Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hWnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
 </member>
 <member name="M:NexStar.Utilities.KommaToPunkt(System.String)">

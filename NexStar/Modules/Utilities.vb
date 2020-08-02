@@ -7,6 +7,8 @@ Module Utilities
     Private Declare Function FindClose Lib "Kernel32" (ByVal hFindFile As Long) As Long
     '''Private Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hWnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
 
+    Const ReadBufferSize As Integer = 16 'Oder halt eine für Dich sinnvolle Größe.
+    Dim ReadBuffer As Byte() = New Byte(ReadBufferSize - 1) {}
 
     Public NexStarComm As New System.IO.Ports.SerialPort With {.BaudRate = 4800,
                                                      .DataBits = 8,
@@ -561,6 +563,7 @@ not_found:
         FileClose(CommFile)
 
 
+
         Exit Sub
 
 OpenError:
@@ -568,4 +571,25 @@ OpenError:
 
     End Sub
 
+    'Public Sub KickoffRead()
+    '    NexStarComm.BaseStream.BeginRead(ReadBuffer, 0, ReadBufferSize, AddressOf ReadCallback, Nothing)
+
+    'End Sub
+    'Public Sub ReadCallback(Result As IAsyncResult)
+    '    Dim ActualLength As Integer
+    '    Try
+    '        ActualLength = NexStarComm.BaseStream.EndRead(Result)
+    '    Catch ex As System.IO.IOException
+    '        'Damit habe ich mich noch nicht genug befasst.
+    '        'IOExceptions treten manchmal auf.
+    '        Return
+    '    Catch ex As InvalidOperationException
+    '        'Tritt auf, wenn der Port geschlossen wurde.
+    '        Return
+    '    End Try
+    '    Dim BufferCopy = New Byte(ActualLength - 1) {}
+    '    Array.Copy(ReadBuffer, BufferCopy, ActualLength)
+    '    'Me.BeginInvoke(Sub() BytesReceived(BufferCopy))
+    '    KickoffRead()
+    'End Sub
 End Module

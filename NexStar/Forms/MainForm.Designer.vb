@@ -174,6 +174,8 @@ Partial Class MainForm
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label38 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.T_Alt = New System.Windows.Forms.TextBox()
+        Me.T_Az = New System.Windows.Forms.TextBox()
         Me.MenuStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.F_StarInfo.SuspendLayout()
@@ -263,7 +265,7 @@ Partial Class MainForm
         '
         'C_Simulation
         '
-        Me.C_Simulation.Location = New System.Drawing.Point(446, 127)
+        Me.C_Simulation.Location = New System.Drawing.Point(653, 127)
         Me.C_Simulation.Name = "C_Simulation"
         Me.C_Simulation.Size = New System.Drawing.Size(143, 51)
         Me.C_Simulation.TabIndex = 3
@@ -272,7 +274,7 @@ Partial Class MainForm
         '
         'C_GotoNorth
         '
-        Me.C_GotoNorth.Location = New System.Drawing.Point(446, 73)
+        Me.C_GotoNorth.Location = New System.Drawing.Point(653, 73)
         Me.C_GotoNorth.Name = "C_GotoNorth"
         Me.C_GotoNorth.Size = New System.Drawing.Size(143, 48)
         Me.C_GotoNorth.TabIndex = 4
@@ -421,11 +423,12 @@ Partial Class MainForm
         '
         'AlignmentStarList
         '
+        Me.AlignmentStarList.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AlignmentStarList.FormattingEnabled = True
-        Me.AlignmentStarList.ItemHeight = 25
+        Me.AlignmentStarList.ItemHeight = 37
         Me.AlignmentStarList.Location = New System.Drawing.Point(870, 57)
         Me.AlignmentStarList.Name = "AlignmentStarList"
-        Me.AlignmentStarList.Size = New System.Drawing.Size(205, 1004)
+        Me.AlignmentStarList.Size = New System.Drawing.Size(205, 1003)
         Me.AlignmentStarList.Sorted = True
         Me.AlignmentStarList.TabIndex = 25
         '
@@ -1571,11 +1574,33 @@ Partial Class MainForm
         Me.Button2.Text = "RS232Write"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'T_Alt
+        '
+        Me.T_Alt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.T_Alt.Location = New System.Drawing.Point(398, 135)
+        Me.T_Alt.MinimumSize = New System.Drawing.Size(143, 2)
+        Me.T_Alt.Name = "T_Alt"
+        Me.T_Alt.Size = New System.Drawing.Size(143, 31)
+        Me.T_Alt.TabIndex = 79
+        Me.T_Alt.Text = "--"
+        '
+        'T_Az
+        '
+        Me.T_Az.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.T_Az.Location = New System.Drawing.Point(398, 83)
+        Me.T_Az.MinimumSize = New System.Drawing.Size(143, 2)
+        Me.T_Az.Name = "T_Az"
+        Me.T_Az.Size = New System.Drawing.Size(143, 31)
+        Me.T_Az.TabIndex = 80
+        Me.T_Az.Text = "--"
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(2042, 1382)
+        Me.Controls.Add(Me.T_Az)
+        Me.Controls.Add(Me.T_Alt)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label38)
         Me.Controls.Add(Me.Button1)
@@ -1822,4 +1847,6 @@ Partial Class MainForm
     Friend WithEvents Button1 As Button
     Friend WithEvents Label38 As Label
     Friend WithEvents Button2 As Button
+    Friend WithEvents T_Alt As TextBox
+    Friend WithEvents T_Az As TextBox
 End Class

@@ -24,13 +24,14 @@ Public Class MainForm
     Dim SimGoto As AzAlt
     Dim SimTrackingStep As AzAlt
 
-    'Public NexStarComm As New System.IO.Ports.SerialPort With {.BaudRate = 4800,
-    '                                                 .DataBits = 8,
-    '                                                 .Parity = IO.Ports.Parity.None,
-    '                                                 .PortName = "COM8",
-    '                                                 .StopBits = IO.Ports.StopBits.One,
-    '                                                 .ReadTimeout = System.Threading.Timeout.Infinite,
-    '                                                 .WriteTimeout = 10}
+
+    ' RS232
+    Const ReadBufferSize As Integer = 16 'Oder halt eine für Dich sinnvolle Größe.
+    Dim ReadBuffer As Byte() = New Byte(ReadBufferSize - 1) {}
+    Dim Inputidx As Integer
+    Dim InputBuffer(3) As Byte
+
+
 
     Private Enum NxMode
         Unchanged = 0
@@ -66,14 +67,14 @@ Public Class MainForm
         If SimOffline Then
             TelIncr = SimIncr
         Else
-            If StatusMoving = 2 Then
+            'SWE If StatusMoving = 2 Then
 
-                Command = 21
+            Command = 1
 
-                Dim CommString As String
-                CommString = Strings.Chr(&H15)
-                NexStarCommunication(CommString, " Read Alt (0x15)", ProtokollMode.Send)
-            End If
+            Dim CommString As String
+            CommString = Strings.Chr(&H1)
+            NexStarCommunication(CommString, " Read Az (0x01)", ProtokollMode.Send)
+            'SWE   End If
         End If
     End Sub
 
@@ -83,14 +84,14 @@ Public Class MainForm
         If SimOffline Then
             TelIncr = SimIncr
         Else
-            If StatusMoving = 2 Then
+            'SWE   If StatusMoving = 2 Then
 
-                Command = 21
+            Command = 21
 
                 Dim CommString As String
                 CommString = Strings.Chr(&H15)
                 NexStarCommunication(CommString, " Read Alt (0x15)", ProtokollMode.Send)
-            End If
+            'SWE   End If
         End If
     End Sub
 
@@ -630,7 +631,9 @@ openErr:
             '    SerialPort1.DataBits = Ports.
 
         Else
+
             NexStarComm.Open() 'Port öffnen.
+            KickoffRead()
         End If
 
         Exit Sub
@@ -651,87 +654,87 @@ v24error:
 
 
 
-    Const ReadBufferSize As Integer = 16 'Oder halt eine für Dich sinnvolle Größe.
-    'BaudRate, DataBits, Parity und StopBits hängt vom angeschlossenen Gerät ab.
-    'PortName ist der Name, der auch im Geräte-Manager zu finden ist. Mit SerialPort.GetPortNames bekommt man die Namen aller verfügbaren Ports.
-    'Das unendliche ReadTimeout hat den Sinn, dass einfach so lange gewartet wird, bis Daten ankommen. Wenn keine Daten kommen, wird halt ewig gewartet. Der Puffer wird trotzdem auch nur teilweise gefüllt. Sendet das Gerät an den Computer nur ein Byte und dann lange nichts, dann kommt im Callback auch nur ein Byte an.
-    'Das WriteTimeout hat den Sinn, dass wenn man z.B. nur ein Byte zum Gerät schicken will, dass dieses eine Byte dann nach 10 Millisekunden gesendet wird und nicht erst gewartet wird, bis der interne Puffer voll ist.
-    Dim Port As New System.IO.Ports.SerialPort With {.BaudRate = 9600,
-                                                     .DataBits = 8,
-                                                     .Parity = IO.Ports.Parity.None,
-                                                     .PortName = "COM8",
-                                                     .StopBits = IO.Ports.StopBits.One,
-                                                     .ReadTimeout = System.Threading.Timeout.Infinite,
-                                                     .WriteTimeout = 10}
-    Dim ReadBuffer As Byte() = New Byte(ReadBufferSize - 1) {}
+    'Const ReadBufferSize As Integer = 16 'Oder halt eine für Dich sinnvolle Größe.
+    ''BaudRate, DataBits, Parity und StopBits hängt vom angeschlossenen Gerät ab.
+    ''PortName ist der Name, der auch im Geräte-Manager zu finden ist. Mit SerialPort.GetPortNames bekommt man die Namen aller verfügbaren Ports.
+    ''Das unendliche ReadTimeout hat den Sinn, dass einfach so lange gewartet wird, bis Daten ankommen. Wenn keine Daten kommen, wird halt ewig gewartet. Der Puffer wird trotzdem auch nur teilweise gefüllt. Sendet das Gerät an den Computer nur ein Byte und dann lange nichts, dann kommt im Callback auch nur ein Byte an.
+    ''Das WriteTimeout hat den Sinn, dass wenn man z.B. nur ein Byte zum Gerät schicken will, dass dieses eine Byte dann nach 10 Millisekunden gesendet wird und nicht erst gewartet wird, bis der interne Puffer voll ist.
+    'Dim Port As New System.IO.Ports.SerialPort With {.BaudRate = 9600,
+    '                                                 .DataBits = 8,
+    '                                                 .Parity = IO.Ports.Parity.None,
+    '                                                 .PortName = "COM8",
+    '                                                 .StopBits = IO.Ports.StopBits.One,
+    '                                                 .ReadTimeout = System.Threading.Timeout.Infinite,
+    '                                                 .WriteTimeout = 10}
+    'Dim ReadBuffer As Byte() = New Byte(ReadBufferSize - 1) {}
 
 
-    Sub SendSerialData_1(ByVal data As String)
-        ' Das funktioniert!
-        ' Send strings to a serial port.
-        Using com8 As IO.Ports.SerialPort = My.Computer.Ports.OpenSerialPort("COM8")
-            'com8.WriteLine(data)
-            com8.Write(data)
-        End Using
-    End Sub
+    'Sub SendSerialData_1(ByVal data As String)
+    '    ' Das funktioniert!
+    '    ' Send strings to a serial port.
+    '    Using com8 As IO.Ports.SerialPort = My.Computer.Ports.OpenSerialPort("COM8")
+    '        'com8.WriteLine(data)
+    '        com8.Write(data)
+    '    End Using
+    'End Sub
 
 
-    Sub SendSerialData_2(ByVal data As String)
-        '' Send strings to a serial port.
-        'Dim com8 As New System.IO.Ports.SerialPort With {.BaudRate = 9600,
-        '                                             .DataBits = 8,
-        '                                             .Parity = IO.Ports.Parity.None,
-        '                                             .PortName = "COM8",
-        '                                             .StopBits = IO.Ports.StopBits.One,
-        '                                             .ReadTimeout = System.Threading.Timeout.Infinite,
-        '                                             .WriteTimeout = 10}
-        'com8.Open() 'Port öffnen.
-        'com8.WriteLine(data)
+    'Sub SendSerialData_2(ByVal data As String)
+    '    '' Send strings to a serial port.
+    '    'Dim com8 As New System.IO.Ports.SerialPort With {.BaudRate = 9600,
+    '    '                                             .DataBits = 8,
+    '    '                                             .Parity = IO.Ports.Parity.None,
+    '    '                                             .PortName = "COM8",
+    '    '                                             .StopBits = IO.Ports.StopBits.One,
+    '    '                                             .ReadTimeout = System.Threading.Timeout.Infinite,
+    '    '                                             .WriteTimeout = 10}
+    '    'com8.Open() 'Port öffnen.
+    '    'com8.WriteLine(data)
 
-        NexStarComm.Write("hallo...")
-        'com8.Close()
-    End Sub
-
-
-    Private Sub DoIt() 'Als Beispiel.
-        Port.Open() 'Port öffnen.
-        KickoffRead() 'Und Lesevorgang starten.
-    End Sub
-    Private Sub KickoffRead()
-        Port.BaseStream.BeginRead(ReadBuffer, 0, ReadBufferSize, AddressOf ReadCallback, Nothing)
-
-    End Sub
-    Private Sub ReadCallback(Result As IAsyncResult)
-        Dim ActualLength As Integer
-        Try
-            ActualLength = Port.BaseStream.EndRead(Result)
-        Catch ex As System.IO.IOException
-            'Damit habe ich mich noch nicht genug befasst.
-            'IOExceptions treten manchmal auf.
-            Return
-        Catch ex As InvalidOperationException
-            'Tritt auf, wenn der Port geschlossen wurde.
-            Return
-        End Try
-        Dim BufferCopy = New Byte(ActualLength - 1) {}
-        Array.Copy(ReadBuffer, BufferCopy, ActualLength)
-        Me.BeginInvoke(Sub() BytesReceived(BufferCopy))
-        KickoffRead()
-    End Sub
-    Private Sub BytesReceived(Bytes As Byte())
-        'Hier irgendwas mit den Bytes tun.
-    End Sub
+    '    NexStarComm.Write("hallo...")
+    '    'com8.Close()
+    'End Sub
 
 
+    'Private Sub DoIt() 'Als Beispiel.
+    '    Port.Open() 'Port öffnen.
+    '    KickoffRead() 'Und Lesevorgang starten.
+    'End Sub
+    'Private Sub KickoffRead()
+    '    NexStarComm.BaseStream.BeginRead(ReadBuffer, 0, ReadBufferSize, AddressOf ReadCallback, Nothing)
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        DoIt()
-    End Sub
+    'End Sub
+    'Private Sub ReadCallback(Result As IAsyncResult)
+    '    Dim ActualLength As Integer
+    '    Try
+    '        ActualLength = Port.BaseStream.EndRead(Result)
+    '    Catch ex As System.IO.IOException
+    '        'Damit habe ich mich noch nicht genug befasst.
+    '        'IOExceptions treten manchmal auf.
+    '        Return
+    '    Catch ex As InvalidOperationException
+    '        'Tritt auf, wenn der Port geschlossen wurde.
+    '        Return
+    '    End Try
+    '    Dim BufferCopy = New Byte(ActualLength - 1) {}
+    '    Array.Copy(ReadBuffer, BufferCopy, ActualLength)
+    '    Me.BeginInvoke(Sub() BytesReceived(BufferCopy))
+    '    'SWE  KickoffRead()
+    'End Sub
+    'Private Sub BytesReceived(Bytes As Byte())
+    '    'Hier irgendwas mit den Bytes tun.
+    'End Sub
 
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        SendSerialData_2("test...")
-    End Sub
+
+    'Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    '    DoIt()
+    'End Sub
+
+
+    'Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    '    SendSerialData_2("test...")
+    'End Sub
 
 
 
@@ -789,6 +792,10 @@ v24error:
         TestJulianischesDatum.Show()
     End Sub
 
+    Public Sub KickoffRead()
+        NexStarComm.BaseStream.BeginRead(ReadBuffer, 0, ReadBufferSize, AddressOf ReadCallback, Nothing)
+
+    End Sub
 
     ' Goto AzAlt        0xO2 Az (3 Byte) 0x16 Alt (3 Bype)
     ' Move UP           0x06 0 (3 Byte) 0x1A & Speed  (3 Bype)
@@ -817,148 +824,152 @@ v24error:
     ' 01 15             Answer: az az az al al al        Get Az Alt Incr
     ' 06 00 00 5E 1B 00 00 05                            Slew Az=94 Alt=5
 
-    Private Sub NexStarComm_OnComm()
+    Public Sub ReadCallback(Result As IAsyncResult)
+        Dim ActualLength As Integer
+        Try
+            ActualLength = NexStarComm.BaseStream.EndRead(Result)
+        Catch ex As System.IO.IOException
+            'Damit habe ich mich noch nicht genug befasst.
+            'IOExceptions treten manchmal auf.
+            Return
+        Catch ex As InvalidOperationException
+            'Tritt auf, wenn der Port geschlossen wurde.
+            Return
+        End Try
+        Dim BufferCopy = New Byte(ActualLength - 1) {}
+
+        Dim i As Integer
+        For i = 0 To ActualLength - 1
+            InputBuffer(Inputidx) = ReadBuffer(i)
+            Inputidx = Inputidx + 1
+        Next i
+
+        'Array.Copy(ReadBuffer, BufferCopy, ActualLength)
+        'Me.BeginInvoke(Sub() BytesReceived(BufferCopy))
+        KickoffRead()
+
+
+
+
+
         '        Dim pos As Long
-        '        Dim vbuf As Variant
-        '        Dim buf As Byte
+        Dim vbuf As Object
+        Dim buf As Byte
         '        Dim key As Integer
         '        Dim l As Long
         '        Dim i As Integer
-        '        Dim NexStarAz As Long
-        '        Dim NexStarAlt As Long
+        Dim NexStarAz As Long
+        Dim NexStarAlt As Long
 
 
-        '        On Error GoTo msgError
+        If Command = 1 Then
 
-        '        Select Case NexStarComm.CommEvent
-        '  ' Behandeln jedes Ereignisses oder Fehlers durch
-        '  ' Positionieren von Code unter jeder Case-Anweisung
+            NexStarAz = 0
+            If Inputidx = 3 Then
+                Inputidx = 0
 
-        '  ' Fehler
-        '            Case comBreak     ' Es wurde ein Anhaltesignal empfangen.
-        '            Case comCDTO      ' CD-Zeitüberschreitung
-        '            Case comCTSTO     ' CTS-Zeitüberschreitung
-        '            Case comDSRTO     ' DSR-Zeitüberschreitung
-        '            Case comFrame     ' Fehler im Übertragungsraster (Framing Error)
-        '            Case comOverrun   ' Datenverlust
-        '            Case comRxOver    ' Überlauf des Empfangspuffers
-        '            Case comRxParity  ' Paritätsfehler
-        '            Case comTxFull    ' Sendepuffer voll
-        '            Case comDCB       ' Unerwarteter Fehler beim Abrufen des DCB]
+                For i = 0 To 2
+                    vbuf = InputBuffer(i)
+                    buf = Asc(vbuf)
+                    NexStarAz = NexStarAz + vbuf * 256 ^ (2 - i)
+                Next i
 
-        '  ' Ereignisse
-        '            Case comEvCD  ' Pegeländerung auf DCD
-        '            Case comEvCTS ' Pegeländerung auf CTS
-        '            Case comEvDSR ' Pegeländerung auf DSR
-        '            Case comEvRing  ' Pegeländerung auf RI(Ring Indicator)
-        '            Case comEvReceive ' Anzahl empfangener Zeichen gleich RThreshold
+                TelIncr.Az = NexStarAz
+                NexStarCommunication("", "Az: " & TelIncr.Az, ProtokollMode.Receive)
+                Command = 0
+
+            End If
 
 
-        '                If Command = 1 Then
+        ElseIf Command = 21 Then
 
-        '                    NexStarAz = 0
-        '                    If NexStarComm.InBufferCount = 3 Then
-        '                        For i = 1 To 3
-        '                            vbuf = NexStarComm.Input
-        '                            buf = Asc(vbuf)
-        '                            NexStarAz = NexStarAz + buf * 256 ^ (3 - i)
-        '                            Label30(i) = Hex$(buf)
-        '                        Next i
+            NexStarAlt = 0
 
-        '                        TelIncr.Az = NexStarAz
-        '                        NexStarCommunication("", "Az: " & TelIncr.Az, ProtokollMode.Receive)
-        '                        Command = 0
+            If Inputidx = 3 Then
+                Inputidx = 0
 
-        '                    End If
+                For i = 0 To 2
+                    vbuf = InputBuffer(i)
+                    buf = Asc(vbuf)
+                    NexStarAlt = NexStarAlt + vbuf * 256 ^ (2 - i)
+                Next i
 
+                TelIncr.Alt = NexStarAlt
+                NexStarCommunication("", "Alt: " & TelIncr.Alt, ProtokollMode.Receive)
+                Command = 0
+            End If
 
-        '                ElseIf Command = 21 Then
+        ElseIf Command = 13 Then
 
-        '                    NexStarAlt = 0
-        '                    If NexStarComm.InBufferCount = 3 Then
-        '                        For i = 1 To 3
-        '                            vbuf = NexStarComm.Input
-        '                            buf = Asc(vbuf)
-        '                            NexStarAlt = NexStarAlt + buf * 256 ^ (3 - i)
-        '                            Label30(i) = Hex$(buf)
-        '                        Next i
+            NexStarChar1 = ""
 
-        '                        TelIncr.Alt = NexStarAlt
-        '                        NexStarCommunication("", "Alt: " & TelIncr.Alt, ProtokollMode.Receive)
-        '                        Command = 0
+            If Inputidx = 1 Then
+                Inputidx = 0
+                vbuf = InputBuffer(0)
+                buf = Asc(vbuf)
+                NexStarChar1 = NexStarChar1 & Strings.Chr(buf)
 
-        '                    End If
+                NexStarCommunication("", "Status " & NexStarChar1, ProtokollMode.Receive)
 
-        '                ElseIf Command = 13 Then
-
-        '                    NexStarChar1 = ""
-
-        '                    If NexStarComm.InBufferCount = 1 Then
-        '                        vbuf = NexStarComm.Input
-        '                        buf = Asc(vbuf)
-        '                        NexStarChar1 = NexStarChar1 & Chr$(buf)
-        '                        key = buf
-        '                        NexStarCommunication("", "Status " & key, ProtokollMode.Receive)
-
-        '                        If key = 0 Then
-        '                            StatusMoving = 1      'Busy
-        '                        ElseIf key = 255 Then
-        '                            StatusMoving = 2      'Idle
-        '                        End If
+                If vbuf = 0 Then
+                    StatusMoving = 1      'Busy
+                ElseIf vbuf = 255 Then
+                    StatusMoving = 2      'Idle
+                End If
 
 
-        '                        l = Len(NexStarChar1)
+                'l = Len(NexStarChar1)
 
-        '                        If l <> 1 Then
-        '                            ErrorCount = ErrorCount + 1
-        '                        End If
+                'If l <> 1 Then
+                '    ErrorCount = ErrorCount + 1
+                'End If
 
 
-        '                        Command = 0
+                Command = 0
 
-        '                    End If
+            End If
 
-        '                ElseIf TestCommMotorToHandheld Then
-        '                    NexStarChar1 = ""
-        '                    Do
-        '                        vbuf = NexStarComm.Input
-        '                        buf = Asc(vbuf)
-        '                        NexStarChar1 = NexStarChar1 & Chr$(buf)
-        '                        key = buf
+            '        ElseIf TestCommMotorToHandheld Then
+            '            NexStarChar1 = ""
+            '            Do
+            '                vbuf = NexStarComm.Input
+            '                buf = Asc(vbuf)
+            '                NexStarChar1 = NexStarChar1 & Chr$(buf)
+            '                key = buf
 
-        '                    Loop While NexStarComm.InBufferCount > 0
-        '                    l = Len(NexStarChar1)
-        '                    'SWE   Communication.DisplayAzAltTracking NexStarChar1
-        '                Else
-        '                    Command = 0
+            '            Loop While NexStarComm.InBufferCount > 0
+            '            l = Len(NexStarChar1)
+            '            'SWE   Communication.DisplayAzAltTracking NexStarChar1
+            '        Else
+            '            Command = 0
 
-        '                End If
+            '        End If
 
 
 
-        '                ' Communication error: clear buffer
-        '                Dim DummyBuffer As String
-        '                If NexStarComm.InBufferCount > 3 Then
-        '                    Do
-        '                        vbuf = NexStarComm.Input
-        '                        buf = Asc(vbuf)
-        '                        DummyBuffer = DummyBuffer & Chr$(buf)
-        '                        key = buf
-        '                    Loop While NexStarComm.InBufferCount > 0
+            '        ' Communication error: clear buffer
+            '        Dim DummyBuffer As String
+            '        If NexStarComm.InBufferCount > 3 Then
+            '            Do
+            '                vbuf = NexStarComm.Input
+            '                buf = Asc(vbuf)
+            '                DummyBuffer = DummyBuffer & Chr$(buf)
+            '                key = buf
+            '            Loop While NexStarComm.InBufferCount > 0
 
-        '                    Command = 0
-        '                End If
+            '            Command = 0
+            '        End If
 
 
 
-        '            Case comEvSend  ' Im Sendepuffer befinden sich SThreshold Zeichen
-        '            Case comEvEOF ' Im Eingabestrom wurde ein EOF-Zeichen gefunden
-        '        End Select
-        '        If NexStarComm.CommEvent <> 2 Then    'empfangen'
-        '            '  Kommunikation_DMX_Scanner_OK = False
-        '        Else
-        '            '   Kommunikation_DMX_Scanner_OK = True
-        '        End If
+            '        Case comEvSend  ' Im Sendepuffer befinden sich SThreshold Zeichen
+            '        Case comEvEOF ' Im Eingabestrom wurde ein EOF-Zeichen gefunden
+            '        End Select
+            '        If NexStarComm.CommEvent <> 2 Then    'empfangen'
+            '            '  Kommunikation_DMX_Scanner_OK = False
+            '        Else
+            '            '   Kommunikation_DMX_Scanner_OK = True
+        End If
         '        Exit Sub
         'msgError:
         '        MsgBox("Error: " + Err.Description + "in Function OnComm() in MainFrm.")
@@ -989,10 +1000,15 @@ v24error:
                 GetAzAltCount = 0
                 If Toggle Then
                     Toggle = False
-                    C_GetAz.PerformClick()
+                    If StatusMoving = 2 Then
+                        C_GetAz.PerformClick()
+                    End If
+
                 Else
                     Toggle = True
-                    C_GetAlt.PerformClick()
+                    If StatusMoving = 2 Then
+                        C_GetAlt.PerformClick()
+                    End If
                 End If
             End If
 
@@ -1249,7 +1265,7 @@ v24error:
                     StartupStep = 10
                 Else
                     Command = 13
-                    '''            NexStarComm.Output = Chr$(&HD)
+
 
                     Dim CommString As String
                     CommString = Strings.Chr(&HD)

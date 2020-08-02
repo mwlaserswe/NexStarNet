@@ -1,324 +1,625 @@
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Move right: (0x06) 100000, (0x1A) 0
---> Send:    Request Status (0x0D)
---> Send:    Stop
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Move right: (0x06) 100000, (0x1A) 0
---> Send:    Stop
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Move up: (0x06) 0, (0x1A) 100000
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Stop
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
---> Send:    Request Status (0x0D)
+--> xxSend:    Request Status (0x0D)
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Encoder Rsolution Az:   0x0C 726559
+--> xxSend:    Encoder Rsolution Alt:   0x1F 726559
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Backlash Alt (0x1E): 40
+--> xxSend:    Backlash Az (0x0A): 40
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxSend:    Encoder Rsolution Alt:   0x1F 726559
+--> xxSend:    Backlash Alt (0x1E): 40
+--> xxSend:    Backlash Az (0x0A): 40
+--> xxSend:    Request Status (0x0D)
+--> xxRecive:   Status 2
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Encoder Rsolution Az:   0x0C 726559
+--> xxSend:    Encoder Rsolution Alt:   0x1F 726559
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Backlash Alt (0x1E): 40
+--> xxSend:    Backlash Az (0x0A): 40
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Request Status (0x0D)
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Encoder Rsolution Az:   0x0C 726559
+--> xxSend:    Read Az (0x01)
+--> xxSend:    Encoder Rsolution Alt:   0x1F 726559
+--> xxRecive:   Az: 377793
+--> xxSend:    Backlash Alt (0x1E): 40
+--> xxSend:    Read Alt (0x15)
+--> xxSend:    Backlash Az (0x0A): 40
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Request Status (0x0D)
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Encoder Rsolution Az:   0x0C 726559
+--> xxSend:    Encoder Rsolution Alt:   0x1F 726559
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Backlash Alt (0x1E): 40
+--> xxSend:    Backlash Az (0x0A): 40
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Request Status (0x0D)
+--> xxRecive:   Status 2
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Encoder Rsolution Az:   0x0C 726559
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Backlash Alt (0x1E): 40
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Request Status (0x0D)
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Encoder Rsolution Az:   0x0C 726559
+--> xxSend:    Encoder Rsolution Alt:   0x1F 726559
+--> xxSend:    Read Az (0x01)
+--> xxSend:    Backlash Alt (0x1E): 40
+--> xxSend:    Backlash Az (0x0A): 40
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Request Status (0x0D)
+--> xxRecive:   Status 2
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Encoder Rsolution Az:   0x0C 726559
+--> xxSend:    Encoder Rsolution Alt:   0x1F 726559
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Backlash Alt (0x1E): 40
+--> xxSend:    Backlash Az (0x0A): 40
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Request Status (0x0D)
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Encoder Rsolution Az:   0x0C 726559
+--> xxSend:    Encoder Rsolution Alt:   0x1F 726559
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Backlash Alt (0x1E): 40
+--> xxSend:    Backlash Az (0x0A): 40
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Request Status (0x0D)
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Encoder Rsolution Az:   0x0C 726559
+--> xxSend:    Encoder Rsolution Alt:   0x1F 726559
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Backlash Alt (0x1E): 40
+--> xxSend:    Backlash Az (0x0A): 40
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Request Status (0x0D)
+--> xxRecive:   Status 2
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Encoder Rsolution Az:   0x0C 726559
+--> xxSend:    Encoder Rsolution Alt:   0x1F 726559
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Backlash Alt (0x1E): 40
+--> xxSend:    Backlash Az (0x0A): 40
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Request Status (0x0D)
+--> xxRecive:   Status 2
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Encoder Rsolution Az:   0x0C 726559
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Backlash Alt (0x1E): 40
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxSend:    Read Az (0x01)
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
+--> xxSend:    Read Alt (0x15)
+--> xxRecive:   Alt: 78871
+--> xxSend:    Read Az (0x01)
+--> xxRecive:   Az: 377793
