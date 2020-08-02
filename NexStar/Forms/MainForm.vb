@@ -67,14 +67,14 @@ Public Class MainForm
         If SimOffline Then
             TelIncr = SimIncr
         Else
-            'SWE If StatusMoving = 2 Then
+            If StatusMoving = 2 Then
 
-            Command = 1
+                Command = 1
 
-            Dim CommString As String
-            CommString = Strings.Chr(&H1)
-            NexStarCommunication(CommString, " Read Az (0x01)", ProtokollMode.Send)
-            'SWE   End If
+                Dim CommString As String
+                CommString = Strings.Chr(&H1)
+                NexStarCommunication(CommString, " Read Az (0x01)", ProtokollMode.Send)
+            End If
         End If
     End Sub
 
@@ -84,14 +84,14 @@ Public Class MainForm
         If SimOffline Then
             TelIncr = SimIncr
         Else
-            'SWE   If StatusMoving = 2 Then
+            If StatusMoving = 2 Then
 
-            Command = 21
+                Command = 21
 
                 Dim CommString As String
                 CommString = Strings.Chr(&H15)
                 NexStarCommunication(CommString, " Read Alt (0x15)", ProtokollMode.Send)
-            'SWE   End If
+            End If
         End If
     End Sub
 
@@ -1000,15 +1000,10 @@ v24error:
                 GetAzAltCount = 0
                 If Toggle Then
                     Toggle = False
-                    If StatusMoving = 2 Then
-                        C_GetAz.PerformClick()
-                    End If
-
+                    C_GetAz.PerformClick()
                 Else
                     Toggle = True
-                    If StatusMoving = 2 Then
-                        C_GetAlt.PerformClick()
-                    End If
+                    C_GetAlt.PerformClick()
                 End If
             End If
 
