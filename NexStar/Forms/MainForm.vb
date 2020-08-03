@@ -51,6 +51,26 @@ Public Class MainForm
         Loop Until (AlignmentStarArray(idx).ProperName = AlignmentStarList.Text) Or (idx >= UBound(AlignmentStarArray))
         '    L_CurrentStar = AlignmentStarArray(idx).ProperName
 
+        ' Stern in Combobox eintragen
+        Dim k As Integer
+        Dim DoubleItem As Boolean
+        Dim FindName As String
+
+        k = CB_Find.Items.Count
+        If k > 0 Then
+            For i = 0 To CB_Find.Items.Count - 1
+                FindName = CB_Find.Items(i)
+                If AlignmentStarArray(idx).ProperName = CB_Find.Items(i) Then
+                    DoubleItem = True
+                End If
+            Next i
+        End If
+
+        If Not DoubleItem Then
+            CB_Find.Items.Add(AlignmentStarArray(idx).ProperName)
+        End If
+
+
         PreviewRaDec.Ra = HourToRad(AlignmentStarArray(idx).Ra)
         PreviewRaDec.Dec = DegToRad(AlignmentStarArray(idx).Dec)
 
@@ -1481,6 +1501,8 @@ v24error:
         If TrackingisON Then
             TrackCount = TrackCount + 1
 
+            L_ElapsedTime.Text = TrackCount & " sec"
+
             ' this code only every "TrackInterval" sec
             ' do write if another command is beeing executed
             If TrackCount >= N And Command = 0 Then
@@ -1708,5 +1730,7 @@ openErr:
         FileClose(AlignmetStarFile)
     End Sub
 
+    Private Sub CB_Find_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Find.SelectedIndexChanged
 
+    End Sub
 End Class

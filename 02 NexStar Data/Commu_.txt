@@ -623,3 +623,637 @@
 --> xxRecive:   Alt: 78871
 --> xxSend:    Read Az (0x01)
 --> xxRecive:   Az: 377793
+--> Send:    Request Status (0x0D)
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Encoder Rsolution Az:   0x0C 726559
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 34
+--> Send:    Backlash Alt (0x1E): 40
+--> Send:    Read Alt (0x15)
+--> Send:    Backlash Az (0x0A): 40
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 34
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 34
+--> Send:    Move right: (0x06) 100000, (0x1A) 0
+--> Send:    Stop
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Move left: (0x07) 100000, (0x1A) 0
+--> Send:    Stop
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 281
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 281
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 281
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 281
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 281
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 281
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 281
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 281
+--> Send:    Move right: (0x06) 100000, (0x1A) 0
+--> Send:    Stop
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 1516
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Move right: (0x06) 100000, (0x1A) 0
+--> Send:    Read Az (0x01)
+--> Send:    Stop
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3990
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Move right: (0x06) 100000, (0x1A) 0
+--> Send:    Stop
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 7245
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 7248
+--> Send:    Move up: (0x06) 0, (0x1A) 100000
+--> Send:    Stop
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 3846
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 7248
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 7248
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 7248
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 7248
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 7248
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 7248
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Move left: (0x07) 100000, (0x1A) 0
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 5602
+--> Send:    Stop
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Move left: (0x07) 100000, (0x1A) 0
+--> Send:    Stop
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 2546
+--> Send:    Move left: (0x07) 100000, (0x1A) 0
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Stop
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 4145
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 726450
+--> Send:    Goto AzAlt (0x02): 197143 104006
+--> Send:   Tracking: -242097,021438771 68,6852423790718
+--> Send:    Request Status (0x0D)
+--> Recive:   Status 2
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Encoder Rsolution Az:   0x0C 726559
+--> Send:    Read Az (0x01)
+--> Send:    Encoder Rsolution Alt:   0x1F 726559
+--> Send:    Backlash Alt (0x1E): 40
+--> Send:    Read Alt (0x15)
+--> Send:    Backlash Az (0x0A): 40
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 1
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 1
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 1
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 1
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 1
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 1
+--> Send:    Move right: (0x06) 100000, (0x1A) 0
+--> Send:    Read Alt (0x15)
+--> Send:    Stop
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Request Status (0x0D)
+--> Recive:   Status 2
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Encoder Rsolution Az:   0x0C 726559
+--> Send:    Encoder Rsolution Alt:   0x1F 726559
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Backlash Alt (0x1E): 40
+--> Send:    Backlash Az (0x0A): 40
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Request Status (0x0D)
+--> Recive:   Status 2
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Encoder Rsolution Az:   0x0C 726559
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Backlash Alt (0x1E): 40
+--> Send:    Read Alt (0x15)
+--> Send:    Backlash Az (0x0A): 40
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Request Status (0x0D)
+--> Recive:   Status 2
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Encoder Rsolution Az:   0x0C 726559
+--> Send:    Read Az (0x01)
+--> Send:    Encoder Rsolution Alt:   0x1F 726559
+--> Send:    Backlash Alt (0x1E): 40
+--> Send:    Read Alt (0x15)
+--> Send:    Backlash Az (0x0A): 40
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Request Status (0x0D)
+--> Recive:   Status 2
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Encoder Rsolution Az:   0x0C 726559
+--> Send:    Encoder Rsolution Alt:   0x1F 726559
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Backlash Alt (0x1E): 40
+--> Send:    Backlash Az (0x0A): 40
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Request Status (0x0D)
+--> Recive:   Status 2
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Encoder Rsolution Az:   0x0C 726559
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Backlash Alt (0x1E): 40
+--> Send:    Read Alt (0x15)
+--> Send:    Backlash Az (0x0A): 40
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Request Status (0x0D)
+--> Recive:   Status 2
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Request Status (0x0D)
+--> Recive:   Status 2
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Encoder Rsolution Az:   0x0C 726559
+--> Send:    Encoder Rsolution Alt:   0x1F 726559
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Backlash Alt (0x1E): 40
+--> Send:    Backlash Az (0x0A): 40
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1
+--> Send:    Read Az (0x01)
+--> Recive:   Az: 3951
+--> Send:    Read Alt (0x15)
+--> Recive:   Alt: 1

@@ -549,13 +549,13 @@ not_found:
                 PrintLine(CommFile, "--> Send:   " & Comment)
                 If Not FrmCommunication.StopFlag Then
                     FrmCommunication.ListBox1.Items.Add("--> Send:   " & Comment)
-                    'FrmCommunication.List_log.ListIndex = FrmCommunication.List_log.ListCount - 1 'Letzten Eintrag hinterlegen
+                    FrmCommunication.ListBox1.SelectedIndex = FrmCommunication.ListBox1.Items.Count - 1 'Letzten Eintrag hinterlegen
                 End If
             Case ProtokollMode.Receive
                 PrintLine(CommFile, "--> Recive:   " & Comment)
                 If Not FrmCommunication.StopFlag Then
                     FrmCommunication.ListBox1.Items.Add("--> Recive:   " & Comment)
-                    'FrmCommunication.List_log.ListIndex = FrmCommunication.List_log.ListCount - 1 'Letzten Eintrag hinterlegen
+                    FrmCommunication.ListBox1.SelectedIndex = FrmCommunication.ListBox1.Items.Count - 1 'Letzten Eintrag hinterlegen
                 End If
 
         End Select

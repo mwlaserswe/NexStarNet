@@ -176,6 +176,10 @@ Partial Class MainForm
         Me.Button2 = New System.Windows.Forms.Button()
         Me.T_Alt = New System.Windows.Forms.TextBox()
         Me.T_Az = New System.Windows.Forms.TextBox()
+        Me.L_ElapsedTime = New System.Windows.Forms.Label()
+        Me.Label42 = New System.Windows.Forms.Label()
+        Me.Label45 = New System.Windows.Forms.Label()
+        Me.CB_Find = New System.Windows.Forms.ComboBox()
         Me.MenuStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.F_StarInfo.SuspendLayout()
@@ -426,9 +430,9 @@ Partial Class MainForm
         Me.AlignmentStarList.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AlignmentStarList.FormattingEnabled = True
         Me.AlignmentStarList.ItemHeight = 37
-        Me.AlignmentStarList.Location = New System.Drawing.Point(870, 57)
+        Me.AlignmentStarList.Location = New System.Drawing.Point(870, 131)
         Me.AlignmentStarList.Name = "AlignmentStarList"
-        Me.AlignmentStarList.Size = New System.Drawing.Size(205, 1003)
+        Me.AlignmentStarList.Size = New System.Drawing.Size(205, 929)
         Me.AlignmentStarList.Sorted = True
         Me.AlignmentStarList.TabIndex = 25
         '
@@ -1594,11 +1598,52 @@ Partial Class MainForm
         Me.T_Az.TabIndex = 80
         Me.T_Az.Text = "--"
         '
+        'L_ElapsedTime
+        '
+        Me.L_ElapsedTime.AutoSize = True
+        Me.L_ElapsedTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.L_ElapsedTime.Cursor = System.Windows.Forms.Cursors.Default
+        Me.L_ElapsedTime.Location = New System.Drawing.Point(1165, 1199)
+        Me.L_ElapsedTime.Name = "L_ElapsedTime"
+        Me.L_ElapsedTime.Size = New System.Drawing.Size(28, 27)
+        Me.L_ElapsedTime.TabIndex = 81
+        Me.L_ElapsedTime.Text = "--"
+        '
+        'Label42
+        '
+        Me.Label42.AutoSize = True
+        Me.Label42.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label42.Location = New System.Drawing.Point(1362, 1123)
+        Me.Label42.Name = "Label42"
+        Me.Label42.Size = New System.Drawing.Size(24, 37)
+        Me.Label42.TabIndex = 25
+        Me.Label42.Text = "|"
+        '
+        'Label45
+        '
+        Me.Label45.AutoSize = True
+        Me.Label45.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label45.Location = New System.Drawing.Point(1362, 1173)
+        Me.Label45.Name = "Label45"
+        Me.Label45.Size = New System.Drawing.Size(24, 37)
+        Me.Label45.TabIndex = 82
+        Me.Label45.Text = "|"
+        '
+        'CB_Find
+        '
+        Me.CB_Find.FormattingEnabled = True
+        Me.CB_Find.Location = New System.Drawing.Point(870, 73)
+        Me.CB_Find.Name = "CB_Find"
+        Me.CB_Find.Size = New System.Drawing.Size(205, 33)
+        Me.CB_Find.TabIndex = 83
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(2042, 1382)
+        Me.Controls.Add(Me.CB_Find)
+        Me.Controls.Add(Me.L_ElapsedTime)
         Me.Controls.Add(Me.T_Az)
         Me.Controls.Add(Me.T_Alt)
         Me.Controls.Add(Me.Button2)
@@ -1676,6 +1721,8 @@ Partial Class MainForm
         Me.Controls.Add(Me.C_MoveTelescope)
         Me.Controls.Add(Me.C_SetEncoder_Az)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.Controls.Add(Me.Label45)
+        Me.Controls.Add(Me.Label42)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "MainForm"
         Me.Text = "Form1"
@@ -1849,4 +1896,8 @@ Partial Class MainForm
     Friend WithEvents Button2 As Button
     Friend WithEvents T_Alt As TextBox
     Friend WithEvents T_Az As TextBox
+    Friend WithEvents L_ElapsedTime As Label
+    Friend WithEvents Label42 As Label
+    Friend WithEvents Label45 As Label
+    Friend WithEvents CB_Find As ComboBox
 End Class
