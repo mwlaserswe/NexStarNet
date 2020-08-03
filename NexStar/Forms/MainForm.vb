@@ -1,5 +1,6 @@
 ﻿Option Explicit On
 Imports System.IO
+Imports System.IO.Ports
 Public Class MainForm
 
     Dim NexStarPortNr As Long
@@ -23,14 +24,6 @@ Public Class MainForm
     Dim SimGotoAzAltActive As Boolean
     Dim SimGoto As AzAlt
     Dim SimTrackingStep As AzAlt
-
-
-    ' RS232
-    Const ReadBufferSize As Integer = 16 'Oder halt eine für Dich sinnvolle Größe.
-    Dim ReadBuffer As Byte() = New Byte(ReadBufferSize - 1) {}
-    Dim Inputidx As Integer
-    Dim InputBuffer(3) As Byte
-
 
 
     Private Enum NxMode
@@ -81,6 +74,7 @@ Public Class MainForm
 
     End Sub
 
+
     Private Sub C_GetAz_Click(sender As Object, e As EventArgs) Handles C_GetAz.Click
         Dim tmp As Double
 
@@ -98,6 +92,7 @@ Public Class MainForm
         End If
     End Sub
 
+
     Private Sub C_GetAlt_Click(sender As Object, e As EventArgs) Handles C_GetAlt.Click
         Dim tmp As Double
 
@@ -114,6 +109,7 @@ Public Class MainForm
             End If
         End If
     End Sub
+
 
     Private Sub C_GotoNorth_Click(sender As Object, e As EventArgs) Handles C_GotoNorth.Click
         TestStatus = True
@@ -166,6 +162,7 @@ Public Class MainForm
 
     End Sub
 
+
     Private Sub C_GotoStarCalibrated_Click(sender As Object, e As EventArgs) Handles C_GotoStarCalibrated.Click
         TestStatus = True
         StatusMoving = 0
@@ -194,9 +191,6 @@ Public Class MainForm
         MotorIncr = Matrix_To_MotorIncrSystem(MatrixSystemSoll)
         MotorLastCalc = MotorIncr
 
-
-
-
         If SimOffline Then
             SimGotoAzAltActive = True
             SimGoto = MotorIncr
@@ -208,9 +202,11 @@ Public Class MainForm
 
     End Sub
 
+
     Private Sub C_MoveTelescope_Click(sender As Object, e As EventArgs) Handles C_MoveTelescope.Click
         FrmMoveTelescope.Show()
     End Sub
+
 
     Private Sub C_Set_ObserverLocation_Click(sender As Object, e As EventArgs) Handles C_Set_ObserverLocation.Click
         ObserverLatt.deg = Zahl(T_Latt_Grad.Text)
@@ -240,6 +236,7 @@ Public Class MainForm
         My.Settings.Save()
     End Sub
 
+
     Private Sub C_SetBacklAz_Click(sender As Object, e As EventArgs) Handles C_SetBacklAz.Click
         Dim BacklashAlt As Long    '0..100
 
@@ -253,6 +250,7 @@ Public Class MainForm
         End If
     End Sub
 
+
     Private Sub C_SetBacklAlt_Click(sender As Object, e As EventArgs) Handles C_SetBacklAlt.Click
         Dim BacklashAz As Long    '0..100
 
@@ -265,6 +263,7 @@ Public Class MainForm
             NexStarCommunication(CommString, " Backlash Az (0x0A): " & BacklashAz, ProtokollMode.Send)
         End If
     End Sub
+
 
     Private Sub C_SetCalibrationStar_2_Click(sender As Object, e As EventArgs) Handles C_SetCalibrationStar_2.Click
 
@@ -333,6 +332,7 @@ Public Class MainForm
 
     End Sub
 
+
     Private Sub C_SetEncoder_Az_Click(sender As Object, e As EventArgs) Handles C_SetEncoder_Az.Click
         If SimOffline Then
         Else
@@ -342,6 +342,7 @@ Public Class MainForm
         End If
     End Sub
 
+
     Private Sub C_SetEncoder_Alt_Click(sender As Object, e As EventArgs) Handles C_SetEncoder_Alt.Click
         If SimOffline Then
         Else
@@ -350,6 +351,7 @@ Public Class MainForm
             NexStarCommunication(CommString, " Encoder Rsolution Alt:   0x1F " & EncoderResolution, ProtokollMode.Send)
         End If
     End Sub
+
 
     Private Sub C_Simulation_Click(sender As Object, e As EventArgs) Handles C_Simulation.Click
 
@@ -364,6 +366,7 @@ Public Class MainForm
         My.Settings.Save()
 
     End Sub
+
 
     Private Sub C_SingleStarCalib_Click(sender As Object, e As EventArgs) Handles C_SingleStarCalib.Click
 
@@ -429,6 +432,7 @@ Public Class MainForm
 
     End Sub
 
+
     Private Sub C_Up_MouseDown(sender As Object, e As MouseEventArgs) Handles C_Up.MouseDown
         If SimOffline Then
             SimBntUp = True
@@ -438,6 +442,7 @@ Public Class MainForm
             NexStarCommunication(CommString, " Move up: (0x06) " & 0 & ", (0x1A) " & CDbl(ManualSlewingSpeedY), ProtokollMode.Send)
         End If
     End Sub
+
 
     Private Sub C_Up_MouseUp(sender As Object, e As MouseEventArgs) Handles C_Up.MouseUp
         If SimOffline Then
@@ -449,6 +454,7 @@ Public Class MainForm
         End If
     End Sub
 
+
     Private Sub C_Dn_MouseDown(sender As Object, e As MouseEventArgs) Handles C_Dn.MouseDown
         If SimOffline Then
             SimBntDn = True
@@ -458,6 +464,7 @@ Public Class MainForm
             NexStarCommunication(CommString, " Move down: (0x06) " & 0 & ", (0x1B) " & CDbl(ManualSlewingSpeedY), ProtokollMode.Send)
         End If
     End Sub
+
 
     Private Sub C_Dn_MouseUp(sender As Object, e As MouseEventArgs) Handles C_Dn.MouseUp
         If SimOffline Then
@@ -469,6 +476,7 @@ Public Class MainForm
         End If
     End Sub
 
+
     Private Sub C_Le_MouseDown(sender As Object, e As MouseEventArgs) Handles C_Le.MouseDown
         If SimOffline Then
             SimBntLe = True
@@ -478,6 +486,7 @@ Public Class MainForm
             NexStarCommunication(CommString, " Move left: (0x07) " & CDbl(ManualSlewingSpeedX) & ", (0x1A) " & 0, ProtokollMode.Send)
         End If
     End Sub
+
 
     Private Sub C_Le_MouseUp(sender As Object, e As MouseEventArgs) Handles C_Le.MouseUp
         If SimOffline Then
@@ -489,6 +498,7 @@ Public Class MainForm
         End If
     End Sub
 
+
     Private Sub C_Ri_MouseDown(sender As Object, e As MouseEventArgs) Handles C_Ri.MouseDown
         If SimOffline Then
             SimBntRi = True
@@ -498,6 +508,7 @@ Public Class MainForm
             NexStarCommunication(CommString, " Move right: (0x06) " & CDbl(ManualSlewingSpeedX) & ", (0x1A) " & 0, ProtokollMode.Send)
         End If
     End Sub
+
 
     Private Sub C_Ri_MouseUp(sender As Object, e As MouseEventArgs) Handles C_Ri.MouseUp
         If SimOffline Then
@@ -604,56 +615,9 @@ openErr:
 
         On Error GoTo v24error
 
-        '        NexStarPortNr = 8
-        '        NexStarBaudrate = 9600
-
-        '        If SimOffline Then
-        '            '
-        '        ElseIf NexStarPortNr > 0 Then
-        '            SerialPort1.BaudRate = NexStarBaudrate
-        '            SerialPort1.Parity = Ports.Parity.None
-        '            SerialPort1.DataBits = Ports.
-
-
-        '            SerialPort1.CommPort = NexStarPortNr
-        '            SerialPort1.Settings = NexStarBaudrate + ",n,8,1"
-        '            SerialPort1.PortOpen = True
-        '        Else
-        '            SerialPort1.CommPort = 6
-        '            SerialPort1.Settings = "4800,n,8,1"
-        '            SerialPort1.InputLen = 1
-        '            SerialPort1.DtrEnable = False
-        '            SerialPort1.RThreshold = 1
-        '            SerialPort1.PortOpen = True
-        '        End If
-
-        '        Exit Sub
-
-        'v24error:
-        '        MsgBox("NexStar RS232 Open error: " & Err.Descripxxtion, , "Communication NexStar")
-
-
-        ' Send strings to a serial port.
-        'Dim NexStarComm As New System.IO.Ports.SerialPort With {.BaudRate = 4800,
-        '                                             .DataBits = 8,
-        '                                             .Parity = IO.Ports.Parity.None,
-        '                                             .PortName = "COM8",
-        '                                             .StopBits = IO.Ports.StopBits.One,
-        '                                             .ReadTimeout = System.Threading.Timeout.Infinite,
-        '                                             .WriteTimeout = 10}
-
-
         If SimOffline Then
-            '
-            'ElseIf NexStarPortNr > 0 Then
-            '    SerialPort1.BaudRate = NexStarBaudrate
-            '    SerialPort1.Parity = Ports.Parity.None
-            '    SerialPort1.DataBits = Ports.
-
         Else
-
-            NexStarComm.Open() 'Port öffnen.
-            KickoffRead()
+            MSComm1.Open()
         End If
 
         Exit Sub
@@ -669,100 +633,6 @@ v24error:
 
 
     End Sub
-
-
-
-
-
-    'Const ReadBufferSize As Integer = 16 'Oder halt eine für Dich sinnvolle Größe.
-    ''BaudRate, DataBits, Parity und StopBits hängt vom angeschlossenen Gerät ab.
-    ''PortName ist der Name, der auch im Geräte-Manager zu finden ist. Mit SerialPort.GetPortNames bekommt man die Namen aller verfügbaren Ports.
-    ''Das unendliche ReadTimeout hat den Sinn, dass einfach so lange gewartet wird, bis Daten ankommen. Wenn keine Daten kommen, wird halt ewig gewartet. Der Puffer wird trotzdem auch nur teilweise gefüllt. Sendet das Gerät an den Computer nur ein Byte und dann lange nichts, dann kommt im Callback auch nur ein Byte an.
-    ''Das WriteTimeout hat den Sinn, dass wenn man z.B. nur ein Byte zum Gerät schicken will, dass dieses eine Byte dann nach 10 Millisekunden gesendet wird und nicht erst gewartet wird, bis der interne Puffer voll ist.
-    'Dim Port As New System.IO.Ports.SerialPort With {.BaudRate = 9600,
-    '                                                 .DataBits = 8,
-    '                                                 .Parity = IO.Ports.Parity.None,
-    '                                                 .PortName = "COM8",
-    '                                                 .StopBits = IO.Ports.StopBits.One,
-    '                                                 .ReadTimeout = System.Threading.Timeout.Infinite,
-    '                                                 .WriteTimeout = 10}
-    'Dim ReadBuffer As Byte() = New Byte(ReadBufferSize - 1) {}
-
-
-    'Sub SendSerialData_1(ByVal data As String)
-    '    ' Das funktioniert!
-    '    ' Send strings to a serial port.
-    '    Using com8 As IO.Ports.SerialPort = My.Computer.Ports.OpenSerialPort("COM8")
-    '        'com8.WriteLine(data)
-    '        com8.Write(data)
-    '    End Using
-    'End Sub
-
-
-    'Sub SendSerialData_2(ByVal data As String)
-    '    '' Send strings to a serial port.
-    '    'Dim com8 As New System.IO.Ports.SerialPort With {.BaudRate = 9600,
-    '    '                                             .DataBits = 8,
-    '    '                                             .Parity = IO.Ports.Parity.None,
-    '    '                                             .PortName = "COM8",
-    '    '                                             .StopBits = IO.Ports.StopBits.One,
-    '    '                                             .ReadTimeout = System.Threading.Timeout.Infinite,
-    '    '                                             .WriteTimeout = 10}
-    '    'com8.Open() 'Port öffnen.
-    '    'com8.WriteLine(data)
-
-    '    NexStarComm.Write("hallo...")
-    '    'com8.Close()
-    'End Sub
-
-
-    'Private Sub DoIt() 'Als Beispiel.
-    '    Port.Open() 'Port öffnen.
-    '    KickoffRead() 'Und Lesevorgang starten.
-    'End Sub
-    'Private Sub KickoffRead()
-    '    NexStarComm.BaseStream.BeginRead(ReadBuffer, 0, ReadBufferSize, AddressOf ReadCallback, Nothing)
-
-    'End Sub
-    'Private Sub ReadCallback(Result As IAsyncResult)
-    '    Dim ActualLength As Integer
-    '    Try
-    '        ActualLength = Port.BaseStream.EndRead(Result)
-    '    Catch ex As System.IO.IOException
-    '        'Damit habe ich mich noch nicht genug befasst.
-    '        'IOExceptions treten manchmal auf.
-    '        Return
-    '    Catch ex As InvalidOperationException
-    '        'Tritt auf, wenn der Port geschlossen wurde.
-    '        Return
-    '    End Try
-    '    Dim BufferCopy = New Byte(ActualLength - 1) {}
-    '    Array.Copy(ReadBuffer, BufferCopy, ActualLength)
-    '    Me.BeginInvoke(Sub() BytesReceived(BufferCopy))
-    '    'SWE  KickoffRead()
-    'End Sub
-    'Private Sub BytesReceived(Bytes As Byte())
-    '    'Hier irgendwas mit den Bytes tun.
-    'End Sub
-
-
-
-    'Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-    '    DoIt()
-    'End Sub
-
-
-    'Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-    '    SendSerialData_2("test...")
-    'End Sub
-
-
-
-
-
-
-
-
 
 
     Private Sub CommunicationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CommunicationToolStripMenuItem.Click
@@ -812,86 +682,31 @@ v24error:
         TestJulianischesDatum.Show()
     End Sub
 
-    Public Sub KickoffRead()
-        NexStarComm.BaseStream.BeginRead(ReadBuffer, 0, ReadBufferSize, AddressOf ReadCallback, Nothing)
 
-    End Sub
-
-    ' Goto AzAlt        0xO2 Az (3 Byte) 0x16 Alt (3 Bype)
-    ' Move UP           0x06 0 (3 Byte) 0x1A & Speed  (3 Bype)
-    ' Move DOWN         0x06 0 (3 Byte) 0x1B & Speed  (3 Bype)
-    ' Move LEFT         0x07 Speed (3 Byte) 0x1A 0 (3 Bype)
-    ' Move RIGHT        0x06 Speed (3 Byte) 0x1A 0 (3 Bype)
-    ' Set Az EncRes     0x0C EncResAz (3 Byte)
-    ' Set Alt EncRes    0x1F EncResAlt (3 Bype)
-    ' Set Az Backlash   0x0A BacklashAz (3 Byte)
-    ' Set Alt Backlash  0x1E BacklashAlt (3 Byte)
-    ' Get Az Incr       0x01                            Antwort Az (3 Byte)
-    ' Get Alt Incr      0x15                            Antwort Az (3 Byte)
-    ' ????              0x18 ??? (3 Byte)
-
-    ' Get Status        0x0D    Antwort Status (1 Byte) 0x00: Busy  0xFF: Idle
-
-    ' Slewing rate      [1/10 Motor Incr/sec]  i.e.  Slewing rate 10000: 10000 Incr in 10sec
-
-    ' Slewing rate 9: "CE BB 02" = "CE BB 02" = 13548290 = 1354829,0 [Incr pro sec]
-
-
-
-    ' Tracking a star:
-    ' 01 15             Answer: az az az al al al        Get Az Alt Incr
-    ' 18 0A F0 46  ????
-    ' 01 15             Answer: az az az al al al        Get Az Alt Incr
-    ' 06 00 00 5E 1B 00 00 05                            Slew Az=94 Alt=5
-
-    Public Sub ReadCallback(Result As IAsyncResult)
-        Dim ActualLength As Integer
-        Try
-            ActualLength = NexStarComm.BaseStream.EndRead(Result)
-        Catch ex As System.IO.IOException
-            'Damit habe ich mich noch nicht genug befasst.
-            'IOExceptions treten manchmal auf.
-            Return
-        Catch ex As InvalidOperationException
-            'Tritt auf, wenn der Port geschlossen wurde.
-            Return
-        End Try
-        Dim BufferCopy = New Byte(ActualLength - 1) {}
+    Private Sub MSComm1_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles MSComm1.DataReceived
 
         Dim i As Integer
-        For i = 0 To ActualLength - 1
-            InputBuffer(Inputidx) = ReadBuffer(i)
-            Inputidx = Inputidx + 1
-        Next i
 
-        'Array.Copy(ReadBuffer, BufferCopy, ActualLength)
-        'Me.BeginInvoke(Sub() BytesReceived(BufferCopy))
-        KickoffRead()
-
-
-
-
-
-        '        Dim pos As Long
-        Dim vbuf As Object
+        Dim BytesToRead As Integer
+        Dim ByteArray(19) As Byte
         Dim buf As Byte
-        '        Dim key As Integer
-        '        Dim l As Long
-        '        Dim i As Integer
+
         Dim NexStarAz As Long
         Dim NexStarAlt As Long
 
 
-        If Command = 1 Then
+        BytesToRead = MSComm1.BytesToRead()
 
-            NexStarAz = 0
-            If Inputidx = 3 Then
-                Inputidx = 0
+        If Command = 1 Then
+            If BytesToRead >= 3 Then
+
+                NexStarAz = 0
+
+                MSComm1.Read(ByteArray, 0, 3)
 
                 For i = 0 To 2
-                    vbuf = InputBuffer(i)
-                    buf = Asc(vbuf)
-                    NexStarAz = NexStarAz + vbuf * 256 ^ (2 - i)
+                    buf = ByteArray(i)
+                    NexStarAz = NexStarAz + buf * 256 ^ (2 - i)
                 Next i
 
                 TelIncr.Az = NexStarAz
@@ -900,18 +715,16 @@ v24error:
 
             End If
 
-
         ElseIf Command = 21 Then
+            If BytesToRead >= 3 Then
 
-            NexStarAlt = 0
+                NexStarAlt = 0
 
-            If Inputidx = 3 Then
-                Inputidx = 0
+                MSComm1.Read(ByteArray, 0, 3)
 
-                For i = 0 To 2
-                    vbuf = InputBuffer(i)
-                    buf = Asc(vbuf)
-                    NexStarAlt = NexStarAlt + vbuf * 256 ^ (2 - i)
+                For i = 1 To 2
+                    buf = ByteArray(i)
+                    NexStarAlt = NexStarAlt + buf * 256 ^ (2 - i)
                 Next i
 
                 TelIncr.Alt = NexStarAlt
@@ -920,20 +733,16 @@ v24error:
             End If
 
         ElseIf Command = 13 Then
-
             NexStarChar1 = ""
+            If BytesToRead >= 1 Then
 
-            If Inputidx = 1 Then
-                Inputidx = 0
-                vbuf = InputBuffer(0)
-                buf = Asc(vbuf)
+                MSComm1.Read(ByteArray, 0, 1)
+                buf = ByteArray(0)
                 NexStarChar1 = NexStarChar1 & Strings.Chr(buf)
 
-                NexStarCommunication("", "Status " & NexStarChar1, ProtokollMode.Receive)
-
-                If vbuf = 0 Then
+                If buf = 0 Then
                     StatusMoving = 1      'Busy
-                ElseIf vbuf = 255 Then
+                ElseIf buf = 255 Then
                     StatusMoving = 2      'Idle
                 End If
 
@@ -1052,19 +861,6 @@ v24error:
         L_MotorSystemAzDiffReal.Text = "Real (RS232):      " & Format(TrackingSpeed.Az / 10, "0.000") & " Incr/s"
         L_MotorSystemAzDiffSim.Text = "Real (Simulation): " & Format(SimTrackingStep.Az, "0.000") & " Incr/s"
 
-        'SWE   If SimOffline Then
-        'SWE       '''        Slider1.Value = SimIncr.Az - Matrix_To_MotorIncrSystem(MatrixSystemSoll).Az
-        'SWE       zzSlider1.Value = SimIncr.Az - Matrix_To_MotorIncrSystem(MatrixSystemSoll).Az
-        'SWE
-        'SWE       '''        Slider2.Value = SimIncr.Alt - Matrix_To_MotorIncrSystem(MatrixSystemSoll).Alt
-        'SWE       zzSlider2.Value = SimIncr.Alt - Matrix_To_MotorIncrSystem(MatrixSystemSoll).Alt
-        'SWE   Else
-        'SWE       '''        Slider1.Value = TelIncr.Az - Matrix_To_MotorIncrSystem(MatrixSystemSoll).Az
-        'SWE       zzSlider1.Value = TelIncr.Az - Matrix_To_MotorIncrSystem(MatrixSystemSoll).Az
-        'SWE
-        'SWE       '''        Slider2.Value = TelIncr.Alt - Matrix_To_MotorIncrSystem(MatrixSystemSoll).Alt
-        'SWE       zzSlider2.Value = TelIncr.Alt - Matrix_To_MotorIncrSystem(MatrixSystemSoll).Alt
-        'SWE   End If
 
         If SimOffline Then
             Slider1.Value = Limit(SimIncr.Az - Matrix_To_MotorIncrSystem(MatrixSystemSoll).Az + 1000, 0, 2000)
@@ -1284,7 +1080,7 @@ v24error:
 
                     Dim CommString As String
                     CommString = Strings.Chr(&HD)
-                    NexStarCommunication(CommString, " Request Status (0x0D)", ProtokollMode.Send)
+                    'SWE   NexStarCommunication(CommString, " Request Status (0x0D)", ProtokollMode.Send)
 
 
                     StatusMoving = 0
@@ -1338,7 +1134,6 @@ v24error:
             Command = 13
             If SimOffline Then
             Else
-                '''            NexStarComm.Output = Chr$(&HD)
                 Dim CommString As String
                 CommString = Strings.Chr(&HD)
                 NexStarCommunication(CommString, " Request Status (0x0D)", ProtokollMode.Send)
@@ -1624,8 +1419,6 @@ v24error:
 
                 If Not SimOffline Then
                     LogString = "Tracking: " & TrackingSpeed.Az & " " & TrackingSpeed.Alt
-                    '''                    NexStarCommunication LogString, Send
-                    '''                    NexStarComm.Output = AzString & AltString
 
                     Dim CommString As String
                     CommString = AzString & AltString
@@ -1719,9 +1512,6 @@ v24error:
         End While
         FileClose(AlignmetStarFile)
 
-        'Dim tst
-        '    tst = AlignmentStarList.List(2)
-
 
         Exit Sub
 
@@ -1730,7 +1520,22 @@ openErr:
         FileClose(AlignmetStarFile)
     End Sub
 
-    Private Sub CB_Find_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Find.SelectedIndexChanged
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+
+        Command = 1
+
+        Dim CommString As String
+        CommString = Strings.Chr(&H1)
+        NexStarCommunication(CommString, " Read Az (0x01)", ProtokollMode.Send)
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Command = 13
+
+
+        Dim CommString As String
+        CommString = Strings.Chr(&HD)
+        NexStarCommunication(CommString, " Request Status (0x0D)", ProtokollMode.Send)
 
     End Sub
 End Class

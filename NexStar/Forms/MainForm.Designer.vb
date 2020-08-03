@@ -128,7 +128,7 @@ Partial Class MainForm
         Me.L_Preview_RA = New System.Windows.Forms.Label()
         Me.Label36 = New System.Windows.Forms.Label()
         Me.C_Tracking = New System.Windows.Forms.Button()
-        Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
+        Me.MSComm1 = New System.IO.Ports.SerialPort(Me.components)
         Me.LoadStarKatalogDialog = New System.Windows.Forms.OpenFileDialog()
         Me.Tim_DisplayUpdate = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -180,6 +180,7 @@ Partial Class MainForm
         Me.Label42 = New System.Windows.Forms.Label()
         Me.Label45 = New System.Windows.Forms.Label()
         Me.CB_Find = New System.Windows.Forms.ComboBox()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.F_StarInfo.SuspendLayout()
@@ -1159,6 +1160,11 @@ Partial Class MainForm
         Me.C_Tracking.Text = "Tracking"
         Me.C_Tracking.UseVisualStyleBackColor = True
         '
+        'MSComm1
+        '
+        Me.MSComm1.BaudRate = 4800
+        Me.MSComm1.PortName = "COM8"
+        '
         'LoadStarKatalogDialog
         '
         Me.LoadStarKatalogDialog.FileName = "OpenFileDialog1"
@@ -1507,6 +1513,7 @@ Partial Class MainForm
         '
         'Tim_TestStatus
         '
+        Me.Tim_TestStatus.Enabled = True
         '
         'Tim_Tracking
         '
@@ -1573,9 +1580,9 @@ Partial Class MainForm
         '
         Me.Button2.Location = New System.Drawing.Point(88, 810)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(143, 51)
+        Me.Button2.Size = New System.Drawing.Size(250, 51)
         Me.Button2.TabIndex = 78
-        Me.Button2.Text = "RS232Write"
+        Me.Button2.Text = "RS232Write Az"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'T_Alt
@@ -1637,11 +1644,21 @@ Partial Class MainForm
         Me.CB_Find.Size = New System.Drawing.Size(205, 33)
         Me.CB_Find.TabIndex = 83
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(88, 874)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(250, 51)
+        Me.Button3.TabIndex = 84
+        Me.Button3.Text = "RS232Write Status"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(2042, 1382)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.CB_Find)
         Me.Controls.Add(Me.L_ElapsedTime)
         Me.Controls.Add(Me.T_Az)
@@ -1845,7 +1862,7 @@ Partial Class MainForm
     Friend WithEvents L_Preview_RA As Label
     Friend WithEvents Label36 As Label
     Friend WithEvents C_Tracking As Button
-    Friend WithEvents SerialPort1 As IO.Ports.SerialPort
+    Friend WithEvents MSComm1 As IO.Ports.SerialPort
     Friend WithEvents LoadStarKatalogDialog As OpenFileDialog
     Friend WithEvents Tim_DisplayUpdate As Timer
     Friend WithEvents GroupBox2 As GroupBox
@@ -1900,4 +1917,5 @@ Partial Class MainForm
     Friend WithEvents Label42 As Label
     Friend WithEvents Label45 As Label
     Friend WithEvents CB_Find As ComboBox
+    Friend WithEvents Button3 As Button
 End Class

@@ -1,25 +1,16 @@
 ﻿Option Explicit On
 
 Imports System.IO
+Imports System.IO.Ports
 Module Utilities
+
+
+
+
+
     Private Declare Function FindFirstFile Lib "Kernel32" Alias "FindFirstFileA" (ByVal lpFileName As String, lpFindFileData As WIN32_FIND_DATA) As Long
     Private Declare Function FindNextFile Lib "Kernel32" Alias "FindNextFileA" (ByVal hFindFile As Long, lpFindFileData As WIN32_FIND_DATA) As Long
     Private Declare Function FindClose Lib "Kernel32" (ByVal hFindFile As Long) As Long
-    '''Private Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hWnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
-
-    Const ReadBufferSize As Integer = 16 'Oder halt eine für Dich sinnvolle Größe.
-    Dim ReadBuffer As Byte() = New Byte(ReadBufferSize - 1) {}
-
-    Public NexStarComm As New System.IO.Ports.SerialPort With {.BaudRate = 4800,
-                                                     .DataBits = 8,
-                                                     .Parity = IO.Ports.Parity.None,
-                                                     .PortName = "COM8",
-                                                     .StopBits = IO.Ports.StopBits.One,
-                                                     .ReadTimeout = System.Threading.Timeout.Infinite,
-                                                     .WriteTimeout = 10}
-
-
-    Const LB_SETHORIZONTAL = &H194
 
 
     Private Structure FILETIME
@@ -545,20 +536,26 @@ not_found:
 
         Select Case Mode
             Case ProtokollMode.Send
-                NexStarComm.Write(CommString)
+                Dim buf() As Byte
+                buf = System.Text.Encoding.Default.GetBytes(CommString)
+                MainForm.MSComm1.Write(buf, 0, buf.Length)
+
+                'MainForm.MSComm1.Write(CommString)
                 PrintLine(CommFile, "--> Send:   " & Comment)
                 If Not FrmCommunication.StopFlag Then
                     FrmCommunication.ListBox1.Items.Add("--> Send:   " & Comment)
                     FrmCommunication.ListBox1.SelectedIndex = FrmCommunication.ListBox1.Items.Count - 1 'Letzten Eintrag hinterlegen
                 End If
             Case ProtokollMode.Receive
-                PrintLine(CommFile, "--> Recive:   " & Comment)
                 If Not FrmCommunication.StopFlag Then
                     FrmCommunication.ListBox1.Items.Add("--> Recive:   " & Comment)
+                    MainForm.T_Az.Text = "123"
                     FrmCommunication.ListBox1.SelectedIndex = FrmCommunication.ListBox1.Items.Count - 1 'Letzten Eintrag hinterlegen
                 End If
 
         End Select
+
+
 
         FileClose(CommFile)
 
@@ -567,7 +564,7 @@ not_found:
         Exit Sub
 
 OpenError:
-        '''MsgBox CommFileName, , "Write error"
+        '      MsgBox(Err.Description)
 
     End Sub
 

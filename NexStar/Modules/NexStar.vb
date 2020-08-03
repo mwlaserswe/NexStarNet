@@ -28,12 +28,12 @@ Module NexStar
 
     ' erzeugt einen Binärstring für die RS232 aus einer Long-Zahl
     ' 1000 = Chr$(&H0) & Chr$(&H3) & Chr$(&HE8)
-    Public Function SetNexStarPosition(Value As Long) As String
-        Dim X As Long
-        Dim i As Long
-        Dim exp As Long
-        Dim a As Long
-        Dim e As Long
+    Public Function SetNexStarPosition(Value As Integer) As String
+        Dim X As Integer
+        Dim i As Integer
+        Dim exp As Integer
+        Dim a As Integer
+        Dim e As Integer
 
         If (Value < 0) Or (Value > 1677216) Then
             MsgBox("Position Overflow")
@@ -49,6 +49,17 @@ Module NexStar
             X = X - a * e
             SetNexStarPosition = SetNexStarPosition & Strings.Chr(a)
         Next i
+
+
+        ''''UTF to Unicode16
+        '''Dim s As String
+
+        '''s = SetNexStarPosition
+
+        '''Dim b() As Byte = System.Text.Encoding.UTF8.GetBytes(s)
+        '''Dim s1 As String = System.Text.Encoding.Default.GetString(b)
+
+        '''SetNexStarPosition = s1
 
     End Function
 
