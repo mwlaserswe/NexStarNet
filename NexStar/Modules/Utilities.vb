@@ -220,22 +220,6 @@ Module Utilities
     End Function
 
 
-    '''Public Function InStrRev(String1 As String, String2 As String) As Long
-    '''    Dim Pos1 As Long
-    '''    Dim Pos2 As Long
-
-    '''    If (String1 = "") Or (String2 = "") Or (Len(String2) > Len(String1)) Then
-    '''        InStrRev = 0
-    '''    Else
-    '''        Pos2 = 0
-    '''        Do
-    '''            Pos1 = Pos2
-    '''            Pos2 = InStr(Pos1 + 1, String1, String2)
-    '''        Loop While Pos2 > 0
-    '''        InStrRev = Pos1
-    '''    End If
-    '''End Function
-
     Public Function KommaToPunkt(Txt As String) As String
         Dim i As Integer
         Dim s As String
@@ -252,6 +236,7 @@ Module Utilities
 
     End Function
 
+
     Public Function VbGetShortPathName(LongPathName As String)
         Dim sBuffer As String, lLen As Long
 
@@ -260,6 +245,7 @@ Module Utilities
         VbGetShortPathName = Left$(sBuffer, lLen)
 
     End Function
+
 
     Public Function DelCrtlChar(Srt1) As String
         Dim i As Integer
@@ -272,6 +258,7 @@ Module Utilities
         Next i
 
     End Function
+
 
     Public Sub InitVariablen()
         '  Static isInit As Boolean
@@ -293,9 +280,12 @@ Module Utilities
 
     End Sub
 
+
     Public Sub BitSet(daten As Byte, BitNr As Integer)
         daten = daten Or bitMaske(BitNr)
     End Sub
+
+
     Public Sub BitReset(daten As Byte, BitNr As Integer)
         daten = daten And (Not bitMaske(BitNr))
     End Sub
@@ -304,6 +294,8 @@ Module Utilities
     Public Sub BitSet_Int(daten As Integer, BitNr As Integer)
         '  daten = daten Or bitMaske_Int(BitNr)
     End Sub
+
+
     Public Sub BitReset_Int(daten As Integer, BitNr As Integer)
         '  daten = daten And bitMaskeInv_Int(BitNr)
     End Sub
@@ -315,110 +307,6 @@ Module Utilities
         '    BitTest = True
         '  End If
     End Function
-
-
-    '''  Public Sub PrintControlCaption(WertVar As Variant, Steuerelement As Variant)
-    '''      Dim WertOld As Variant
-    '''      Dim wert As String
-
-    '''      '1. sicherstellen, daß alle Werte als String vorliegen
-    '''      If Not (VarType(WertVar) = 8) Then
-    '''          wert = CStr(WertVar)
-    '''      Else
-    '''          wert = WertVar
-    '''      End If
-
-    '''      If (TypeOf Steuerelement Is Label) _
-    '''   Or (TypeOf Steuerelement Is Form) _
-    '''   Or (TypeOf Steuerelement Is Frame) _
-    '''   Or (TypeOf Steuerelement Is CommandButton) _
-    '''Then
-    '''          WertOld = Steuerelement.Caption
-    '''          If (WertOld <> wert) Then         'hat sich die Wert geändert?
-    '''              Steuerelement.Caption = wert
-
-    '''          End If
-    '''      End If
-    '''      If TypeOf Steuerelement Is TextBox Then
-    '''          WertOld = Steuerelement.Text
-    '''          If (WertOld <> wert) Then         'hat sich die Wert geändert?
-    '''              Steuerelement.Text = wert
-    '''          End If
-    '''      End If
-    '''  End Sub
-    '''  Public Sub PrintControlFehler(WertVar As Variant, Steuerelement As Variant)
-    '''      Dim WertOld As Variant
-    '''      Dim wert As String
-
-    '''      '1. sicherstellen, daß alle Werte als String vorliegen
-    '''      If Not (VarType(WertVar) = 8) Then
-    '''          wert = CStr(WertVar)
-    '''      Else
-    '''          wert = WertVar
-    '''      End If
-
-    '''      If (TypeOf Steuerelement Is Label) _
-    '''   Or (TypeOf Steuerelement Is Form) _
-    '''   Or (TypeOf Steuerelement Is Frame) _
-    '''   Or TypeOf Steuerelement Is TextBox _
-    '''   Or (TypeOf Steuerelement Is CommandButton) _
-    '''Then
-
-    '''          WertOld = Steuerelement
-    '''          If (WertOld <> wert) Then         'hat sich die Wert geändert?
-    '''              '      ProtokollMessage wert
-
-    '''          End If
-
-    '''      End If
-
-    '''  End Sub
-
-    '''Public Sub PrintControlColor(wert As Long, Steuerelement As Variant)
-    '''    Dim WertOld As Long
-
-    '''    WertOld = Steuerelement.BackColor
-    '''    If (WertOld <> wert) Then         'hat sich die Wert geändert?
-    '''        Steuerelement.BackColor = wert
-    '''    End If
-    '''End Sub
-
-    '''Public Sub PrintControlForeColor(wert As Long, Steuerelement As Variant)
-    '''    Dim WertOld As Long
-
-    '''    WertOld = Steuerelement.ForeColor
-    '''    If (WertOld <> wert) Then         'hat sich die Wert geändert?
-    '''        Steuerelement.ForeColor = wert
-    '''    End If
-    '''End Sub
-
-
-
-
-
-
-
-
-
-    '''Public Sub PrintCommImage(PortNr As String, CommStatus As String, Pic As PictureBox)
-    '''    Dim TagOld As String
-    '''    Dim CommStatusOld As String
-
-    '''    CommStatusOld = Pic.Tag
-    '''    If CommStatusOld <> CommStatus Then
-    '''        Pic.Tag = CommStatus
-    '''        If CommStatus = True Then
-    '''            Pic.Cls
-    '''            Pic.BackColor = vbGreen
-    '''            Pic.Print PortNr
-    '''Else
-    '''            Pic.Cls
-    '''            Pic.BackColor = vbRed
-    '''            Pic.Print PortNr
-    '''End If
-    '''    End If
-
-    '''End Sub
 
 
     Public Sub SepariereString(Zeile As String, ByRef WortArray() As String, Delimiter As String)
@@ -524,7 +412,6 @@ not_found:
     Public Sub NexStarCommunication(CommString As String, Comment As String, Mode As ProtokollMode)
         Dim CommFile As Integer
         Dim i As Integer
-        '    Dim Prexit As String
 
         On Error GoTo OpenError
 
@@ -533,33 +420,27 @@ not_found:
         CommFile = FreeFile()                'Nächste freie DateiNr.
         FileOpen(CommFile, CommFileName, OpenMode.Append)
 
-
         Select Case Mode
             Case ProtokollMode.Send
                 Dim buf() As Byte
                 buf = System.Text.Encoding.Default.GetBytes(CommString)
                 MainForm.MSComm1.Write(buf, 0, buf.Length)
 
-                'MainForm.MSComm1.Write(CommString)
                 PrintLine(CommFile, "--> Send:   " & Comment)
                 If Not FrmCommunication.StopFlag Then
                     FrmCommunication.ListBox1.Items.Add("--> Send:   " & Comment)
                     FrmCommunication.ListBox1.SelectedIndex = FrmCommunication.ListBox1.Items.Count - 1 'Letzten Eintrag hinterlegen
                 End If
             Case ProtokollMode.Receive
+                PrintLine(CommFile, "--> Receive:   " & Comment)
                 If Not FrmCommunication.StopFlag Then
                     FrmCommunication.ListBox1.Items.Add("--> Recive:   " & Comment)
-                    MainForm.T_Az.Text = "123"
                     FrmCommunication.ListBox1.SelectedIndex = FrmCommunication.ListBox1.Items.Count - 1 'Letzten Eintrag hinterlegen
                 End If
 
         End Select
 
-
-
         FileClose(CommFile)
-
-
 
         Exit Sub
 

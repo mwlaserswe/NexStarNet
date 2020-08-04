@@ -147,6 +147,8 @@ Module GlobalVariables
     Public MatrixSystemDiffPerSec As AzAlt
     Public TrackingSpeed As AzAlt
 
+    Public ReadComm As String
+
     '=== Test Only ===
     Public LastVal As AzAlt
     Public JetztTime As Double

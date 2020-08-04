@@ -22,21 +22,5 @@ NexStar
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
-<member name="M:NexStar.Utilities.KommaToPunkt(System.String)">
-    If (String1 = "") Or (String2 = "") Or (Len(String2) > Len(String1)) Then
-        InStrRev = 0
-    Else
-        Pos2 = 0
-        Do
-            Pos1 = Pos2
-            Pos2 = InStr(Pos1 + 1, String1, String2)
-        Loop While Pos2 > 0
-        InStrRev = Pos1
-    End If
-End Function
-</member>
-<member name="M:NexStar.Utilities.SepariereString(System.String,System.String[]@,System.String)">
-End Sub
-</member>
 </members>
 </doc>

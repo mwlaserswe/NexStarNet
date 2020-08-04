@@ -65,13 +65,13 @@ Public Class MainForm
             TelIncr = SimIncr
         Else
             'If StatusMoving = 2 Then
-
-            Command = 1
+            If Command = 0 Then
+                Command = 1
 
                 Dim CommString As String
                 CommString = Strings.Chr(&H1)
                 NexStarCommunication(CommString, " Read Az (0x01)", ProtokollMode.Send)
-            'End If
+            End If
         End If
     End Sub
 
@@ -83,13 +83,13 @@ Public Class MainForm
             TelIncr = SimIncr
         Else
             'If StatusMoving = 2 Then
-
-            Command = 21
+            If Command = 0 Then
+                Command = 21
 
                 Dim CommString As String
                 CommString = Strings.Chr(&H15)
                 NexStarCommunication(CommString, " Read Alt (0x15)", ProtokollMode.Send)
-            'End If
+            End If
         End If
     End Sub
 
@@ -246,6 +246,7 @@ Public Class MainForm
     Private Sub C_SetBacklAz_Click(sender As Object, e As EventArgs) Handles C_SetBacklAz.Click
         Dim BacklashAlt As Long    '0..100
 
+        Command = 30
         BacklashAlt = T_Backlash.Text
 
         If SimOffline Then
@@ -260,6 +261,7 @@ Public Class MainForm
     Private Sub C_SetBacklAlt_Click(sender As Object, e As EventArgs) Handles C_SetBacklAlt.Click
         Dim BacklashAz As Long    '0..100
 
+        Command = 10
         BacklashAz = T_Backlash.Text
 
         If SimOffline Then
@@ -340,6 +342,7 @@ Public Class MainForm
 
 
     Private Sub C_SetEncoder_Az_Click(sender As Object, e As EventArgs) Handles C_SetEncoder_Az.Click
+        Command = 12
         If SimOffline Then
         Else
             Dim CommString As String
@@ -350,6 +353,7 @@ Public Class MainForm
 
 
     Private Sub C_SetEncoder_Alt_Click(sender As Object, e As EventArgs) Handles C_SetEncoder_Alt.Click
+        Command = 31
         If SimOffline Then
         Else
             Dim CommString As String
@@ -580,6 +584,8 @@ Public Class MainForm
         T_Minuten.Text = My.Settings.UserDefinedMinute
         T_Sekunden.Text = My.Settings.UserDefinedSecond
 
+        T_Backlash.Text = My.Settings.Backlash
+
         Cal_InitTime = Zahl(My.Settings.TransformationMatrixCalInitTime)
         TransformationMatrix(0, 0) = Zahl(My.Settings.TransformationMatrix_00)
         TransformationMatrix(0, 1) = Zahl(My.Settings.TransformationMatrix_01)
@@ -698,6 +704,14 @@ v24error:
 
 
         BytesToRead = MSComm1.BytesToRead()
+        If BytesToRead > 3 Then
+            Command = 0
+            MSComm1.Read(ByteArray, 0, BytesToRead)
+            ErrorCount = ErrorCount + 1
+            NexStarCommunication("", "Read Error: " & BytesToRead & " Bytes", ProtokollMode.Receive)
+            ReadComm = "--> Read Error: " & BytesToRead & " Bytes"
+            Exit Sub
+        End If
 
         If Command = 1 Then
             If BytesToRead >= 3 Then
@@ -711,6 +725,7 @@ v24error:
 
                 TelIncr.Az = NexStarAz
                 NexStarCommunication("", "Az: " & TelIncr.Az, ProtokollMode.Receive)
+                ReadComm = "--> Receive: Az: " & TelIncr.Az
                 Command = 0
             End If
 
@@ -726,6 +741,7 @@ v24error:
 
                 TelIncr.Alt = NexStarAlt
                 NexStarCommunication("", "Alt: " & TelIncr.Alt, ProtokollMode.Receive)
+                ReadComm = "--> Receive: Alt: " & TelIncr.Alt
                 Command = 0
             End If
 
@@ -1060,12 +1076,11 @@ v24error:
         Select Case StartupStep
             Case 0
                 'check communication
+                Command = 13
+
                 If SimOffline Then
                     StartupStep = 10
                 Else
-                    Command = 13
-
-
                     Dim CommString As String
                     CommString = Strings.Chr(&HD)
                     NexStarCommunication(CommString, " Request Status (0x0D)", ProtokollMode.Send)
@@ -1108,17 +1123,14 @@ v24error:
                 StartupStep = 60
 
             Case 60
-                If SimOffline Then
-                    StartupStep = 70
-                Else
-                End If
+                Command = 0
 
 
         End Select
     End Sub
 
     Private Sub Tim_TestStatus_Tick(sender As Object, e As EventArgs) Handles Tim_TestStatus.Tick
-        If ReadStatus Then
+        If ReadStatus And Command = 0 Then
             Command = 13
             If SimOffline Then
             Else
@@ -1529,5 +1541,18 @@ openErr:
 
     Private Sub C_CalibrateNow_Click(sender As Object, e As EventArgs) Handles C_CalibrateNow.Click
 
+    End Sub
+
+    Private Sub Tim_ReadComm_Tick(sender As Object, e As EventArgs) Handles Tim_ReadComm.Tick
+        If ReadComm <> "" Then
+            FrmCommunication.ListBox1.Items.Add(ReadComm)
+            ReadComm = ""
+        End If
+    End Sub
+
+
+    Private Sub T_Backlash_Leave(sender As Object, e As EventArgs) Handles T_Backlash.Leave
+        My.Settings.Backlash = T_Backlash.Text
+        My.Settings.Save()
     End Sub
 End Class

@@ -181,6 +181,7 @@ Partial Class MainForm
         Me.Label45 = New System.Windows.Forms.Label()
         Me.CB_Find = New System.Windows.Forms.ComboBox()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.Tim_ReadComm = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.F_StarInfo.SuspendLayout()
@@ -196,7 +197,7 @@ Partial Class MainForm
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SetupToolStripMenuItem, Me.TestToolStripMenuItem, Me.CommunicationToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(2042, 48)
+        Me.MenuStrip1.Size = New System.Drawing.Size(2042, 40)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -204,7 +205,7 @@ Partial Class MainForm
         '
         Me.SetupToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadStarKatalogToolStripMenuItem})
         Me.SetupToolStripMenuItem.Name = "SetupToolStripMenuItem"
-        Me.SetupToolStripMenuItem.Size = New System.Drawing.Size(97, 44)
+        Me.SetupToolStripMenuItem.Size = New System.Drawing.Size(97, 36)
         Me.SetupToolStripMenuItem.Text = "Setup"
         '
         'LoadStarKatalogToolStripMenuItem
@@ -217,7 +218,7 @@ Partial Class MainForm
         '
         Me.TestToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TesteJulianischesDatumToolStripMenuItem, Me.Test1ToolStripMenuItem, Me.Test2ToolStripMenuItem, Me.VisualisierungToolStripMenuItem})
         Me.TestToolStripMenuItem.Name = "TestToolStripMenuItem"
-        Me.TestToolStripMenuItem.Size = New System.Drawing.Size(77, 44)
+        Me.TestToolStripMenuItem.Size = New System.Drawing.Size(77, 36)
         Me.TestToolStripMenuItem.Text = "Test"
         '
         'TesteJulianischesDatumToolStripMenuItem
@@ -247,7 +248,7 @@ Partial Class MainForm
         'CommunicationToolStripMenuItem
         '
         Me.CommunicationToolStripMenuItem.Name = "CommunicationToolStripMenuItem"
-        Me.CommunicationToolStripMenuItem.Size = New System.Drawing.Size(205, 44)
+        Me.CommunicationToolStripMenuItem.Size = New System.Drawing.Size(205, 36)
         Me.CommunicationToolStripMenuItem.Text = "Communication"
         '
         'C_SetEncoder_Az
@@ -1655,6 +1656,11 @@ Partial Class MainForm
         Me.Button3.Text = "RS232Write Status"
         Me.Button3.UseVisualStyleBackColor = True
         '
+        'Tim_ReadComm
+        '
+        Me.Tim_ReadComm.Enabled = True
+        Me.Tim_ReadComm.Interval = 10
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
@@ -1921,4 +1927,5 @@ Partial Class MainForm
     Friend WithEvents Label45 As Label
     Friend WithEvents CB_Find As ComboBox
     Friend WithEvents Button3 As Button
+    Friend WithEvents Tim_ReadComm As Timer
 End Class
