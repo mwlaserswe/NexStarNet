@@ -409,45 +409,45 @@ not_found:
     End Function
 
 
-    Public Sub NexStarCommunication(CommString As String, Comment As String, Mode As ProtokollMode)
-        Dim CommFile As Integer
-        Dim i As Integer
+    'Public Sub NexStarCommunication(CommString As String, Comment As String, Mode As ProtokollMode)
+    '        Dim CommFile As Integer
+    '        Dim i As Integer
 
-        On Error GoTo OpenError
+    '        On Error GoTo OpenError
 
-        CommFileName = Path.Combine(DefaultPath, "Commu_.txt")
+    '        CommFileName = Path.Combine(DefaultPath, "Commu_.txt")
 
-        CommFile = FreeFile()                'Nächste freie DateiNr.
-        FileOpen(CommFile, CommFileName, OpenMode.Append)
+    '        CommFile = FreeFile()                'Nächste freie DateiNr.
+    '        FileOpen(CommFile, CommFileName, OpenMode.Append)
 
-        Select Case Mode
-            Case ProtokollMode.Send
-                Dim buf() As Byte
-                buf = System.Text.Encoding.Default.GetBytes(CommString)
-                MainForm.MSComm1.Write(buf, 0, buf.Length)
+    '        Select Case Mode
+    '            Case ProtokollMode.Send
+    '                Dim buf() As Byte
+    '                buf = System.Text.Encoding.Default.GetBytes(CommString)
+    '                MainForm.MSComm1.Write(buf, 0, buf.Length)
 
-                PrintLine(CommFile, "--> Send:   " & Comment)
-                If Not FrmCommunication.StopFlag Then
-                    FrmCommunication.ListBox1.Items.Add("--> Send:   " & Comment)
-                    FrmCommunication.ListBox1.SelectedIndex = FrmCommunication.ListBox1.Items.Count - 1 'Letzten Eintrag hinterlegen
-                End If
-            Case ProtokollMode.Receive
-                PrintLine(CommFile, "--> Receive:   " & Comment)
-                If Not FrmCommunication.StopFlag Then
-                    FrmCommunication.ListBox1.Items.Add("--> Recive:   " & Comment)
-                    FrmCommunication.ListBox1.SelectedIndex = FrmCommunication.ListBox1.Items.Count - 1 'Letzten Eintrag hinterlegen
-                End If
+    '                PrintLine(CommFile, "--> Send:   " & Comment)
+    '                If Not FrmCommunication.StopFlag Then
+    '                    FrmCommunication.ListBox1.Items.Add("--> Send:   " & Comment)
+    '                    FrmCommunication.ListBox1.SelectedIndex = FrmCommunication.ListBox1.Items.Count - 1 'Letzten Eintrag hinterlegen
+    '                End If
+    '            Case ProtokollMode.Receive
+    '                PrintLine(CommFile, "--> Receive:   " & Comment)
+    '                If Not FrmCommunication.StopFlag Then
+    '                    FrmCommunication.ListBox1.Items.Add("--> Recive:   " & Comment)
+    '                    FrmCommunication.ListBox1.SelectedIndex = FrmCommunication.ListBox1.Items.Count - 1 'Letzten Eintrag hinterlegen
+    '                End If
 
-        End Select
+    '        End Select
 
-        FileClose(CommFile)
+    '        FileClose(CommFile)
 
-        Exit Sub
+    '        Exit Sub
 
-OpenError:
-        '      MsgBox(Err.Description)
+    'OpenError:
+    '        '      MsgBox(Err.Description)
 
-    End Sub
+    'End Sub
 
     Public Function Limit(val As Integer, low As Integer, high As Integer) As Integer
         If val < low Then

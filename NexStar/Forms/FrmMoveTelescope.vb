@@ -16,6 +16,10 @@ Public Class FrmMoveTelescope
     Dim PixelFaktorMittel As Double
     Dim PixelFaktorFein As Double
 
+    Dim CounterActiveX As Integer
+    Dim CounterActiveY As Integer
+
+
     Private Declare Function SetCursorPos Lib "user32" (ByVal X As Integer, ByVal Y As Integer) As Integer
     Private Declare Function GetCursorPos Lib "user32" (ByRef lpPoint As POINTAPI) As Integer
     'SWE  Private Declare Function ClientToScreen Lib "user32" (ByVal hWnd As Long, lpPoint As POINTAPI) As Long
@@ -63,9 +67,19 @@ Public Class FrmMoveTelescope
         L_SpeedX.Text = 0
         L_SpeedY.Text = 0
 
-        Dim CommString As String
-        CommString = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(0)
-        NexStarCommunication(CommString, " Move up: (0x06) " & 0 & ", (0x1A) " & 0, ProtokollMode.Send)
+        'Dim CommString As String
+        'CommString = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(0)
+        'NexStarCommunication(CommString, " Move up: (0x06) " & 0 & ", (0x1A) " & 0, ProtokollMode.Send)
+
+        Dim NexStarCmd As CommandItem
+
+
+
+        NexStarCmd.No = 6
+        NexStarCmd.Cmd = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(0)
+        NexStarCmd.Comment = " Stop Moving"
+
+        PushCommandBuffer(NexStarCmd)
 
         Me.Close()
     End Sub
@@ -108,11 +122,28 @@ Public Class FrmMoveTelescope
             XDiffRel = XDiffPix * PixelFaktor
             YDiffRel = -YDiffPix * PixelFaktor
 
+
+
             If Math.Abs(XDiffRel) > (Math.Abs(YDiffRel)) Then
                 YDiffRel = 0
             ElseIf Math.Abs(YDiffRel) > (Math.Abs(XDiffRel)) Then
                 XDiffRel = 0
             End If
+
+            'If Math.Abs(XDiffRel) > (Math.Abs(YDiffRel)) Then
+            '    CounterActiveX = CounterActiveX + 1
+            'ElseIf Math.Abs(YDiffRel) > (Math.Abs(XDiffRel)) Then
+            '    CounterActiveY = CounterActiveY + 1
+            'End If
+
+            'If CounterActiveX > CounterActiveY Then
+            '    'CounterActiveX = 0
+            '    YDiffRel = 0
+            'Else
+            '    'CounterActiveY = 0
+            '    XDiffRel = 0
+            'End If
+
 
             L_SpeedX.Text = XDiffRel
             L_SpeedY.Text = YDiffRel
@@ -136,7 +167,20 @@ Public Class FrmMoveTelescope
             End If
 
             CommString = CmdX & SetNexStarPosition(CDbl(XDiffRel)) & CmdY & SetNexStarPosition(CDbl(YDiffRel))
-            NexStarCommunication(CommString, CommentX & CommentY, ProtokollMode.Send)
+            'NexStarCommunication(CommString, CommentX & CommentY, ProtokollMode.Send)
+
+
+
+            Dim NexStarCmd As CommandItem
+
+
+
+            NexStarCmd.No = 6
+            NexStarCmd.Cmd = CommString
+            NexStarCmd.Comment = CommentX & CommentY
+
+            PushCommandBuffer(NexStarCmd)
+
 
             SetCursorPos(PicBoxCenter.X, PicBoxCenter.Y)
         End If

@@ -148,6 +148,7 @@ Module GlobalVariables
     Public TrackingSpeed As AzAlt
 
     Public ReadComm As String
+    Public NexStarCommand As String
 
     '=== Test Only ===
     Public LastVal As AzAlt

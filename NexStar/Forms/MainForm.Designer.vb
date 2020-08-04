@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class MainForm
     Inherits System.Windows.Forms.Form
 
     'Das Formular überschreibt den Löschvorgang, um die Komponentenliste zu bereinigen.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class MainForm
     'Hinweis: Die folgende Prozedur ist für den Windows Form-Designer erforderlich.
     'Das Bearbeiten ist mit dem Windows Form-Designer möglich.  
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
@@ -181,7 +181,9 @@ Partial Class MainForm
         Me.Label45 = New System.Windows.Forms.Label()
         Me.CB_Find = New System.Windows.Forms.ComboBox()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.Tim_ReadComm = New System.Windows.Forms.Timer(Me.components)
+        Me.Tim_Comm = New System.Windows.Forms.Timer(Me.components)
+        Me.B_ResetComm = New System.Windows.Forms.Button()
+        Me.L_NumerOfCmd = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.F_StarInfo.SuspendLayout()
@@ -1517,6 +1519,7 @@ Partial Class MainForm
         'Tim_TestStatus
         '
         Me.Tim_TestStatus.Enabled = True
+        Me.Tim_TestStatus.Interval = 1000
         '
         'Tim_Tracking
         '
@@ -1656,10 +1659,28 @@ Partial Class MainForm
         Me.Button3.Text = "RS232Write Status"
         Me.Button3.UseVisualStyleBackColor = True
         '
-        'Tim_ReadComm
+        'Tim_Comm
         '
-        Me.Tim_ReadComm.Enabled = True
-        Me.Tim_ReadComm.Interval = 10
+        Me.Tim_Comm.Enabled = True
+        '
+        'B_ResetComm
+        '
+        Me.B_ResetComm.Location = New System.Drawing.Point(653, 218)
+        Me.B_ResetComm.Name = "B_ResetComm"
+        Me.B_ResetComm.Size = New System.Drawing.Size(143, 51)
+        Me.B_ResetComm.TabIndex = 85
+        Me.B_ResetComm.Text = "Reset Comm"
+        Me.B_ResetComm.UseVisualStyleBackColor = True
+        '
+        'L_NumerOfCmd
+        '
+        Me.L_NumerOfCmd.AutoSize = True
+        Me.L_NumerOfCmd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.L_NumerOfCmd.Location = New System.Drawing.Point(653, 282)
+        Me.L_NumerOfCmd.Name = "L_NumerOfCmd"
+        Me.L_NumerOfCmd.Size = New System.Drawing.Size(28, 27)
+        Me.L_NumerOfCmd.TabIndex = 25
+        Me.L_NumerOfCmd.Text = "--"
         '
         'MainForm
         '
@@ -1667,6 +1688,8 @@ Partial Class MainForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(2042, 1382)
+        Me.Controls.Add(Me.L_NumerOfCmd)
+        Me.Controls.Add(Me.B_ResetComm)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.CB_Find)
         Me.Controls.Add(Me.L_ElapsedTime)
@@ -1927,5 +1950,7 @@ Partial Class MainForm
     Friend WithEvents Label45 As Label
     Friend WithEvents CB_Find As ComboBox
     Friend WithEvents Button3 As Button
-    Friend WithEvents Tim_ReadComm As Timer
+    Friend WithEvents Tim_Comm As Timer
+    Friend WithEvents B_ResetComm As Button
+    Friend WithEvents L_NumerOfCmd As Label
 End Class

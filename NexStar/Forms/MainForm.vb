@@ -5,7 +5,7 @@ Public Class MainForm
 
     Dim NexStarPortNr As Long
     Dim NexStarBaudrate As Long
-    Dim Command As Long
+    Dim CommandWait As Boolean
     Dim CommandCnt As Long
     Dim InputBufferAz As String
     Dim InputbufferAlt As String
@@ -59,38 +59,32 @@ Public Class MainForm
 
 
     Private Sub C_GetAz_Click(sender As Object, e As EventArgs) Handles C_GetAz.Click
-        Dim tmp As Double
 
-        If SimOffline Then
-            TelIncr = SimIncr
-        Else
-            'If StatusMoving = 2 Then
-            If Command = 0 Then
-                Command = 1
+        Dim NexStarCmd As CommandItem
 
-                Dim CommString As String
-                CommString = Strings.Chr(&H1)
-                NexStarCommunication(CommString, " Read Az (0x01)", ProtokollMode.Send)
-            End If
-        End If
+
+
+        NexStarCmd.No = 1
+        NexStarCmd.Cmd = Strings.Chr(&H1)
+        NexStarCmd.Comment = " Read Az (0x01)"
+
+        PushCommandBuffer(NexStarCmd)
+
     End Sub
 
 
     Private Sub C_GetAlt_Click(sender As Object, e As EventArgs) Handles C_GetAlt.Click
-        Dim tmp As Double
 
-        If SimOffline Then
-            TelIncr = SimIncr
-        Else
-            'If StatusMoving = 2 Then
-            If Command = 0 Then
-                Command = 21
+        Dim NexStarCmd As CommandItem
 
-                Dim CommString As String
-                CommString = Strings.Chr(&H15)
-                NexStarCommunication(CommString, " Read Alt (0x15)", ProtokollMode.Send)
-            End If
-        End If
+
+
+        NexStarCmd.No = 21
+        NexStarCmd.Cmd = Strings.Chr(&H15)
+        NexStarCmd.Comment = " Read Alt (0x15)"
+
+        PushCommandBuffer(NexStarCmd)
+
     End Sub
 
 
@@ -106,12 +100,22 @@ Public Class MainForm
         If SimOffline Then
             SimGotoAzAltActive = True
             SimGoto = MotorIncr
-        Else
-            Dim CommString As String
-            CommString = Strings.Chr(&O2) & SetNexStarPosition(CLng(MotorIncr.Az)) & Strings.Chr(&H16) & SetNexStarPosition(CLng(MotorIncr.Alt))
-            NexStarCommunication(CommString, " Goto AzAlt (0x02): " & CLng(MotorIncr.Az) & " " & CLng(MotorIncr.Alt), ProtokollMode.Send)
+        'Else
+        '    Dim CommString As String
+        '    CommString = Strings.Chr(&O2) & SetNexStarPosition(CLng(MotorIncr.Az)) & Strings.Chr(&H16) & SetNexStarPosition(CLng(MotorIncr.Alt))
+        '    NexStarCommunication(CommString, " Goto AzAlt (0x02): " & CLng(MotorIncr.Az) & " " & CLng(MotorIncr.Alt), ProtokollMode.Send)
         End If
 
+
+        Dim NexStarCmd As CommandItem
+
+
+
+        NexStarCmd.No = 2
+        NexStarCmd.Cmd = Strings.Chr(&O2) & SetNexStarPosition(CLng(MotorIncr.Az)) & Strings.Chr(&H16) & SetNexStarPosition(CLng(MotorIncr.Alt))
+        NexStarCmd.Comment = " Goto AzAlt (0x02): " & CLng(MotorIncr.Az) & " " & CLng(MotorIncr.Alt)
+
+        PushCommandBuffer(NexStarCmd)
     End Sub
 
 
@@ -159,12 +163,21 @@ Public Class MainForm
         If SimOffline Then
             SimGotoAzAltActive = True
             SimGoto = MotorIncr
-        Else
-            Dim CommString As String
-            CommString = Strings.Chr(&O2) & SetNexStarPosition(CLng(MotorIncr.Az)) & Strings.Chr(&H16) & SetNexStarPosition(CLng(MotorIncr.Alt))
-            NexStarCommunication(CommString, " Goto AzAlt (0x02): " & CLng(MotorIncr.Az) & " " & CLng(MotorIncr.Alt), ProtokollMode.Send)
-
+        'Else
+        '    Dim CommString As String
+        '    CommString = Strings.Chr(&O2) & SetNexStarPosition(CLng(MotorIncr.Az)) & Strings.Chr(&H16) & SetNexStarPosition(CLng(MotorIncr.Alt))
+        '    NexStarCommunication(CommString, " Goto AzAlt (0x02): " & CLng(MotorIncr.Az) & " " & CLng(MotorIncr.Alt), ProtokollMode.Send)
         End If
+
+        Dim NexStarCmd As CommandItem
+
+
+
+        NexStarCmd.No = 2
+        NexStarCmd.Cmd = Strings.Chr(&O2) & SetNexStarPosition(CLng(MotorIncr.Az)) & Strings.Chr(&H16) & SetNexStarPosition(CLng(MotorIncr.Alt))
+        NexStarCmd.Comment = " Goto AzAlt (0x02): " & CLng(MotorIncr.Az) & " " & CLng(MotorIncr.Alt)
+
+        PushCommandBuffer(NexStarCmd)
 
     End Sub
 
@@ -200,12 +213,22 @@ Public Class MainForm
         If SimOffline Then
             SimGotoAzAltActive = True
             SimGoto = MotorIncr
-        Else
-            Dim CommString As String
-            CommString = Strings.Chr(&O2) & SetNexStarPosition(CLng(MotorIncr.Az)) & Strings.Chr(&H16) & SetNexStarPosition(CLng(MotorIncr.Alt))
-            NexStarCommunication(CommString, " Goto AzAlt (0x02): " & CLng(MotorIncr.Az) & " " & CLng(MotorIncr.Alt), ProtokollMode.Send)
+            'Else
+            '    Dim CommString As String
+            '    CommString = Strings.Chr(&O2) & SetNexStarPosition(CLng(MotorIncr.Az)) & Strings.Chr(&H16) & SetNexStarPosition(CLng(MotorIncr.Alt))
+            '    NexStarCommunication(CommString, " Goto AzAlt (0x02): " & CLng(MotorIncr.Az) & " " & CLng(MotorIncr.Alt), ProtokollMode.Send)
         End If
 
+
+        Dim NexStarCmd As CommandItem
+
+
+
+        NexStarCmd.No = 2
+        NexStarCmd.Cmd = Strings.Chr(&O2) & SetNexStarPosition(CLng(MotorIncr.Az)) & Strings.Chr(&H16) & SetNexStarPosition(CLng(MotorIncr.Alt))
+        NexStarCmd.Comment = " Goto AzAlt (0x02): " & CLng(MotorIncr.Az) & " " & CLng(MotorIncr.Alt)
+
+        PushCommandBuffer(NexStarCmd)
     End Sub
 
 
@@ -246,30 +269,46 @@ Public Class MainForm
     Private Sub C_SetBacklAz_Click(sender As Object, e As EventArgs) Handles C_SetBacklAz.Click
         Dim BacklashAlt As Long    '0..100
 
-        Command = 30
+
         BacklashAlt = T_Backlash.Text
 
-        If SimOffline Then
-        Else
-            Dim CommString As String
-            CommString = Strings.Chr(&H1E) & SetNexStarPosition(BacklashAlt)
-            NexStarCommunication(CommString, " Backlash Alt (0x1E): " & BacklashAlt, ProtokollMode.Send)
-        End If
+        Dim NexStarCmd As CommandItem
+
+        NexStarCmd.No = 30
+        NexStarCmd.Cmd = Strings.Chr(&H1E) & SetNexStarPosition(BacklashAlt)
+        NexStarCmd.Comment = " Backlash Alt (0x1E): " & BacklashAlt
+
+        PushCommandBuffer(NexStarCmd)
+
+        'If SimOffline Then
+        'Else
+        '    Dim CommString As String
+        '    CommString = Strings.Chr(&H1E) & SetNexStarPosition(BacklashAlt)
+        '    NexStarCommunication(CommString, " Backlash Alt (0x1E): " & BacklashAlt, ProtokollMode.Send)
+        'End If
     End Sub
 
 
     Private Sub C_SetBacklAlt_Click(sender As Object, e As EventArgs) Handles C_SetBacklAlt.Click
         Dim BacklashAz As Long    '0..100
 
-        Command = 10
+
         BacklashAz = T_Backlash.Text
 
-        If SimOffline Then
-        Else
-            Dim CommString As String
-            CommString = Strings.Chr(&HA) & SetNexStarPosition(BacklashAz)
-            NexStarCommunication(CommString, " Backlash Az (0x0A): " & BacklashAz, ProtokollMode.Send)
-        End If
+        Dim NexStarCmd As CommandItem
+
+        NexStarCmd.No = 10
+        NexStarCmd.Cmd = Strings.Chr(&HA) & SetNexStarPosition(BacklashAz)
+        NexStarCmd.Comment = " Backlash Az (0x0A): " & BacklashAz
+
+        PushCommandBuffer(NexStarCmd)
+
+        'If SimOffline Then
+        'Else
+        '    Dim CommString As String
+        '    CommString = Strings.Chr(&HA) & SetNexStarPosition(BacklashAz)
+        '    NexStarCommunication(CommString, " Backlash Az (0x0A): " & BacklashAz, ProtokollMode.Send)
+        'End If
     End Sub
 
 
@@ -342,24 +381,45 @@ Public Class MainForm
 
 
     Private Sub C_SetEncoder_Az_Click(sender As Object, e As EventArgs) Handles C_SetEncoder_Az.Click
-        Command = 12
-        If SimOffline Then
-        Else
-            Dim CommString As String
-            CommString = Strings.Chr(&HC) & SetNexStarPosition(EncoderResolution)
-            NexStarCommunication(CommString, " Encoder Rsolution Az:   0x0C " & EncoderResolution, ProtokollMode.Send)
-        End If
+        'Command = 12
+        'If SimOffline Then
+        'Else
+        '    Dim CommString As String
+        '    CommString = Strings.Chr(&HC) & SetNexStarPosition(EncoderResolution)
+        '    NexStarCommunication(CommString, " Encoder Rsolution Az:   0x0C " & EncoderResolution, ProtokollMode.Send)
+        'End If
+
+        Dim NexStarCmd As CommandItem
+
+
+
+        NexStarCmd.No = 12
+        NexStarCmd.Cmd = Strings.Chr(&HC) & SetNexStarPosition(EncoderResolution)
+        NexStarCmd.Comment = " Encoder Rsolution Az:   0x0C " & EncoderResolution
+
+        PushCommandBuffer(NexStarCmd)
+
     End Sub
 
 
     Private Sub C_SetEncoder_Alt_Click(sender As Object, e As EventArgs) Handles C_SetEncoder_Alt.Click
-        Command = 31
-        If SimOffline Then
-        Else
-            Dim CommString As String
-            CommString = Strings.Chr(&H1F) & SetNexStarPosition(EncoderResolution)
-            NexStarCommunication(CommString, " Encoder Rsolution Alt:   0x1F " & EncoderResolution, ProtokollMode.Send)
-        End If
+        'Command = 31
+        'If SimOffline Then
+        'Else
+        '    Dim CommString As String
+        '    CommString = Strings.Chr(&H1F) & SetNexStarPosition(EncoderResolution)
+        '    NexStarCommunication(CommString, " Encoder Rsolution Alt:   0x1F " & EncoderResolution, ProtokollMode.Send)
+        'End If
+
+        Dim NexStarCmd As CommandItem
+
+
+
+        NexStarCmd.No = 31
+        NexStarCmd.Cmd = Strings.Chr(&H1F) & SetNexStarPosition(EncoderResolution)
+        NexStarCmd.Comment = " Encoder Rsolution Alt:   0x1F " & EncoderResolution
+
+        PushCommandBuffer(NexStarCmd)
     End Sub
 
 
@@ -428,12 +488,24 @@ Public Class MainForm
         If TrackingisON Then
             TrackingisON = False
 
-            If SimOffline Then
-            Else
-                Dim CommString As String
-                CommString = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(0)
-                NexStarCommunication(CommString, " Stop Tracking", ProtokollMode.Send)
-            End If
+            'If SimOffline Then
+            'Else
+            '    Dim CommString As String
+            '    CommString = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(0)
+            '    NexStarCommunication(CommString, " Stop Tracking", ProtokollMode.Send)
+            'End If
+
+            Dim NexStarCmd As CommandItem
+
+
+
+            NexStarCmd.No = 6
+            NexStarCmd.Cmd = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(0)
+            NexStarCmd.Comment = " Stop Tracking"
+
+            PushCommandBuffer(NexStarCmd)
+
+
         Else
             TrackingisON = True
         End If
@@ -444,88 +516,167 @@ Public Class MainForm
     Private Sub C_Up_MouseDown(sender As Object, e As MouseEventArgs) Handles C_Up.MouseDown
         If SimOffline Then
             SimBntUp = True
-        Else
-            Dim CommString As String
-            CommString = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(CDbl(ManualSlewingSpeedY))
-            NexStarCommunication(CommString, " Move up: (0x06) " & 0 & ", (0x1A) " & CDbl(ManualSlewingSpeedY), ProtokollMode.Send)
+            'Else
+            '    Dim CommString As String
+            '    CommString = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(CDbl(ManualSlewingSpeedY))
+            '    NexStarCommunication(CommString, " Move up: (0x06) " & 0 & ", (0x1A) " & CDbl(ManualSlewingSpeedY), ProtokollMode.Send)
         End If
+
+        Dim NexStarCmd As CommandItem
+
+
+
+        NexStarCmd.No = 6
+        NexStarCmd.Cmd = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(CDbl(ManualSlewingSpeedY))
+        NexStarCmd.Comment = " Move up: (0x06) " & 0 & ", (0x1A) " & CDbl(ManualSlewingSpeedY)
+
+        PushCommandBuffer(NexStarCmd)
+
     End Sub
 
 
     Private Sub C_Up_MouseUp(sender As Object, e As MouseEventArgs) Handles C_Up.MouseUp
         If SimOffline Then
             SimBntUp = False
-        Else
-            Dim CommString As String
-            CommString = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(0)
-            NexStarCommunication(CommString, " Stop", ProtokollMode.Send)
+            'Else
+            '    Dim CommString As String
+            '    CommString = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(0)
+            '    NexStarCommunication(CommString, " Stop", ProtokollMode.Send)
         End If
+
+        Dim NexStarCmd As CommandItem
+
+
+
+        NexStarCmd.No = 6
+        NexStarCmd.Cmd = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(0)
+        NexStarCmd.Comment = " Stop"
+
+        PushCommandBuffer(NexStarCmd)
     End Sub
 
 
     Private Sub C_Dn_MouseDown(sender As Object, e As MouseEventArgs) Handles C_Dn.MouseDown
         If SimOffline Then
             SimBntDn = True
-        Else
-            Dim CommString As String
-            CommString = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1B) & SetNexStarPosition(CDbl(ManualSlewingSpeedY))
-            NexStarCommunication(CommString, " Move down: (0x06) " & 0 & ", (0x1B) " & CDbl(ManualSlewingSpeedY), ProtokollMode.Send)
+            'Else
+            '    Dim CommString As String
+            '    CommString = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1B) & SetNexStarPosition(CDbl(ManualSlewingSpeedY))
+            '    NexStarCommunication(CommString, " Move down: (0x06) " & 0 & ", (0x1B) " & CDbl(ManualSlewingSpeedY), ProtokollMode.Send)
         End If
+
+        Dim NexStarCmd As CommandItem
+
+
+
+        NexStarCmd.No = 6
+        NexStarCmd.Cmd = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1B) & SetNexStarPosition(CDbl(ManualSlewingSpeedY))
+        NexStarCmd.Comment = " Move down: (0x06) " & 0 & ", (0x1B) " & CDbl(ManualSlewingSpeedY)
+
+        PushCommandBuffer(NexStarCmd)
     End Sub
 
 
     Private Sub C_Dn_MouseUp(sender As Object, e As MouseEventArgs) Handles C_Dn.MouseUp
         If SimOffline Then
             SimBntDn = False
-        Else
-            Dim CommString As String
-            CommString = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(0)
-            NexStarCommunication(CommString, " Stop", ProtokollMode.Send)
+            'Else
+            '    Dim CommString As String
+            '    CommString = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(0)
+            '    NexStarCommunication(CommString, " Stop", ProtokollMode.Send)
         End If
+
+        Dim NexStarCmd As CommandItem
+
+
+
+        NexStarCmd.No = 6
+        NexStarCmd.Cmd = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(0)
+        NexStarCmd.Comment = " Stop"
+
+        PushCommandBuffer(NexStarCmd)
     End Sub
 
 
     Private Sub C_Le_MouseDown(sender As Object, e As MouseEventArgs) Handles C_Le.MouseDown
         If SimOffline Then
             SimBntLe = True
-        Else
-            Dim CommString As String
-            CommString = Strings.Chr(&H7) & SetNexStarPosition(CDbl(ManualSlewingSpeedX)) & Strings.Chr(&H1A) & SetNexStarPosition(0)
-            NexStarCommunication(CommString, " Move left: (0x07) " & CDbl(ManualSlewingSpeedX) & ", (0x1A) " & 0, ProtokollMode.Send)
+            'Else
+            '    Dim CommString As String
+            '    CommString = Strings.Chr(&H7) & SetNexStarPosition(CDbl(ManualSlewingSpeedX)) & Strings.Chr(&H1A) & SetNexStarPosition(0)
+            '    NexStarCommunication(CommString, " Move left: (0x07) " & CDbl(ManualSlewingSpeedX) & ", (0x1A) " & 0, ProtokollMode.Send)
         End If
+
+        Dim NexStarCmd As CommandItem
+
+
+
+        NexStarCmd.No = 7
+        NexStarCmd.Cmd = Strings.Chr(&H7) & SetNexStarPosition(CDbl(ManualSlewingSpeedX)) & Strings.Chr(&H1A) & SetNexStarPosition(0)
+        NexStarCmd.Comment = " Move left: (0x07) " & CDbl(ManualSlewingSpeedX) & ", (0x1A) " & 0
+
+        PushCommandBuffer(NexStarCmd)
     End Sub
 
 
     Private Sub C_Le_MouseUp(sender As Object, e As MouseEventArgs) Handles C_Le.MouseUp
         If SimOffline Then
             SimBntLe = False
-        Else
-            Dim CommString As String
-            CommString = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(0)
-            NexStarCommunication(CommString, " Stop", ProtokollMode.Send)
+            'Else
+            '    Dim CommString As String
+            '    CommString = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(0)
+            '    NexStarCommunication(CommString, " Stop", ProtokollMode.Send)
         End If
+
+        Dim NexStarCmd As CommandItem
+
+
+
+        NexStarCmd.No = 7
+        NexStarCmd.Cmd = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(0)
+        NexStarCmd.Comment = " Stop"
+
+        PushCommandBuffer(NexStarCmd)
     End Sub
 
 
     Private Sub C_Ri_MouseDown(sender As Object, e As MouseEventArgs) Handles C_Ri.MouseDown
         If SimOffline Then
             SimBntRi = True
-        Else
-            Dim CommString As String
-            CommString = Strings.Chr(&H6) & SetNexStarPosition(CDbl(ManualSlewingSpeedX)) & Strings.Chr(&H1A) & SetNexStarPosition(0)
-            NexStarCommunication(CommString, " Move right: (0x06) " & CDbl(ManualSlewingSpeedX) & ", (0x1A) " & 0, ProtokollMode.Send)
+            'Else
+            '    Dim CommString As String
+            '    CommString = Strings.Chr(&H6) & SetNexStarPosition(CDbl(ManualSlewingSpeedX)) & Strings.Chr(&H1A) & SetNexStarPosition(0)
+            '    NexStarCommunication(CommString, " Move right: (0x06) " & CDbl(ManualSlewingSpeedX) & ", (0x1A) " & 0, ProtokollMode.Send)
         End If
+
+        Dim NexStarCmd As CommandItem
+
+
+
+        NexStarCmd.No = 6
+        NexStarCmd.Cmd = Strings.Chr(&H6) & SetNexStarPosition(CDbl(ManualSlewingSpeedX)) & Strings.Chr(&H1A) & SetNexStarPosition(0)
+        NexStarCmd.Comment = " Move right: (0x06) " & CDbl(ManualSlewingSpeedX) & ", (0x1A) " & 0
+        PushCommandBuffer(NexStarCmd)
     End Sub
 
 
     Private Sub C_Ri_MouseUp(sender As Object, e As MouseEventArgs) Handles C_Ri.MouseUp
         If SimOffline Then
             SimBntRi = False
-        Else
-            Dim CommString As String
-            CommString = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(0)
-            NexStarCommunication(CommString, " Stop", ProtokollMode.Send)
+            'Else
+            '    Dim CommString As String
+            '    CommString = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(0)
+            '    NexStarCommunication(CommString, " Stop", ProtokollMode.Send)
         End If
+
+        Dim NexStarCmd As CommandItem
+
+
+
+        NexStarCmd.No = 6
+        NexStarCmd.Cmd = Strings.Chr(&H6) & SetNexStarPosition(0) & Strings.Chr(&H1A) & SetNexStarPosition(0)
+        NexStarCmd.Comment = " Stop"
+        PushCommandBuffer(NexStarCmd)
     End Sub
 
 
@@ -539,7 +690,7 @@ Public Class MainForm
         O_TimeSelectLocal.Checked = True
 
 
-        Command = 0
+
 
         VS_ManualSlewingSpeed.Value = 0
         VS_ManualSlewingSpeed_Scroll(Nothing, Nothing)
@@ -611,7 +762,6 @@ Public Class MainForm
         'SWE   Close CommFile
         'SWE   
         Vis.Show()
-
 
         Exit Sub
 
@@ -705,15 +855,14 @@ v24error:
 
         BytesToRead = MSComm1.BytesToRead()
         If BytesToRead > 3 Then
-            Command = 0
             MSComm1.Read(ByteArray, 0, BytesToRead)
             ErrorCount = ErrorCount + 1
-            NexStarCommunication("", "Read Error: " & BytesToRead & " Bytes", ProtokollMode.Receive)
             ReadComm = "--> Read Error: " & BytesToRead & " Bytes"
+            CommandWait = False
             Exit Sub
         End If
 
-        If Command = 1 Then
+        If NexStarCommand = 1 Then
             If BytesToRead >= 3 Then
 
                 NexStarAz = 0
@@ -724,12 +873,11 @@ v24error:
                 Next i
 
                 TelIncr.Az = NexStarAz
-                NexStarCommunication("", "Az: " & TelIncr.Az, ProtokollMode.Receive)
                 ReadComm = "--> Receive: Az: " & TelIncr.Az
-                Command = 0
+                CommandWait = False
             End If
 
-        ElseIf Command = 21 Then
+        ElseIf NexStarCommand = 21 Then
             If BytesToRead >= 3 Then
 
                 NexStarAlt = 0
@@ -740,13 +888,12 @@ v24error:
                 Next i
 
                 TelIncr.Alt = NexStarAlt
-                NexStarCommunication("", "Alt: " & TelIncr.Alt, ProtokollMode.Receive)
                 ReadComm = "--> Receive: Alt: " & TelIncr.Alt
-                Command = 0
+                CommandWait = False
             End If
 
-        ElseIf Command = 13 Then
-            If BytesToRead >= 1 Then
+        ElseIf NexStarCommand = 13 Then
+            If BytesToRead = 1 Then
 
                 NexStarChar1 = ""
                 MSComm1.Read(ByteArray, 0, 1)
@@ -755,61 +902,21 @@ v24error:
 
                 If buf = 0 Then
                     StatusMoving = 1      'Busy
+                    ReadComm = "--> Busy"
                 ElseIf buf = 255 Then
                     StatusMoving = 2      'Idle
+                    ReadComm = "--> In Position"
                 End If
 
-
-                'l = Len(NexStarChar1)
-
-                'If l <> 1 Then
-                '    ErrorCount = ErrorCount + 1
-                'End If
-
-                Command = 0
-
+                CommandWait = False
+            Else
+                MSComm1.Read(ByteArray, 0, BytesToRead)
+                ErrorCount = ErrorCount + 1
+                ReadComm = "--> Read Error: " & BytesToRead & " Bytes"
+                CommandWait = False
+                Exit Sub
             End If
 
-            '        ElseIf TestCommMotorToHandheld Then
-            '            NexStarChar1 = ""
-            '            Do
-            '                vbuf = NexStarComm.Input
-            '                buf = Asc(vbuf)
-            '                NexStarChar1 = NexStarChar1 & Chr$(buf)
-            '                key = buf
-
-            '            Loop While NexStarComm.InBufferCount > 0
-            '            l = Len(NexStarChar1)
-            '            'SWE   Communication.DisplayAzAltTracking NexStarChar1
-            '        Else
-            '            Command = 0
-
-            '        End If
-
-
-
-            '        ' Communication error: clear buffer
-            '        Dim DummyBuffer As String
-            '        If NexStarComm.InBufferCount > 3 Then
-            '            Do
-            '                vbuf = NexStarComm.Input
-            '                buf = Asc(vbuf)
-            '                DummyBuffer = DummyBuffer & Chr$(buf)
-            '                key = buf
-            '            Loop While NexStarComm.InBufferCount > 0
-
-            '            Command = 0
-            '        End If
-
-
-
-            '        Case comEvSend  ' Im Sendepuffer befinden sich SThreshold Zeichen
-            '        Case comEvEOF ' Im Eingabestrom wurde ein EOF-Zeichen gefunden
-            '        End Select
-            '        If NexStarComm.CommEvent <> 2 Then    'empfangen'
-            '            '  Kommunikation_DMX_Scanner_OK = False
-            '        Else
-            '            '   Kommunikation_DMX_Scanner_OK = True
         End If
         '        Exit Sub
         'msgError:
@@ -837,6 +944,7 @@ v24error:
             GetAzAltCount = GetAzAltCount + 1
 
             ' this code only every "GetAzAltInterval" sec
+            'If GetAzAltCount >= N And StatusMoving = 2 Then
             If GetAzAltCount >= N Then
                 GetAzAltCount = 0
                 If Toggle Then
@@ -1075,32 +1183,30 @@ v24error:
 
         Select Case StartupStep
             Case 0
-                'check communication
-                Command = 13
-
-                If SimOffline Then
-                    StartupStep = 10
-                Else
-                    Dim CommString As String
-                    CommString = Strings.Chr(&HD)
-                    NexStarCommunication(CommString, " Request Status (0x0D)", ProtokollMode.Send)
+                ''check communication
+                Dim NexStarCmd As CommandItem
 
 
-                    StatusMoving = 0
-                    StartupStep = 10
-                End If
+
+                NexStarCmd.No = 13
+                NexStarCmd.Cmd = Strings.Chr(&HD)
+                NexStarCmd.Comment = " Request Status (0x0D)"
+
+                PushCommandBuffer(NexStarCmd)
+
+                StatusMoving = 0
+                StartupStep = 10
+
 
 
             Case 10
-                If SimOffline Then
-                    StartupStep = 20
+
+                If StatusMoving = 1 Or StatusMoving = 2 Then
+                    StartupStep = 20    'Communication OK
                 Else
-                    If StatusMoving = 1 Or StatusMoving = 2 Then
-                        StartupStep = 20    'Communication OK
-                    Else
-                        StartupStep = 0     'Communication not OK. Retry
-                    End If
+                    StartupStep = 0     'Communication not OK. Retry
                 End If
+
 
             Case 20
                 C_SetEncoder_Az.PerformClick()
@@ -1123,21 +1229,30 @@ v24error:
                 StartupStep = 60
 
             Case 60
-                Command = 0
+
 
 
         End Select
     End Sub
 
     Private Sub Tim_TestStatus_Tick(sender As Object, e As EventArgs) Handles Tim_TestStatus.Tick
-        If ReadStatus And Command = 0 Then
-            Command = 13
-            If SimOffline Then
-            Else
-                Dim CommString As String
-                CommString = Strings.Chr(&HD)
-                NexStarCommunication(CommString, " Read Status (0x0D)", ProtokollMode.Send)
-            End If
+        If ReadStatus Then
+            'Command = 13
+            'If SimOffline Then
+            'Else
+            '    Dim CommString As String
+            '    CommString = Strings.Chr(&HD)
+            '    NexStarCommunication(CommString, " Read Status (0x0D)", ProtokollMode.Send)
+            'End If
+
+            Dim NexStarCmd As CommandItem
+
+
+
+            NexStarCmd.No = 13
+            NexStarCmd.Cmd = Strings.Chr(&HD)
+            NexStarCmd.Comment = " Read Status (0x0D)"
+            PushCommandBuffer(NexStarCmd)
         End If
 
 
@@ -1300,7 +1415,7 @@ v24error:
 
             ' this code only every "TrackInterval" sec
             ' do write if another command is beeing executed
-            If TrackCount >= N And Command = 0 Then
+            If TrackCount >= N Then
                 '==== Life counter ====
                 Static LifeCounter As Long
                 Dim i As Long
@@ -1422,7 +1537,20 @@ v24error:
 
                     Dim CommString As String
                     CommString = AzString & AltString
-                    NexStarCommunication(CommString, LogString, ProtokollMode.Send)
+                    'NexStarCommunication(CommString, LogString, ProtokollMode.Send)
+
+
+                    Dim NexStarCmd As CommandItem
+
+
+
+                    NexStarCmd.No = 6
+                    NexStarCmd.Cmd = CommString
+                    NexStarCmd.Comment = LogString
+
+                    PushCommandBuffer(NexStarCmd)
+
+
 
 
                 End If
@@ -1522,32 +1650,29 @@ openErr:
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
-        Command = 1
+        Dim NexStarCmd As CommandItem
 
-        Dim CommString As String
-        CommString = Strings.Chr(&H1)
-        NexStarCommunication(CommString, " Read Az (0x01)", ProtokollMode.Send)
+
+
+        NexStarCmd.No = 1
+        NexStarCmd.Cmd = Strings.Chr(&H1)
+        NexStarCmd.Comment = " Read Az (0x01)"
+
+        PushCommandBuffer(NexStarCmd)
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Command = 13
+
+        Dim NexStarCmd As CommandItem
 
 
-        Dim CommString As String
-        CommString = Strings.Chr(&HD)
-        NexStarCommunication(CommString, " Request Status (0x0D)", ProtokollMode.Send)
 
-    End Sub
+        NexStarCmd.No = 13
+        NexStarCmd.Cmd = Strings.Chr(&HD)
+        NexStarCmd.Comment = " Request Status (0x0D)"
 
-    Private Sub C_CalibrateNow_Click(sender As Object, e As EventArgs) Handles C_CalibrateNow.Click
+        PushCommandBuffer(NexStarCmd)
 
-    End Sub
-
-    Private Sub Tim_ReadComm_Tick(sender As Object, e As EventArgs) Handles Tim_ReadComm.Tick
-        If ReadComm <> "" Then
-            FrmCommunication.ListBox1.Items.Add(ReadComm)
-            ReadComm = ""
-        End If
     End Sub
 
 
@@ -1555,4 +1680,103 @@ openErr:
         My.Settings.Backlash = T_Backlash.Text
         My.Settings.Save()
     End Sub
+
+    Private Sub Tim_Comm_Tick(sender As Object, e As EventArgs) Handles Tim_Comm.Tick
+        Dim NexStarCmd As CommandItem
+        Dim NexStarAnswer As CommandItem
+        Dim dummy As Integer
+        Dim N As Integer
+
+        Static Cnt As Integer
+
+        N = 3000 / Tim_Comm.Interval
+
+        Cnt = Cnt + 1
+
+        L_NumerOfCmd.Text = CommandBuffer.Count
+
+        If SimOffline Then
+            If CommandBuffer.Count > 0 Then
+                NexStarCmd = CommandBuffer.Item(0)
+                Writelog(NexStarCmd, ProtokollMode.Send)
+                CommandBuffer.RemoveRange(0, 1)
+            End If
+
+            Select Case NexStarCmd.No
+                Case 1
+                    TelIncr = SimIncr
+                    NexStarAnswer.Comment = "Az = " & TelIncr.Az
+                    Writelog(NexStarAnswer, ProtokollMode.Receive)
+                Case 21
+                    TelIncr = SimIncr
+                    NexStarAnswer.Comment = "Alt = " & TelIncr.Alt
+                    Writelog(NexStarAnswer, ProtokollMode.Receive)
+                Case 13
+                    If FrmCommunication.Ch_InPos.Checked Then
+                        StatusMoving = 2      'Idle
+                        NexStarAnswer.Comment = " In Position"
+                        Writelog(NexStarAnswer, ProtokollMode.Receive)
+                    Else
+                        StatusMoving = 1      'Busy
+                        NexStarAnswer.Comment = " Busy"
+                        Writelog(NexStarAnswer, ProtokollMode.Receive)
+                    End If
+                Case Else
+
+            End Select
+
+        Else
+            If ReadComm <> "" Then
+                NexStarCmd.Comment = ReadComm
+                Writelog(NexStarCmd, ProtokollMode.Receive)
+                ReadComm = ""
+            End If
+
+            If Not CommandWait Then
+
+                'If CommandBuffer.Count > 0 And Cnt > N Then
+                If CommandBuffer.Count > 0 Then
+                    Cnt = 0
+                    NexStarCmd = CommandBuffer.Item(0)
+                    Writelog(NexStarCmd, ProtokollMode.Send)
+                    CommandBuffer.RemoveRange(0, 1)
+                    NexStarCommand = NexStarCmd.No
+
+                    Dim buf() As Byte
+                    buf = System.Text.Encoding.Default.GetBytes(NexStarCmd.Cmd)
+                    MSComm1.Write(buf, 0, buf.Length)
+                End If
+
+                Select Case NexStarCmd.No
+                    Case 1
+                        CommandWait = True
+                    Case 21
+                        CommandWait = True
+                    Case 13
+                        CommandWait = True
+                    Case 6
+                        dummy = 1
+                    Case Else
+
+                End Select
+            End If
+
+        End If
+
+    End Sub
+
+    Private Sub B_ResetComm_Click(sender As Object, e As EventArgs) Handles B_ResetComm.Click
+        CommandWait = False
+        CommandBuffer.Clear()
+
+        Dim BytesToRead As Integer
+        Dim ByteArray(19) As Byte
+
+        BytesToRead = MSComm1.BytesToRead()
+        MSComm1.Read(ByteArray, 0, BytesToRead)
+
+
+
+    End Sub
+
 End Class

@@ -104,6 +104,7 @@
     <Compile Include="Forms\Vis.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modules\Communication.vb" />
     <Compile Include="Modules\GlobalVariables.vb" />
     <Compile Include="Modules\MathSky.vb" />
     <Compile Include="Modules\Matrix.vb" />

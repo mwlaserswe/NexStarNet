@@ -22,12 +22,17 @@ Partial Class FrmCommunication
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.C_Stop = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Tim_Comm = New System.Windows.Forms.Timer(Me.components)
+        Me.Ch_InPos = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'ListBox1
@@ -80,11 +85,46 @@ Partial Class FrmCommunication
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(798, 600)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(141, 43)
+        Me.Button3.TabIndex = 6
+        Me.Button3.Text = "Button3"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(798, 666)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(141, 43)
+        Me.Button4.TabIndex = 7
+        Me.Button4.Text = "Button4"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Tim_Comm
+        '
+        Me.Tim_Comm.Enabled = True
+        '
+        'Ch_InPos
+        '
+        Me.Ch_InPos.AutoSize = True
+        Me.Ch_InPos.Location = New System.Drawing.Point(237, 552)
+        Me.Ch_InPos.Name = "Ch_InPos"
+        Me.Ch_InPos.Size = New System.Drawing.Size(144, 29)
+        Me.Ch_InPos.TabIndex = 8
+        Me.Ch_InPos.Text = "In Position"
+        Me.Ch_InPos.UseVisualStyleBackColor = True
+        '
         'FrmCommunication
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1644, 903)
+        Me.Controls.Add(Me.Ch_InPos)
+        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox2)
@@ -104,4 +144,8 @@ Partial Class FrmCommunication
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Button4 As Button
+    Friend WithEvents Tim_Comm As Timer
+    Friend WithEvents Ch_InPos As CheckBox
 End Class
