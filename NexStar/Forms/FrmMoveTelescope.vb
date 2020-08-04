@@ -58,6 +58,7 @@ Public Class FrmMoveTelescope
 
     Private Sub ESCMoveGalvoStopToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ESCMoveGalvoStopToolStripMenuItem1.Click
         MoveGalvoAKT = False
+        MouseTimer.Enabled = False
 
         L_SpeedX.Text = 0
         L_SpeedY.Text = 0
@@ -101,8 +102,8 @@ Public Class FrmMoveTelescope
         If MoveGalvoAKT = True Then
             GetCursorPos(GlobalMousePosition)
 
-            XDiffPix = GlobalMousePosition.X - PicBoxCenter.X
-            YDiffPix = GlobalMousePosition.Y - PicBoxCenter.Y
+            XDiffPix = Limit(GlobalMousePosition.X - PicBoxCenter.X, -100, 100)
+            YDiffPix = Limit(GlobalMousePosition.Y - PicBoxCenter.Y, -100, 100)
 
             XDiffRel = XDiffPix * PixelFaktor
             YDiffRel = -YDiffPix * PixelFaktor
@@ -177,19 +178,20 @@ Public Class FrmMoveTelescope
             ElseIf PixelFaktor = PixelFaktorFein Then
                 PixelFaktor = PixelFaktorGrob
             End If
+            L_PixelFaktor.Text = DisplayPixelFaktor(PixelFaktor)
         ElseIf e.Button = MouseButtons.Right Then
-            MouseTimer.Enabled = False
-            MoveGalvoAKT = False
+            ESCMoveGalvoStopToolStripMenuItem1.PerformClick()
         End If
     End Sub
 
 
     Private Sub InitMoveGalvo()
-        PixelFaktorGrob = 200
+        PixelFaktorGrob = 1000
         PixelFaktorMittel = 100
         PixelFaktorFein = 1
 
         PixelFaktor = PixelFaktorMittel
+        L_PixelFaktor.Text = DisplayPixelFaktor(PixelFaktor)
 
         MoveGalvoAKT = False
     End Sub
@@ -204,5 +206,19 @@ Public Class FrmMoveTelescope
             CompKey = False
         End If
     End Function
+
+    Private Function DisplayPixelFaktor(Faktor As Integer) As String
+        Select Case Faktor
+            Case PixelFaktorGrob
+                DisplayPixelFaktor = "Schnell"
+            Case PixelFaktorMittel
+                DisplayPixelFaktor = "Mittel"
+            Case PixelFaktorFein
+                DisplayPixelFaktor = "Langsam"
+            Case Else
+                DisplayPixelFaktor = "--"
+        End Select
+    End Function
+
 
 End Class

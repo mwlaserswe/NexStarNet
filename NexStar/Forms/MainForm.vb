@@ -44,24 +44,7 @@ Public Class MainForm
         Loop Until (AlignmentStarArray(idx).ProperName = AlignmentStarList.Text) Or (idx >= UBound(AlignmentStarArray))
         '    L_CurrentStar = AlignmentStarArray(idx).ProperName
 
-        ' Stern in Combobox eintragen
-        Dim k As Integer
-        Dim DoubleItem As Boolean
-        Dim FindName As String
 
-        k = CB_Find.Items.Count
-        If k > 0 Then
-            For i = 0 To CB_Find.Items.Count - 1
-                FindName = CB_Find.Items(i)
-                If AlignmentStarArray(idx).ProperName = CB_Find.Items(i) Then
-                    DoubleItem = True
-                End If
-            Next i
-        End If
-
-        If Not DoubleItem Then
-            CB_Find.Items.Add(AlignmentStarArray(idx).ProperName)
-        End If
 
 
         PreviewRaDec.Ra = HourToRad(AlignmentStarArray(idx).Ra)
@@ -81,14 +64,14 @@ Public Class MainForm
         If SimOffline Then
             TelIncr = SimIncr
         Else
-            If StatusMoving = 2 Then
+            'If StatusMoving = 2 Then
 
-                Command = 1
+            Command = 1
 
                 Dim CommString As String
                 CommString = Strings.Chr(&H1)
                 NexStarCommunication(CommString, " Read Az (0x01)", ProtokollMode.Send)
-            End If
+            'End If
         End If
     End Sub
 
@@ -99,20 +82,20 @@ Public Class MainForm
         If SimOffline Then
             TelIncr = SimIncr
         Else
-            If StatusMoving = 2 Then
+            'If StatusMoving = 2 Then
 
-                Command = 21
+            Command = 21
 
                 Dim CommString As String
                 CommString = Strings.Chr(&H15)
                 NexStarCommunication(CommString, " Read Alt (0x15)", ProtokollMode.Send)
-            End If
+            'End If
         End If
     End Sub
 
 
     Private Sub C_GotoNorth_Click(sender As Object, e As EventArgs) Handles C_GotoNorth.Click
-        TestStatus = True
+        ReadStatus = True
         StatusMoving = 0
 
         Dim MotorIncr As AzAlt
@@ -133,8 +116,9 @@ Public Class MainForm
 
 
     Private Sub C_GotoStar_Click(sender As Object, e As EventArgs) Handles C_GotoStar.Click
-        TestStatus = True
+        ReadStatus = True
         StatusMoving = 0
+
 
 
         '==== Telescope moves to this star ====
@@ -146,6 +130,28 @@ Public Class MainForm
         tmp.Alt = ObserverAzAlt.Alt
         MatrixSystemSoll = AzAlt_to_MatrixSystem(tmp)
         F_StarInfo.Text = F_PreviewInfo.Text
+
+
+        ' Stern in Combobox eintragen
+        Dim k As Integer
+        Dim DoubleItem As Boolean
+        Dim FindName As String
+
+        k = CB_Find.Items.Count
+        If k > 0 Then
+            For i = 0 To CB_Find.Items.Count - 1
+                FindName = CB_Find.Items(i)
+                If F_StarInfo.Text = CB_Find.Items(i) Then
+                    DoubleItem = True
+                End If
+            Next i
+        End If
+
+        If Not DoubleItem Then
+            CB_Find.Items.Add(F_StarInfo.Text)
+        End If
+
+
 
         Dim MotorIncr As AzAlt
         MotorIncr = Matrix_To_MotorIncrSystem(MatrixSystemSoll)
@@ -164,7 +170,7 @@ Public Class MainForm
 
 
     Private Sub C_GotoStarCalibrated_Click(sender As Object, e As EventArgs) Handles C_GotoStarCalibrated.Click
-        TestStatus = True
+        ReadStatus = True
         StatusMoving = 0
 
 
@@ -370,6 +376,7 @@ Public Class MainForm
 
     Private Sub C_SingleStarCalib_Click(sender As Object, e As EventArgs) Handles C_SingleStarCalib.Click
 
+        Dim tmp1 As AzAlt
         Dim tmp2 As Double
         Dim tmp3 As Double
         Dim tmp4 As Double
@@ -386,9 +393,6 @@ Public Class MainForm
         ' Set status 1 point calibration done
         GlbCalibStatus = 1
 
-        Dim tmp1 As AzAlt
-        '                            tmp1.Az = CutRad(ObserverAzAlt.Az)
-        '                            tmp1.Alt = ObserverAzAlt.Alt
         tmp1 = ObserverAzAlt
         MatrixSystemSoll = AzAlt_to_MatrixSystem(tmp1)
 
@@ -606,7 +610,7 @@ Public Class MainForm
         Exit Sub
 
 openErr:
-        MsgBox(CommFileName & vbCr & Err.Description, , "NexStar")
+        MsgBox(CommFileName & vbCr & Err.Description, , "NexStar Error 001")
 
     End Sub
 
@@ -686,11 +690,9 @@ v24error:
     Private Sub MSComm1_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles MSComm1.DataReceived
 
         Dim i As Integer
-
         Dim BytesToRead As Integer
         Dim ByteArray(19) As Byte
         Dim buf As Byte
-
         Dim NexStarAz As Long
         Dim NexStarAlt As Long
 
@@ -701,9 +703,7 @@ v24error:
             If BytesToRead >= 3 Then
 
                 NexStarAz = 0
-
                 MSComm1.Read(ByteArray, 0, 3)
-
                 For i = 0 To 2
                     buf = ByteArray(i)
                     NexStarAz = NexStarAz + buf * 256 ^ (2 - i)
@@ -712,17 +712,14 @@ v24error:
                 TelIncr.Az = NexStarAz
                 NexStarCommunication("", "Az: " & TelIncr.Az, ProtokollMode.Receive)
                 Command = 0
-
             End If
 
         ElseIf Command = 21 Then
             If BytesToRead >= 3 Then
 
                 NexStarAlt = 0
-
                 MSComm1.Read(ByteArray, 0, 3)
-
-                For i = 1 To 2
+                For i = 0 To 2
                     buf = ByteArray(i)
                     NexStarAlt = NexStarAlt + buf * 256 ^ (2 - i)
                 Next i
@@ -733,9 +730,9 @@ v24error:
             End If
 
         ElseIf Command = 13 Then
-            NexStarChar1 = ""
             If BytesToRead >= 1 Then
 
+                NexStarChar1 = ""
                 MSComm1.Read(ByteArray, 0, 1)
                 buf = ByteArray(0)
                 NexStarChar1 = NexStarChar1 & Strings.Chr(buf)
@@ -752,7 +749,6 @@ v24error:
                 'If l <> 1 Then
                 '    ErrorCount = ErrorCount + 1
                 'End If
-
 
                 Command = 0
 
@@ -901,15 +897,7 @@ v24error:
     End Sub
 
 
-    Public Function Limit(val As Integer, low As Integer, high As Integer) As Integer
-        If val < low Then
-            Limit = low
-        ElseIf val > high Then
-            Limit = high
-        Else
-            Limit = val
-        End If
-    End Function
+
 
     Private Sub Tim_Preview_Tick(sender As Object, e As EventArgs) Handles Tim_Preview.Tick
 
@@ -1080,7 +1068,7 @@ v24error:
 
                     Dim CommString As String
                     CommString = Strings.Chr(&HD)
-                    'SWE   NexStarCommunication(CommString, " Request Status (0x0D)", ProtokollMode.Send)
+                    NexStarCommunication(CommString, " Request Status (0x0D)", ProtokollMode.Send)
 
 
                     StatusMoving = 0
@@ -1130,19 +1118,19 @@ v24error:
     End Sub
 
     Private Sub Tim_TestStatus_Tick(sender As Object, e As EventArgs) Handles Tim_TestStatus.Tick
-        If TestStatus Then
+        If ReadStatus Then
             Command = 13
             If SimOffline Then
             Else
                 Dim CommString As String
                 CommString = Strings.Chr(&HD)
-                NexStarCommunication(CommString, " Request Status (0x0D)", ProtokollMode.Send)
+                NexStarCommunication(CommString, " Read Status (0x0D)", ProtokollMode.Send)
             End If
         End If
 
 
         If StatusMoving = 2 Then
-            TestStatus = False
+            ReadStatus = False
         End If
 
 
@@ -1296,7 +1284,7 @@ v24error:
         If TrackingisON Then
             TrackCount = TrackCount + 1
 
-            L_ElapsedTime.Text = TrackCount & " sec"
+            L_ElapsedTime.Text = TrackCount / 2 & " sec"
 
             ' this code only every "TrackInterval" sec
             ' do write if another command is beeing executed
@@ -1418,7 +1406,7 @@ v24error:
 
 
                 If Not SimOffline Then
-                    LogString = "Tracking: " & TrackingSpeed.Az & " " & TrackingSpeed.Alt
+                    LogString = "Tracking: " & Format(TrackingSpeed.Az, "0.0") & " " & Format(TrackingSpeed.Alt, "0.0")
 
                     Dim CommString As String
                     CommString = AzString & AltString
@@ -1516,7 +1504,7 @@ v24error:
         Exit Sub
 
 openErr:
-        MsgBox(Err.Description & vbCrLf & "Can't read Config File:" & AlignmetStarFileName, , " Error ")
+        MsgBox(Err.Description & vbCrLf & "Can't read Config File:" & AlignmetStarFileName, , "NexStar Error 002")
         FileClose(AlignmetStarFile)
     End Sub
 
@@ -1536,6 +1524,10 @@ openErr:
         Dim CommString As String
         CommString = Strings.Chr(&HD)
         NexStarCommunication(CommString, " Request Status (0x0D)", ProtokollMode.Send)
+
+    End Sub
+
+    Private Sub C_CalibrateNow_Click(sender As Object, e As EventArgs) Handles C_CalibrateNow.Click
 
     End Sub
 End Class

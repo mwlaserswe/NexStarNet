@@ -23,22 +23,33 @@ Partial Class Vis
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Pic = New System.Windows.Forms.PictureBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.Pic, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Pic
         '
-        Me.Pic.Location = New System.Drawing.Point(0, 0)
+        Me.Pic.Location = New System.Drawing.Point(-1, -6)
         Me.Pic.Name = "Pic"
-        Me.Pic.Size = New System.Drawing.Size(1307, 887)
+        Me.Pic.Size = New System.Drawing.Size(1006, 887)
         Me.Pic.TabIndex = 0
         Me.Pic.TabStop = False
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(1251, 61)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(188, 111)
+        Me.Button1.TabIndex = 1
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Vis
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1299, 883)
+        Me.ClientSize = New System.Drawing.Size(1507, 883)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Pic)
         Me.Name = "Vis"
         Me.Text = "Vis"
@@ -48,4 +59,5 @@ Partial Class Vis
     End Sub
 
     Friend WithEvents Pic As PictureBox
+    Friend WithEvents Button1 As Button
 End Class

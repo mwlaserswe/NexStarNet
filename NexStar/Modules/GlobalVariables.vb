@@ -79,7 +79,7 @@ Module GlobalVariables
     Public CommFileName As String
     Public AlignmentStarArray() As StarDescription
 
-    Public TestStatus As Boolean
+    Public ReadStatus As Boolean
     Public StatusMoving As Integer
 
 

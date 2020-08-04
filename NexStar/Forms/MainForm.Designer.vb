@@ -196,7 +196,7 @@ Partial Class MainForm
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SetupToolStripMenuItem, Me.TestToolStripMenuItem, Me.CommunicationToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(2042, 40)
+        Me.MenuStrip1.Size = New System.Drawing.Size(2042, 48)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -204,7 +204,7 @@ Partial Class MainForm
         '
         Me.SetupToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadStarKatalogToolStripMenuItem})
         Me.SetupToolStripMenuItem.Name = "SetupToolStripMenuItem"
-        Me.SetupToolStripMenuItem.Size = New System.Drawing.Size(97, 36)
+        Me.SetupToolStripMenuItem.Size = New System.Drawing.Size(97, 44)
         Me.SetupToolStripMenuItem.Text = "Setup"
         '
         'LoadStarKatalogToolStripMenuItem
@@ -217,7 +217,7 @@ Partial Class MainForm
         '
         Me.TestToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TesteJulianischesDatumToolStripMenuItem, Me.Test1ToolStripMenuItem, Me.Test2ToolStripMenuItem, Me.VisualisierungToolStripMenuItem})
         Me.TestToolStripMenuItem.Name = "TestToolStripMenuItem"
-        Me.TestToolStripMenuItem.Size = New System.Drawing.Size(77, 36)
+        Me.TestToolStripMenuItem.Size = New System.Drawing.Size(77, 44)
         Me.TestToolStripMenuItem.Text = "Test"
         '
         'TesteJulianischesDatumToolStripMenuItem
@@ -247,7 +247,7 @@ Partial Class MainForm
         'CommunicationToolStripMenuItem
         '
         Me.CommunicationToolStripMenuItem.Name = "CommunicationToolStripMenuItem"
-        Me.CommunicationToolStripMenuItem.Size = New System.Drawing.Size(205, 36)
+        Me.CommunicationToolStripMenuItem.Size = New System.Drawing.Size(205, 44)
         Me.CommunicationToolStripMenuItem.Text = "Communication"
         '
         'C_SetEncoder_Az
@@ -439,11 +439,12 @@ Partial Class MainForm
         '
         'C_GotoStar
         '
-        Me.C_GotoStar.Location = New System.Drawing.Point(680, 1307)
+        Me.C_GotoStar.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.C_GotoStar.Location = New System.Drawing.Point(680, 1255)
         Me.C_GotoStar.Name = "C_GotoStar"
-        Me.C_GotoStar.Size = New System.Drawing.Size(265, 41)
+        Me.C_GotoStar.Size = New System.Drawing.Size(265, 93)
         Me.C_GotoStar.TabIndex = 26
-        Me.C_GotoStar.Text = "GotoStar w/o calibration"
+        Me.C_GotoStar.Text = "Goto Star "
         Me.C_GotoStar.UseVisualStyleBackColor = True
         '
         'C_GotoStarCalibrated
@@ -500,6 +501,7 @@ Partial Class MainForm
         Me.C_CalibrateNow.TabIndex = 32
         Me.C_CalibrateNow.Text = "Calibrate now"
         Me.C_CalibrateNow.UseVisualStyleBackColor = True
+        Me.C_CalibrateNow.Visible = False
         '
         'Label3
         '
@@ -515,9 +517,9 @@ Partial Class MainForm
         Me.Label10.AutoSize = True
         Me.Label10.Location = New System.Drawing.Point(710, 1189)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(86, 25)
+        Me.Label10.Size = New System.Drawing.Size(132, 25)
         Me.Label10.TabIndex = 46
-        Me.Label10.Text = "Ortszeit"
+        Me.Label10.Text = "Ortszeit [UT]"
         '
         'Label7
         '
@@ -1657,6 +1659,7 @@ Partial Class MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(2042, 1382)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.CB_Find)

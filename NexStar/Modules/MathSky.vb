@@ -602,32 +602,18 @@ Module MathSky
     End Function
 
 
-    '''Public Function MatrixSystem_to_MotorIncrSystem(phi As Double) As Double
-    '''    Dim tmp As Double
-    '''    tmp = CutRad(-phi) * EncoderResolution / (2 * Pi)
-    '''    MatrixSystem_to_MotorIncrSystem = tmp
-    '''End Function
-    '''
-    '''
-    '''Public Function MotorIncrSystem_to_MatrixSystem(Incr As Double) As Double
-    '''    Dim tmp As Double
-    ''''    tmp = CutRad(-phi) * EncoderResolution / (2 * Pi)
-    '''    tmp = CutIncr(-Incr) * (2 * Pi) / EncoderResolution
-    '''    MotorIncrSystem_to_MatrixSystem = tmp
-    '''End Function
-
-
-    'New funktion using TYPE AzAlt
     Public Function Matrix_To_MotorIncrSystem(phi As AzAlt) As AzAlt
-        Dim tmp As Double
-
         'Az
-        tmp = CutRad(-phi.Az) * EncoderResolution / (2 * Pi)
-        'tmp = -phi.Az * EncoderResolution / (2 * Pi)
-        Matrix_To_MotorIncrSystem.Az = tmp
+        Matrix_To_MotorIncrSystem.Az = CutRad(-phi.Az) * EncoderResolution / (2 * Pi)
 
         'Alt
-        Matrix_To_MotorIncrSystem.Alt = phi.Alt * EncoderResolution / (2 * Pi)
+        Matrix_To_MotorIncrSystem.Alt = CutRad(phi.Alt) * EncoderResolution / (2 * Pi)
+
+        'ist der Winkel größer als 90°, dann ist wahrscheinlich negativ
+        'dann muß der Fehler bei der Umrechnung in Incremente berücksichtight werden
+        If Matrix_To_MotorIncrSystem.Alt > 181639 Then
+            Matrix_To_MotorIncrSystem.Alt = Matrix_To_MotorIncrSystem.Alt + 780050
+        End If
     End Function
 
 
@@ -639,19 +625,17 @@ Module MathSky
         MotorIncr_To_MatrixSystem.Az = tmp
 
         'Alt
+
+        '=== Das gleicht den Fehler bei der Fahrt in negative Alt-Werte aus
+        ' der Zähler springt nicht auf 726559 (richtig) sondern auf ca. 1506609 (falsch)
+        If Incr.Alt > 780050 Then
+            Incr.Alt = Incr.Alt - 780050
+        End If
+
         MotorIncr_To_MatrixSystem.Alt = Incr.Alt * (2 * Pi) / EncoderResolution
     End Function
 
 
-
-
-
-    'Public Function AzAltSystem_to_MatrixSystem(Az As Double) As Double
-    '   AzAltSystem_to_MatrixSystem = CutRad(-Az + GlobalOffset.Az)
-    'End Function
-
-
-    'New funktion using TYPE AzAlt
     Public Function AzAlt_to_MatrixSystem(phi As AzAlt) As AzAlt
         AzAlt_to_MatrixSystem.Az = CutRad(-phi.Az + GlobalOffset.Az)
         AzAlt_to_MatrixSystem.Alt = phi.Alt + GlobalOffset.Alt

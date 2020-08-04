@@ -6,6 +6,7 @@ Module Visualisierung
         GlbCx = 1
         GlbCY = -1
         GlbScale = 200
+        Vis.Pic.BackColor = Color.Black
     End Sub
 
 
@@ -18,18 +19,18 @@ Module Visualisierung
         Dim CenterY As Double
         Dim CoordColor As Color
 
-        CoordColor = Color.DodgerBlue
+        CoordColor = Color.DarkRed
 
         CenterX = GlbCx * GlbScale
         CenterY = GlbCY * -GlbScale
 
-        DrawCircle(CenterX, CenterY, (90 / 90) * GlbScale, Color.Red)
+        DrawCircle(CenterX, CenterY, (90 / 90) * GlbScale, Color.Red, False)
 
-        DrawCircle(CenterX, CenterY, (90 / 90) * GlbScale, CoordColor)
-        DrawCircle(CenterX, CenterY, (70 / 90) * GlbScale, CoordColor)
-        DrawCircle(CenterX, CenterY, (50 / 90) * GlbScale, CoordColor)
-        DrawCircle(CenterX, CenterY, (30 / 90) * GlbScale, CoordColor)
-        DrawCircle(CenterX, CenterY, (10 / 90) * GlbScale, CoordColor)
+        DrawCircle(CenterX, CenterY, (90 / 90) * GlbScale, CoordColor, False)
+        DrawCircle(CenterX, CenterY, (70 / 90) * GlbScale, CoordColor, False)
+        DrawCircle(CenterX, CenterY, (50 / 90) * GlbScale, CoordColor, False)
+        DrawCircle(CenterX, CenterY, (30 / 90) * GlbScale, CoordColor, False)
+        DrawCircle(CenterX, CenterY, (10 / 90) * GlbScale, CoordColor, False)
 
 
 
@@ -47,7 +48,7 @@ Module Visualisierung
         ey = (GlbCY + 0.05) * -GlbScale
         Vis.Pic.CreateGraphics.DrawLine(pen1, sx, sy, ex, ey)
 
-        ' Draw Polaris
+        '=== Draw Polaris ===
         Dim Polaris As AzAlt
         Polaris.Az = 0
         Polaris.Alt = 0.5458
@@ -57,11 +58,11 @@ Module Visualisierung
 
         CenterX = (Math.Cos(Polaris.Az) * (1 - Polaris.Alt) + GlbCx) * GlbScale
         CenterY = (Math.Sin(Polaris.Az) * (1 - Polaris.Alt) + GlbCY) * -GlbScale
-        DrawCircle(CenterX, CenterY, 5, CoordColor)
+        DrawCircle(CenterX, CenterY, 2, CoordColor, True)
 
     End Sub
 
-    Private Sub DrawCircle(x As Double, y As Double, r As Double, ccolor As Color)
+    Private Sub DrawCircle(x As Double, y As Double, r As Double, ccolor As Color, fill As Boolean)
         Dim myPen As Pen
         myPen = New Pen(ccolor, 1)
 
@@ -72,6 +73,9 @@ Module Visualisierung
         myRectangle.Width = 2 * r
         myRectangle.Height = 2 * r
         Vis.Pic.CreateGraphics.DrawEllipse(myPen, myRectangle)
+        If fill Then
+            Vis.Pic.CreateGraphics.FillEllipse(New SolidBrush(ccolor), myRectangle)
+        End If
     End Sub
 
 
@@ -91,7 +95,7 @@ Module Visualisierung
 
         Static LastCenter As AzAlt
         ' Overwrite last circle with white
-        DrawCircle(LastCenter.Az, LastCenter.Alt, 2, Color.Green)
+        DrawCircle(LastCenter.Az, LastCenter.Alt, 2, Color.Green, False)
 
 
         ' Rotate -90°: North is below
@@ -102,7 +106,7 @@ Module Visualisierung
 
         Center.Az = (Math.Cos(LclPolar.Az) * (1 - LclPolar.Alt) + GlbCx) * GlbScale
         Center.Alt = (Math.Sin(LclPolar.Az) * (1 - LclPolar.Alt) + GlbCY) * -GlbScale
-        DrawCircle(Center.Az, Center.Alt, 2, Color.Blue)
+        DrawCircle(Center.Az, Center.Alt, 2, Color.Blue, False)
 
         LastCenter = Center
 
@@ -116,9 +120,12 @@ Module Visualisierung
 
         LclPolar = Polar
 
+        '=== Replace old star with a point ===
         Static LastCenter As AzAlt
-        ' Overwrite last circle with white
-        DrawCircle(LastCenter.Az, LastCenter.Alt, 5, Color.White)
+        ' Overwrite last circle with black
+        DrawCircle(LastCenter.Az, LastCenter.Alt, 5, Color.Black, True)
+        ' Draw a small point
+        DrawCircle(LastCenter.Az, LastCenter.Alt, 1, Color.Gray, True)
 
         ' Rotate -90°: North is below
         LclPolar.Az = LclPolar.Az - Pi / 2
@@ -129,7 +136,7 @@ Module Visualisierung
 
         Center.Az = (Math.Cos(LclPolar.Az) * (1 - LclPolar.Alt) + GlbCx) * GlbScale
         Center.Alt = (Math.Sin(LclPolar.Az) * (1 - LclPolar.Alt) + GlbCY) * -GlbScale
-        DrawCircle(Center.Az, Center.Alt, 5, Color.Cyan)
+        DrawCircle(Center.Az, Center.Alt, 5, Color.White, True)
 
         LastCenter = Center
 

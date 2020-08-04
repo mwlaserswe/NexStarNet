@@ -568,25 +568,14 @@ OpenError:
 
     End Sub
 
-    'Public Sub KickoffRead()
-    '    NexStarComm.BaseStream.BeginRead(ReadBuffer, 0, ReadBufferSize, AddressOf ReadCallback, Nothing)
+    Public Function Limit(val As Integer, low As Integer, high As Integer) As Integer
+        If val < low Then
+            Limit = low
+        ElseIf val > high Then
+            Limit = high
+        Else
+            Limit = val
+        End If
+    End Function
 
-    'End Sub
-    'Public Sub ReadCallback(Result As IAsyncResult)
-    '    Dim ActualLength As Integer
-    '    Try
-    '        ActualLength = NexStarComm.BaseStream.EndRead(Result)
-    '    Catch ex As System.IO.IOException
-    '        'Damit habe ich mich noch nicht genug befasst.
-    '        'IOExceptions treten manchmal auf.
-    '        Return
-    '    Catch ex As InvalidOperationException
-    '        'Tritt auf, wenn der Port geschlossen wurde.
-    '        Return
-    '    End Try
-    '    Dim BufferCopy = New Byte(ActualLength - 1) {}
-    '    Array.Copy(ReadBuffer, BufferCopy, ActualLength)
-    '    'Me.BeginInvoke(Sub() BytesReceived(BufferCopy))
-    '    KickoffRead()
-    'End Sub
 End Module

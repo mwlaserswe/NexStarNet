@@ -37,6 +37,7 @@ Partial Class FrmMoveTelescope
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.MouseTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.L_PixelFaktor = New System.Windows.Forms.Label()
         CType(Me.Picture_Mouse_Move, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -55,7 +56,7 @@ Partial Class FrmMoveTelescope
         Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MoveGalvoStartToolStripMenuItem1, Me.ESCMoveGalvoStopToolStripMenuItem1})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(335, 80)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(335, 124)
         '
         'MoveGalvoStartToolStripMenuItem1
         '
@@ -158,11 +159,22 @@ Partial Class FrmMoveTelescope
         '
         Me.MouseTimer.Interval = 200
         '
+        'L_PixelFaktor
+        '
+        Me.L_PixelFaktor.AutoSize = True
+        Me.L_PixelFaktor.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.L_PixelFaktor.Location = New System.Drawing.Point(566, 164)
+        Me.L_PixelFaktor.Name = "L_PixelFaktor"
+        Me.L_PixelFaktor.Size = New System.Drawing.Size(169, 55)
+        Me.L_PixelFaktor.TabIndex = 10
+        Me.L_PixelFaktor.Text = "Label6"
+        '
         'FrmMoveTelescope
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(879, 450)
+        Me.Controls.Add(Me.L_PixelFaktor)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -196,4 +208,5 @@ Partial Class FrmMoveTelescope
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents MoveGalvoStartToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ESCMoveGalvoStopToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents L_PixelFaktor As Label
 End Class

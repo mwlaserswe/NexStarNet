@@ -36,7 +36,7 @@ Partial Class FrmCommunication
         Me.ListBox1.ItemHeight = 25
         Me.ListBox1.Location = New System.Drawing.Point(237, 26)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(371, 479)
+        Me.ListBox1.Size = New System.Drawing.Size(538, 479)
         Me.ListBox1.TabIndex = 0
         '
         'C_Stop

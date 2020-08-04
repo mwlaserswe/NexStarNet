@@ -36,7 +36,7 @@ Module NexStar
         Dim e As Integer
 
         If (Value < 0) Or (Value > 1677216) Then
-            MsgBox("Position Overflow")
+            MsgBox("Position Overflow",, "NexStar Error 003")
             Exit Function
         End If
 
