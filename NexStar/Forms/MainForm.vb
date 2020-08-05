@@ -155,81 +155,132 @@ Public Class MainForm
             CB_Find.Items.Add(F_StarInfo.Text)
         End If
 
+        If GlbCalibStatus = 0 Or GlbCalibStatus = 1 Then
+            Dim MotorIncr As AzAlt
+            MotorIncr = Matrix_To_MotorIncrSystem(MatrixSystemSoll)
+
+            If SimOffline Then
+                SimGotoAzAltActive = True
+                SimGoto = MotorIncr
+            End If
+
+            Dim NexStarCmd As CommandItem
 
 
-        Dim MotorIncr As AzAlt
-        MotorIncr = Matrix_To_MotorIncrSystem(MatrixSystemSoll)
 
-        If SimOffline Then
-            SimGotoAzAltActive = True
-            SimGoto = MotorIncr
-        'Else
-        '    Dim CommString As String
-        '    CommString = Strings.Chr(&O2) & SetNexStarPosition(CLng(MotorIncr.Az)) & Strings.Chr(&H16) & SetNexStarPosition(CLng(MotorIncr.Alt))
-        '    NexStarCommunication(CommString, " Goto AzAlt (0x02): " & CLng(MotorIncr.Az) & " " & CLng(MotorIncr.Alt), ProtokollMode.Send)
+            NexStarCmd.No = 2
+            NexStarCmd.Cmd = Strings.Chr(&O2) & SetNexStarPosition(CLng(MotorIncr.Az)) & Strings.Chr(&H16) & SetNexStarPosition(CLng(MotorIncr.Alt))
+            NexStarCmd.Comment = " Goto AzAlt (0x02): " & CLng(MotorIncr.Az) & " " & CLng(MotorIncr.Alt)
+
+            PushCommandBuffer(NexStarCmd)
+
+
+
+        ElseIf GlbCalibStatus = 2 Then
+            ReadStatus = True
+            StatusMoving = 0
+
+
+            Dim AimTimeRad As Double
+            Dim AzAlt_BetaCet As AzAlt
+
+            '==== Telescope moves to this star ====
+            ObserverRaDec = PreviewRaDec
+            AimTimeRad = TimeToRad(ObserverTimeUT)
+
+            TrackingisON = False
+
+            CalculateTelescopeCoordinates(Cal_InitTime,
+                                      ObserverRaDec, AimTimeRad, TransformationMatrix,
+                                      AzAlt_BetaCet)
+
+
+            'Set Az
+            MatrixSystemSoll.Az = CutRad(AzAlt_BetaCet.Az)
+            'Set Alt
+            MatrixSystemSoll.Alt = AzAlt_BetaCet.Alt
+
+            MatrixLastCalc = MatrixSystemSoll
+
+
+            Dim MotorIncr As AzAlt
+            MotorIncr = Matrix_To_MotorIncrSystem(MatrixSystemSoll)
+            MotorLastCalc = MotorIncr
+
+            If SimOffline Then
+                SimGotoAzAltActive = True
+                SimGoto = MotorIncr
+                'Else
+                '    Dim CommString As String
+                '    CommString = Strings.Chr(&O2) & SetNexStarPosition(CLng(MotorIncr.Az)) & Strings.Chr(&H16) & SetNexStarPosition(CLng(MotorIncr.Alt))
+                '    NexStarCommunication(CommString, " Goto AzAlt (0x02): " & CLng(MotorIncr.Az) & " " & CLng(MotorIncr.Alt), ProtokollMode.Send)
+            End If
+
+
+            Dim NexStarCmd As CommandItem
+
+
+
+            NexStarCmd.No = 2
+            NexStarCmd.Cmd = Strings.Chr(&O2) & SetNexStarPosition(CLng(MotorIncr.Az)) & Strings.Chr(&H16) & SetNexStarPosition(CLng(MotorIncr.Alt))
+            NexStarCmd.Comment = " Goto AzAlt (0x02): " & CLng(MotorIncr.Az) & " " & CLng(MotorIncr.Alt)
+
+            PushCommandBuffer(NexStarCmd)
         End If
-
-        Dim NexStarCmd As CommandItem
-
-
-
-        NexStarCmd.No = 2
-        NexStarCmd.Cmd = Strings.Chr(&O2) & SetNexStarPosition(CLng(MotorIncr.Az)) & Strings.Chr(&H16) & SetNexStarPosition(CLng(MotorIncr.Alt))
-        NexStarCmd.Comment = " Goto AzAlt (0x02): " & CLng(MotorIncr.Az) & " " & CLng(MotorIncr.Alt)
-
-        PushCommandBuffer(NexStarCmd)
-
     End Sub
 
 
-    Private Sub C_GotoStarCalibrated_Click(sender As Object, e As EventArgs) Handles C_GotoStarCalibrated.Click
-        ReadStatus = True
-        StatusMoving = 0
+    'Private Sub C_GotoStarCalibrated_Click(sender As Object, e As EventArgs) Handles C_GotoStarCalibrated.Click
+    '    ReadStatus = True
+    '    StatusMoving = 0
 
 
-        Dim AimTimeRad As Double
-        Dim AzAlt_BetaCet As AzAlt
-        AimTimeRad = TimeToRad(ObserverTimeUT)
+    '    Dim AimTimeRad As Double
+    '    Dim AzAlt_BetaCet As AzAlt
 
-        TrackingisON = False
+    '    '==== Telescope moves to this star ====
+    '    ObserverRaDec = PreviewRaDec
+    '    AimTimeRad = TimeToRad(ObserverTimeUT)
 
-        CalculateTelescopeCoordinates(Cal_InitTime,
-                                  ObserverRaDec, AimTimeRad, TransformationMatrix,
-                                  AzAlt_BetaCet)
+    '    TrackingisON = False
 
-
-        'Set Az
-        MatrixSystemSoll.Az = CutRad(AzAlt_BetaCet.Az)
-        'Set Alt
-        MatrixSystemSoll.Alt = AzAlt_BetaCet.Alt
-
-        MatrixLastCalc = MatrixSystemSoll
+    '    CalculateTelescopeCoordinates(Cal_InitTime,
+    '                              ObserverRaDec, AimTimeRad, TransformationMatrix,
+    '                              AzAlt_BetaCet)
 
 
-        Dim MotorIncr As AzAlt
-        MotorIncr = Matrix_To_MotorIncrSystem(MatrixSystemSoll)
-        MotorLastCalc = MotorIncr
+    '    'Set Az
+    '    MatrixSystemSoll.Az = CutRad(AzAlt_BetaCet.Az)
+    '    'Set Alt
+    '    MatrixSystemSoll.Alt = AzAlt_BetaCet.Alt
 
-        If SimOffline Then
-            SimGotoAzAltActive = True
-            SimGoto = MotorIncr
-            'Else
-            '    Dim CommString As String
-            '    CommString = Strings.Chr(&O2) & SetNexStarPosition(CLng(MotorIncr.Az)) & Strings.Chr(&H16) & SetNexStarPosition(CLng(MotorIncr.Alt))
-            '    NexStarCommunication(CommString, " Goto AzAlt (0x02): " & CLng(MotorIncr.Az) & " " & CLng(MotorIncr.Alt), ProtokollMode.Send)
-        End If
+    '    MatrixLastCalc = MatrixSystemSoll
 
 
-        Dim NexStarCmd As CommandItem
+    '    Dim MotorIncr As AzAlt
+    '    MotorIncr = Matrix_To_MotorIncrSystem(MatrixSystemSoll)
+    '    MotorLastCalc = MotorIncr
+
+    '    If SimOffline Then
+    '        SimGotoAzAltActive = True
+    '        SimGoto = MotorIncr
+    '        'Else
+    '        '    Dim CommString As String
+    '        '    CommString = Strings.Chr(&O2) & SetNexStarPosition(CLng(MotorIncr.Az)) & Strings.Chr(&H16) & SetNexStarPosition(CLng(MotorIncr.Alt))
+    '        '    NexStarCommunication(CommString, " Goto AzAlt (0x02): " & CLng(MotorIncr.Az) & " " & CLng(MotorIncr.Alt), ProtokollMode.Send)
+    '    End If
+
+
+    '    Dim NexStarCmd As CommandItem
 
 
 
-        NexStarCmd.No = 2
-        NexStarCmd.Cmd = Strings.Chr(&O2) & SetNexStarPosition(CLng(MotorIncr.Az)) & Strings.Chr(&H16) & SetNexStarPosition(CLng(MotorIncr.Alt))
-        NexStarCmd.Comment = " Goto AzAlt (0x02): " & CLng(MotorIncr.Az) & " " & CLng(MotorIncr.Alt)
+    '    NexStarCmd.No = 2
+    '    NexStarCmd.Cmd = Strings.Chr(&O2) & SetNexStarPosition(CLng(MotorIncr.Az)) & Strings.Chr(&H16) & SetNexStarPosition(CLng(MotorIncr.Alt))
+    '    NexStarCmd.Comment = " Goto AzAlt (0x02): " & CLng(MotorIncr.Az) & " " & CLng(MotorIncr.Alt)
 
-        PushCommandBuffer(NexStarCmd)
-    End Sub
+    '    PushCommandBuffer(NexStarCmd)
+    'End Sub
 
 
     Private Sub C_MoveTelescope_Click(sender As Object, e As EventArgs) Handles C_MoveTelescope.Click
@@ -312,9 +363,6 @@ Public Class MainForm
     End Sub
 
 
-    Private Sub C_SetCalibrationStar_2_Click(sender As Object, e As EventArgs) Handles C_SetCalibrationStar_2.Click
-
-    End Sub
 
 
     ''Private Sub C_SetCalibrationStar_1_Click()
@@ -334,8 +382,7 @@ Public Class MainForm
     ''    C_SetCalibrationStar_1.BackColor = vbGreen
     ''End Sub
 
-
-    Private Sub C_SetCalibrationStar_2_Click()
+   Private Sub C_SetCalibrationStar_2_Click(sender As Object, e As EventArgs) Handles C_SetCalibrationStar_2.Click
 
         Dim Angle As Double
 
@@ -1788,6 +1835,10 @@ openErr:
 
         BytesToRead = MSComm1.BytesToRead()
         MSComm1.Read(ByteArray, 0, BytesToRead)
+
+    End Sub
+
+    Private Sub CB_Find_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Find.SelectedIndexChanged
 
     End Sub
 

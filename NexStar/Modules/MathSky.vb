@@ -548,7 +548,7 @@ Module MathSky
     End Function
 
 
-    Public Sub CalculateTelescopeCoordinates(InitTimerad As Double, CurrStarRad As RaDec, AimTimeRad As Double, TransformationMatrix(,) As Double, AzAlt_CurrStar As AzAlt)
+    Public Sub CalculateTelescopeCoordinates(InitTimerad As Double, CurrStarRad As RaDec, AimTimeRad As Double, TransformationMatrix(,) As Double, ByRef AzAlt_CurrStar As AzAlt)
         'LMN_Equ_Result: Vector points to Star in equatorial coordinats
         Dim LMN_Equ_Result As Vector
         LMN_Equ_Result.X = Math.Cos(CurrStarRad.Dec) * Math.Cos(CurrStarRad.Ra - SidConst * (AimTimeRad - InitTimerad))
@@ -571,12 +571,12 @@ Module MathSky
         lmn_Tel_Result.Y = lmn_Tel_ResultMatrix(1, 0)
         lmn_Tel_Result.z = lmn_Tel_ResultMatrix(2, 0)
 
-        Dim Az_CurrStarRad As Double
-        Dim Alt_CurrStarRad As Double
-        Dim Az_CurrStar As Double
-        Dim Az_CurrStar_corrected_1 As Double
-        Dim Az_CurrStar_corrected_2 As Double
-        Dim Alt_CurrStar As Double
+        'Dim Az_CurrStarRad As Double
+        'Dim Alt_CurrStarRad As Double
+        'Dim Az_CurrStar As Double
+        'Dim Az_CurrStar_corrected_1 As Double
+        'Dim Az_CurrStar_corrected_2 As Double
+        'Dim Alt_CurrStar As Double
 
         AzAlt_CurrStar = VectorToAzAlt(lmn_Tel_Result)
 
@@ -621,7 +621,7 @@ Module MathSky
         Dim tmp As Double
 
         'Az
-        tmp = CutIncr(-Incr.Az) * (2 * Pi) / EncoderResolution
+        tmp = CutIncr(-Incr.Az) * (2 * Math.PI) / EncoderResolution
         MotorIncr_To_MatrixSystem.Az = tmp
 
         'Alt

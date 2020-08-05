@@ -124,7 +124,7 @@ Public Class FrmMoveTelescope
 
 
 
-            If Math.Abs(XDiffRel) > (Math.Abs(YDiffRel)) Then
+            If Math.Abs(XDiffRel) >= (Math.Abs(YDiffRel)) Then
                 YDiffRel = 0
             ElseIf Math.Abs(YDiffRel) > (Math.Abs(XDiffRel)) Then
                 XDiffRel = 0

@@ -53,12 +53,9 @@ Partial Class MainForm
         Me.L_SlewingSpeedY = New System.Windows.Forms.Label()
         Me.AlignmentStarList = New System.Windows.Forms.ListBox()
         Me.C_GotoStar = New System.Windows.Forms.Button()
-        Me.C_GotoStarCalibrated = New System.Windows.Forms.Button()
         Me.C_SingleStarCalib = New System.Windows.Forms.Button()
-        Me.C_SetCalibrationStar_1 = New System.Windows.Forms.Button()
         Me.C_SetCalibrationStar_2 = New System.Windows.Forms.Button()
         Me.C_Set_ObserverLocation = New System.Windows.Forms.Button()
-        Me.C_CalibrateNow = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -443,21 +440,12 @@ Partial Class MainForm
         'C_GotoStar
         '
         Me.C_GotoStar.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.C_GotoStar.Location = New System.Drawing.Point(680, 1255)
+        Me.C_GotoStar.Location = New System.Drawing.Point(754, 1255)
         Me.C_GotoStar.Name = "C_GotoStar"
-        Me.C_GotoStar.Size = New System.Drawing.Size(265, 93)
+        Me.C_GotoStar.Size = New System.Drawing.Size(384, 93)
         Me.C_GotoStar.TabIndex = 26
         Me.C_GotoStar.Text = "Goto Star "
         Me.C_GotoStar.UseVisualStyleBackColor = True
-        '
-        'C_GotoStarCalibrated
-        '
-        Me.C_GotoStarCalibrated.Location = New System.Drawing.Point(991, 1307)
-        Me.C_GotoStarCalibrated.Name = "C_GotoStarCalibrated"
-        Me.C_GotoStarCalibrated.Size = New System.Drawing.Size(265, 41)
-        Me.C_GotoStarCalibrated.TabIndex = 27
-        Me.C_GotoStarCalibrated.Text = "GotoStar calibrated"
-        Me.C_GotoStarCalibrated.UseVisualStyleBackColor = True
         '
         'C_SingleStarCalib
         '
@@ -467,16 +455,6 @@ Partial Class MainForm
         Me.C_SingleStarCalib.TabIndex = 28
         Me.C_SingleStarCalib.Text = "Single Star Alignment"
         Me.C_SingleStarCalib.UseVisualStyleBackColor = True
-        '
-        'C_SetCalibrationStar_1
-        '
-        Me.C_SetCalibrationStar_1.Location = New System.Drawing.Point(503, 933)
-        Me.C_SetCalibrationStar_1.Name = "C_SetCalibrationStar_1"
-        Me.C_SetCalibrationStar_1.Size = New System.Drawing.Size(265, 41)
-        Me.C_SetCalibrationStar_1.TabIndex = 29
-        Me.C_SetCalibrationStar_1.Text = "Set Calibration Star 1"
-        Me.C_SetCalibrationStar_1.UseVisualStyleBackColor = True
-        Me.C_SetCalibrationStar_1.Visible = False
         '
         'C_SetCalibrationStar_2
         '
@@ -495,16 +473,6 @@ Partial Class MainForm
         Me.C_Set_ObserverLocation.TabIndex = 31
         Me.C_Set_ObserverLocation.Text = "Set Observers Location"
         Me.C_Set_ObserverLocation.UseVisualStyleBackColor = True
-        '
-        'C_CalibrateNow
-        '
-        Me.C_CalibrateNow.Location = New System.Drawing.Point(512, 1100)
-        Me.C_CalibrateNow.Name = "C_CalibrateNow"
-        Me.C_CalibrateNow.Size = New System.Drawing.Size(265, 41)
-        Me.C_CalibrateNow.TabIndex = 32
-        Me.C_CalibrateNow.Text = "Calibrate now"
-        Me.C_CalibrateNow.UseVisualStyleBackColor = True
-        Me.C_CalibrateNow.Visible = False
         '
         'Label3
         '
@@ -1742,12 +1710,9 @@ Partial Class MainForm
         Me.Controls.Add(Me.T_Sekunden)
         Me.Controls.Add(Me.T_Tag)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.C_CalibrateNow)
         Me.Controls.Add(Me.C_Set_ObserverLocation)
         Me.Controls.Add(Me.C_SetCalibrationStar_2)
-        Me.Controls.Add(Me.C_SetCalibrationStar_1)
         Me.Controls.Add(Me.C_SingleStarCalib)
-        Me.Controls.Add(Me.C_GotoStarCalibrated)
         Me.Controls.Add(Me.C_GotoStar)
         Me.Controls.Add(Me.AlignmentStarList)
         Me.Controls.Add(Me.L_SlewingSpeedY)
@@ -1822,12 +1787,9 @@ Partial Class MainForm
     Friend WithEvents L_SlewingSpeedY As Label
     Friend WithEvents AlignmentStarList As ListBox
     Friend WithEvents C_GotoStar As Button
-    Friend WithEvents C_GotoStarCalibrated As Button
     Friend WithEvents C_SingleStarCalib As Button
-    Friend WithEvents C_SetCalibrationStar_1 As Button
     Friend WithEvents C_SetCalibrationStar_2 As Button
     Friend WithEvents C_Set_ObserverLocation As Button
-    Friend WithEvents C_CalibrateNow As Button
     Friend WithEvents Label3 As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents Label7 As Label

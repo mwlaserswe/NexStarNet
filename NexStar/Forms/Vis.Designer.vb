@@ -24,6 +24,7 @@ Partial Class Vis
     Private Sub InitializeComponent()
         Me.Pic = New System.Windows.Forms.PictureBox()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.B_Clear = New System.Windows.Forms.Button()
         CType(Me.Pic, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -37,18 +38,28 @@ Partial Class Vis
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(1251, 61)
+        Me.Button1.Location = New System.Drawing.Point(1239, 717)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(188, 111)
         Me.Button1.TabIndex = 1
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'B_Clear
+        '
+        Me.B_Clear.Location = New System.Drawing.Point(1148, 43)
+        Me.B_Clear.Name = "B_Clear"
+        Me.B_Clear.Size = New System.Drawing.Size(176, 69)
+        Me.B_Clear.TabIndex = 2
+        Me.B_Clear.Text = "Clear"
+        Me.B_Clear.UseVisualStyleBackColor = True
+        '
         'Vis
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1507, 883)
+        Me.Controls.Add(Me.B_Clear)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Pic)
         Me.Name = "Vis"
@@ -60,4 +71,5 @@ Partial Class Vis
 
     Friend WithEvents Pic As PictureBox
     Friend WithEvents Button1 As Button
+    Friend WithEvents B_Clear As Button
 End Class

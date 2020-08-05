@@ -29,5 +29,8 @@ Public Class Vis
         End If
     End Sub
 
-
+    Private Sub B_Clear_Click(sender As Object, e As EventArgs) Handles B_Clear.Click
+        Pic.CreateGraphics.Clear(Color.Black)
+        DispCoordinateSystem()
+    End Sub
 End Class
