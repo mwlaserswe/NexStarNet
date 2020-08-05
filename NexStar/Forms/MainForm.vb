@@ -854,6 +854,9 @@ v24error:
 
 
         BytesToRead = MSComm1.BytesToRead()
+
+        B_Comm.BackColor = Color.LawnGreen
+
         If BytesToRead > 3 Then
             MSComm1.Read(ByteArray, 0, BytesToRead)
             ErrorCount = ErrorCount + 1
@@ -1732,8 +1735,13 @@ openErr:
                 ReadComm = ""
             End If
 
-            If Not CommandWait Then
-
+            If CommandWait Then
+                If Cnt > 10 Then
+                    B_Comm.BackColor = Color.LightGray
+                    CommandWait = False
+                    CommandBuffer.Clear()
+                End If
+            Else
                 'If CommandBuffer.Count > 0 And Cnt > N Then
                 If CommandBuffer.Count > 0 Then
                     Cnt = 0
@@ -1744,28 +1752,34 @@ openErr:
 
                     Dim buf() As Byte
                     buf = System.Text.Encoding.Default.GetBytes(NexStarCmd.Cmd)
-                    MSComm1.Write(buf, 0, buf.Length)
+                    If MSComm1.IsOpen Then
+                        MSComm1.Write(buf, 0, buf.Length)
+
+                        Select Case NexStarCmd.No
+                            Case 1
+                                CommandWait = True
+                            Case 21
+                                CommandWait = True
+                            Case 13
+                                CommandWait = True
+                            Case 6
+                                dummy = 1
+                            Case Else
+
+                        End Select
+                    End If
+
                 End If
 
-                Select Case NexStarCmd.No
-                    Case 1
-                        CommandWait = True
-                    Case 21
-                        CommandWait = True
-                    Case 13
-                        CommandWait = True
-                    Case 6
-                        dummy = 1
-                    Case Else
 
-                End Select
             End If
 
         End If
 
     End Sub
 
-    Private Sub B_ResetComm_Click(sender As Object, e As EventArgs) Handles B_ResetComm.Click
+    Private Sub B_Comm_Click(sender As Object, e As EventArgs) Handles B_Comm.Click
+
         CommandWait = False
         CommandBuffer.Clear()
 
@@ -1774,8 +1788,6 @@ openErr:
 
         BytesToRead = MSComm1.BytesToRead()
         MSComm1.Read(ByteArray, 0, BytesToRead)
-
-
 
     End Sub
 

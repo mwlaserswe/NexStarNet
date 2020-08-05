@@ -182,7 +182,7 @@ Partial Class MainForm
         Me.CB_Find = New System.Windows.Forms.ComboBox()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Tim_Comm = New System.Windows.Forms.Timer(Me.components)
-        Me.B_ResetComm = New System.Windows.Forms.Button()
+        Me.B_Comm = New System.Windows.Forms.Button()
         Me.L_NumerOfCmd = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -1663,14 +1663,14 @@ Partial Class MainForm
         '
         Me.Tim_Comm.Enabled = True
         '
-        'B_ResetComm
+        'B_Comm
         '
-        Me.B_ResetComm.Location = New System.Drawing.Point(653, 218)
-        Me.B_ResetComm.Name = "B_ResetComm"
-        Me.B_ResetComm.Size = New System.Drawing.Size(143, 51)
-        Me.B_ResetComm.TabIndex = 85
-        Me.B_ResetComm.Text = "Reset Comm"
-        Me.B_ResetComm.UseVisualStyleBackColor = True
+        Me.B_Comm.Location = New System.Drawing.Point(653, 218)
+        Me.B_Comm.Name = "B_Comm"
+        Me.B_Comm.Size = New System.Drawing.Size(143, 51)
+        Me.B_Comm.TabIndex = 85
+        Me.B_Comm.Text = "Comm"
+        Me.B_Comm.UseVisualStyleBackColor = True
         '
         'L_NumerOfCmd
         '
@@ -1689,7 +1689,7 @@ Partial Class MainForm
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(2042, 1382)
         Me.Controls.Add(Me.L_NumerOfCmd)
-        Me.Controls.Add(Me.B_ResetComm)
+        Me.Controls.Add(Me.B_Comm)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.CB_Find)
         Me.Controls.Add(Me.L_ElapsedTime)
@@ -1951,6 +1951,6 @@ Partial Class MainForm
     Friend WithEvents CB_Find As ComboBox
     Friend WithEvents Button3 As Button
     Friend WithEvents Tim_Comm As Timer
-    Friend WithEvents B_ResetComm As Button
+    Friend WithEvents B_Comm As Button
     Friend WithEvents L_NumerOfCmd As Label
 End Class

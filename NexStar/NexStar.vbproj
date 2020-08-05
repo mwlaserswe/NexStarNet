@@ -127,6 +127,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="My Project\StarItem.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\FrmCommunication.resx">
