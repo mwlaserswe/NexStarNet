@@ -1,6 +1,10 @@
 ﻿Option Explicit On
 Imports System.IO
 Imports System.IO.Ports
+
+Imports System
+Imports System.Runtime.InteropServices
+
 Public Class MainForm
 
     Dim NexStarPortNr As Long
@@ -808,6 +812,15 @@ Public Class MainForm
         'SWE       Open CommFileName For Output As CommFile
         'SWE   Close CommFile
         'SWE   
+
+
+        'Me.Cursor = Cursors.Arrow
+        'http://cool-web.de/mouse-pointer/cursors.htm
+        'Me.Cursor = AdvancedCursors.Create(Path.Combine(DefaultPath, "bigarrow.cur"))
+        'Me.Cursor = AdvancedCursors.Create(Path.Combine(DefaultPath, "rocket.cur"))
+        'Me.Cursor = AdvancedCursors.Create(Path.Combine(DefaultPath, "globe.ani"))
+        Me.Cursor = AdvancedCursors.Create(Path.Combine(DefaultPath, "moon.ani"))
+
         Vis.Show()
 
         Exit Sub
@@ -817,6 +830,20 @@ openErr:
 
     End Sub
 
+
+    Public Class AdvancedCursors
+        <DllImport("User32.dll")>
+        Private Shared Function LoadCursorFromFile(ByVal str As String) As IntPtr
+        End Function
+        Public Shared Function Create(ByVal filename As String) As Windows.Forms.Cursor
+            Dim hCursor As IntPtr = LoadCursorFromFile(filename)
+            If Not IntPtr.Zero.Equals(hCursor) Then
+                Return New Windows.Forms.Cursor(hCursor)
+            Else
+                Throw New ApplicationException("Could not create cursor from file " & filename)
+            End If
+        End Function
+    End Class
 
     Private Sub InitNexStarComm()
 
@@ -1698,33 +1725,6 @@ openErr:
         FileClose(AlignmetStarFile)
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-
-        Dim NexStarCmd As CommandItem
-
-
-
-        NexStarCmd.No = 1
-        NexStarCmd.Cmd = Strings.Chr(&H1)
-        NexStarCmd.Comment = " Read Az (0x01)"
-
-        PushCommandBuffer(NexStarCmd)
-    End Sub
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-
-        Dim NexStarCmd As CommandItem
-
-
-
-        NexStarCmd.No = 13
-        NexStarCmd.Cmd = Strings.Chr(&HD)
-        NexStarCmd.Comment = " Request Status (0x0D)"
-
-        PushCommandBuffer(NexStarCmd)
-
-    End Sub
-
 
     Private Sub T_Backlash_Leave(sender As Object, e As EventArgs) Handles T_Backlash.Leave
         My.Settings.Backlash = T_Backlash.Text
@@ -1841,5 +1841,6 @@ openErr:
     Private Sub CB_Find_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Find.SelectedIndexChanged
 
     End Sub
+
 
 End Class

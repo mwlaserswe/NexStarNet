@@ -168,16 +168,12 @@ Partial Class MainForm
         Me.Label24 = New System.Windows.Forms.Label()
         Me.Slider1 = New System.Windows.Forms.ProgressBar()
         Me.Slider2 = New System.Windows.Forms.ProgressBar()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label38 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.T_Alt = New System.Windows.Forms.TextBox()
         Me.T_Az = New System.Windows.Forms.TextBox()
         Me.L_ElapsedTime = New System.Windows.Forms.Label()
         Me.Label42 = New System.Windows.Forms.Label()
         Me.Label45 = New System.Windows.Forms.Label()
         Me.CB_Find = New System.Windows.Forms.ComboBox()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.Tim_Comm = New System.Windows.Forms.Timer(Me.components)
         Me.B_Comm = New System.Windows.Forms.Button()
         Me.L_NumerOfCmd = New System.Windows.Forms.Label()
@@ -261,9 +257,9 @@ Partial Class MainForm
         '
         'C_MoveTelescope
         '
-        Me.C_MoveTelescope.Location = New System.Drawing.Point(91, 544)
+        Me.C_MoveTelescope.Location = New System.Drawing.Point(35, 535)
         Me.C_MoveTelescope.Name = "C_MoveTelescope"
-        Me.C_MoveTelescope.Size = New System.Drawing.Size(143, 82)
+        Me.C_MoveTelescope.Size = New System.Drawing.Size(370, 597)
         Me.C_MoveTelescope.TabIndex = 2
         Me.C_MoveTelescope.Text = "Move Telescope"
         Me.C_MoveTelescope.UseVisualStyleBackColor = True
@@ -344,7 +340,7 @@ Partial Class MainForm
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(428, 748)
+        Me.Label2.Location = New System.Drawing.Point(696, 860)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(155, 25)
         Me.Label2.TabIndex = 12
@@ -354,7 +350,7 @@ Partial Class MainForm
         '
         Me.L_SlewingSpeedX.AutoSize = True
         Me.L_SlewingSpeedX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.L_SlewingSpeedX.Location = New System.Drawing.Point(433, 788)
+        Me.L_SlewingSpeedX.Location = New System.Drawing.Point(701, 900)
         Me.L_SlewingSpeedX.Name = "L_SlewingSpeedX"
         Me.L_SlewingSpeedX.Size = New System.Drawing.Size(79, 27)
         Me.L_SlewingSpeedX.TabIndex = 13
@@ -362,7 +358,7 @@ Partial Class MainForm
         '
         'C_Up
         '
-        Me.C_Up.Location = New System.Drawing.Point(421, 518)
+        Me.C_Up.Location = New System.Drawing.Point(546, 616)
         Me.C_Up.Name = "C_Up"
         Me.C_Up.Size = New System.Drawing.Size(111, 59)
         Me.C_Up.TabIndex = 18
@@ -371,7 +367,7 @@ Partial Class MainForm
         '
         'C_Dn
         '
-        Me.C_Dn.Location = New System.Drawing.Point(421, 654)
+        Me.C_Dn.Location = New System.Drawing.Point(546, 752)
         Me.C_Dn.Name = "C_Dn"
         Me.C_Dn.Size = New System.Drawing.Size(111, 59)
         Me.C_Dn.TabIndex = 19
@@ -380,7 +376,7 @@ Partial Class MainForm
         '
         'C_Le
         '
-        Me.C_Le.Location = New System.Drawing.Point(308, 584)
+        Me.C_Le.Location = New System.Drawing.Point(433, 682)
         Me.C_Le.Name = "C_Le"
         Me.C_Le.Size = New System.Drawing.Size(111, 59)
         Me.C_Le.TabIndex = 20
@@ -389,7 +385,7 @@ Partial Class MainForm
         '
         'C_Ri
         '
-        Me.C_Ri.Location = New System.Drawing.Point(533, 584)
+        Me.C_Ri.Location = New System.Drawing.Point(658, 682)
         Me.C_Ri.Name = "C_Ri"
         Me.C_Ri.Size = New System.Drawing.Size(111, 59)
         Me.C_Ri.TabIndex = 21
@@ -399,7 +395,7 @@ Partial Class MainForm
         'VS_ManualSlewingSpeed
         '
         Me.VS_ManualSlewingSpeed.LargeChange = 100
-        Me.VS_ManualSlewingSpeed.Location = New System.Drawing.Point(737, 440)
+        Me.VS_ManualSlewingSpeed.Location = New System.Drawing.Point(802, 524)
         Me.VS_ManualSlewingSpeed.Maximum = 1000
         Me.VS_ManualSlewingSpeed.Name = "VS_ManualSlewingSpeed"
         Me.VS_ManualSlewingSpeed.Size = New System.Drawing.Size(40, 295)
@@ -410,7 +406,7 @@ Partial Class MainForm
         '
         Me.L_Angle.AutoSize = True
         Me.L_Angle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.L_Angle.Location = New System.Drawing.Point(597, 1055)
+        Me.L_Angle.Location = New System.Drawing.Point(1694, 1199)
         Me.L_Angle.Name = "L_Angle"
         Me.L_Angle.Size = New System.Drawing.Size(28, 27)
         Me.L_Angle.TabIndex = 23
@@ -420,7 +416,7 @@ Partial Class MainForm
         '
         Me.L_SlewingSpeedY.AutoSize = True
         Me.L_SlewingSpeedY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.L_SlewingSpeedY.Location = New System.Drawing.Point(433, 815)
+        Me.L_SlewingSpeedY.Location = New System.Drawing.Point(701, 927)
         Me.L_SlewingSpeedY.Name = "L_SlewingSpeedY"
         Me.L_SlewingSpeedY.Size = New System.Drawing.Size(79, 27)
         Me.L_SlewingSpeedY.TabIndex = 24
@@ -449,18 +445,18 @@ Partial Class MainForm
         '
         'C_SingleStarCalib
         '
-        Me.C_SingleStarCalib.Location = New System.Drawing.Point(503, 874)
+        Me.C_SingleStarCalib.Location = New System.Drawing.Point(1605, 422)
         Me.C_SingleStarCalib.Name = "C_SingleStarCalib"
-        Me.C_SingleStarCalib.Size = New System.Drawing.Size(265, 41)
+        Me.C_SingleStarCalib.Size = New System.Drawing.Size(401, 215)
         Me.C_SingleStarCalib.TabIndex = 28
         Me.C_SingleStarCalib.Text = "Single Star Alignment"
         Me.C_SingleStarCalib.UseVisualStyleBackColor = True
         '
         'C_SetCalibrationStar_2
         '
-        Me.C_SetCalibrationStar_2.Location = New System.Drawing.Point(503, 995)
+        Me.C_SetCalibrationStar_2.Location = New System.Drawing.Point(1605, 643)
         Me.C_SetCalibrationStar_2.Name = "C_SetCalibrationStar_2"
-        Me.C_SetCalibrationStar_2.Size = New System.Drawing.Size(265, 41)
+        Me.C_SetCalibrationStar_2.Size = New System.Drawing.Size(401, 221)
         Me.C_SetCalibrationStar_2.TabIndex = 30
         Me.C_SetCalibrationStar_2.Text = "Set Calibration Star 2"
         Me.C_SetCalibrationStar_2.UseVisualStyleBackColor = True
@@ -477,7 +473,7 @@ Partial Class MainForm
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(507, 1057)
+        Me.Label3.Location = New System.Drawing.Point(1604, 1201)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(67, 25)
         Me.Label3.TabIndex = 33
@@ -1126,9 +1122,9 @@ Partial Class MainForm
         '
         'C_Tracking
         '
-        Me.C_Tracking.Location = New System.Drawing.Point(1671, 945)
+        Me.C_Tracking.Location = New System.Drawing.Point(1605, 870)
         Me.C_Tracking.Name = "C_Tracking"
-        Me.C_Tracking.Size = New System.Drawing.Size(123, 41)
+        Me.C_Tracking.Size = New System.Drawing.Size(401, 313)
         Me.C_Tracking.TabIndex = 66
         Me.C_Tracking.Text = "Tracking"
         Me.C_Tracking.UseVisualStyleBackColor = True
@@ -1453,7 +1449,7 @@ Partial Class MainForm
         '
         Me.L_ErrorCount.AutoSize = True
         Me.L_ErrorCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.L_ErrorCount.Location = New System.Drawing.Point(1817, 953)
+        Me.L_ErrorCount.Location = New System.Drawing.Point(1819, 1278)
         Me.L_ErrorCount.Name = "L_ErrorCount"
         Me.L_ErrorCount.Size = New System.Drawing.Size(28, 27)
         Me.L_ErrorCount.TabIndex = 70
@@ -1463,7 +1459,7 @@ Partial Class MainForm
         '
         Me.L_StatusMoving.AutoSize = True
         Me.L_StatusMoving.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.L_StatusMoving.Location = New System.Drawing.Point(1671, 1003)
+        Me.L_StatusMoving.Location = New System.Drawing.Point(1617, 1278)
         Me.L_StatusMoving.Name = "L_StatusMoving"
         Me.L_StatusMoving.Size = New System.Drawing.Size(28, 27)
         Me.L_StatusMoving.TabIndex = 71
@@ -1530,35 +1526,6 @@ Partial Class MainForm
         Me.Slider2.Size = New System.Drawing.Size(425, 10)
         Me.Slider2.TabIndex = 75
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(91, 684)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(143, 51)
-        Me.Button1.TabIndex = 76
-        Me.Button1.Text = "RS232Read"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Label38
-        '
-        Me.Label38.AutoSize = True
-        Me.Label38.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label38.Location = New System.Drawing.Point(88, 757)
-        Me.Label38.MinimumSize = New System.Drawing.Size(250, 2)
-        Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(250, 27)
-        Me.Label38.TabIndex = 77
-        Me.Label38.Text = "--"
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(88, 810)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(250, 51)
-        Me.Button2.TabIndex = 78
-        Me.Button2.Text = "RS232Write Az"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
         'T_Alt
         '
         Me.T_Alt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -1618,15 +1585,6 @@ Partial Class MainForm
         Me.CB_Find.Size = New System.Drawing.Size(205, 33)
         Me.CB_Find.TabIndex = 83
         '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(88, 874)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(250, 51)
-        Me.Button3.TabIndex = 84
-        Me.Button3.Text = "RS232Write Status"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
         'Tim_Comm
         '
         Me.Tim_Comm.Enabled = True
@@ -1658,14 +1616,10 @@ Partial Class MainForm
         Me.ClientSize = New System.Drawing.Size(2042, 1382)
         Me.Controls.Add(Me.L_NumerOfCmd)
         Me.Controls.Add(Me.B_Comm)
-        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.CB_Find)
         Me.Controls.Add(Me.L_ElapsedTime)
         Me.Controls.Add(Me.T_Az)
         Me.Controls.Add(Me.T_Alt)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Label38)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Slider2)
         Me.Controls.Add(Me.Slider1)
         Me.Controls.Add(Me.Label24)
@@ -1902,16 +1856,12 @@ Partial Class MainForm
     Friend WithEvents Label24 As Label
     Friend WithEvents Slider1 As ProgressBar
     Friend WithEvents Slider2 As ProgressBar
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Label38 As Label
-    Friend WithEvents Button2 As Button
     Friend WithEvents T_Alt As TextBox
     Friend WithEvents T_Az As TextBox
     Friend WithEvents L_ElapsedTime As Label
     Friend WithEvents Label42 As Label
     Friend WithEvents Label45 As Label
     Friend WithEvents CB_Find As ComboBox
-    Friend WithEvents Button3 As Button
     Friend WithEvents Tim_Comm As Timer
     Friend WithEvents B_Comm As Button
     Friend WithEvents L_NumerOfCmd As Label

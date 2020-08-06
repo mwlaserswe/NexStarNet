@@ -200,7 +200,8 @@ Public Class FrmMoveTelescope
             Exit Sub
         End If
 
-        If CompKey(Keys.Escape) Then
+
+        If CompKey(Keys.Escape) Or GetAsyncKeyState(Keys.ControlKey) Then
             ESCMoveGalvoStopToolStripMenuItem1.PerformClick()
             Exit Sub
         End If
@@ -231,8 +232,8 @@ Public Class FrmMoveTelescope
 
     Private Sub InitMoveGalvo()
         PixelFaktorGrob = 1000
-        PixelFaktorMittel = 100
-        PixelFaktorFein = 1
+        PixelFaktorMittel = 500
+        PixelFaktorFein = 100
 
         PixelFaktor = PixelFaktorMittel
         L_PixelFaktor.Text = DisplayPixelFaktor(PixelFaktor)
@@ -243,7 +244,9 @@ Public Class FrmMoveTelescope
 
     Private Function CompKey(KCode As Keys) As Boolean
         Dim result As Short
+
         result = GetAsyncKeyState(KCode)
+
         If result = -32767 Then
             CompKey = True
         Else
