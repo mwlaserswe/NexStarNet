@@ -736,7 +736,7 @@ Public Class MainForm
         Slider1.Value = 600
 
 
-        CommTest = False
+        ManualMovement = False
 
         O_TimeSelectLocal.Checked = True
 
@@ -873,7 +873,8 @@ v24error:
         FrmCommunication.Show()
     End Sub
 
-    Private Sub LoadStarKatalogToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadStarKatalogToolStripMenuItem.Click
+    Private Sub SetupToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SetupToolStripMenuItem.Click
+
         Dim StarKatalogFile As String
 
         LoadStarKatalogDialog.InitialDirectory = DefaultPath
@@ -904,9 +905,6 @@ v24error:
 
     End Sub
 
-    Private Sub Test1ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Test1ToolStripMenuItem.Click
-        'swe   Test.Show
-    End Sub
 
     Private Sub Test2ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Test2ToolStripMenuItem.Click
         'swe   Test2.Show
@@ -1010,7 +1008,7 @@ v24error:
             C_Simulation.BackColor = Color.White
         End If
 
-        If Not CommTest Then
+        If Not FrmMoveTelescope.MoveTelescopeActive Then
 
             Static GetAzAltCount As Long
             Const GetAzAltInterval = 1        'calculate new star positition ever ... sec
@@ -1436,7 +1434,7 @@ v24error:
 
         Dim tmp As AzAlt
         tmp = ObserverAzAlt
-        L_CardinalOrientation.text = GetCardinalDrection(AzAlt_to_MatrixSystem(tmp).Az)
+        L_CardinalOrientation.Text = GetCardinalDrection(AzAlt_to_MatrixSystem(tmp).Az)
         DisplayCoordinate(L_I_Alt, ObserverAzAlt.Alt, NxMode.DegDec)
         DisplayCoordinate(L_I_HourAngle, HourAngle, NxMode.HMS)
 
@@ -1842,5 +1840,7 @@ openErr:
 
     End Sub
 
-
+    Private Sub CovertToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CovertToolStripMenuItem.Click
+        FrmConvert.Show()
+    End Sub
 End Class

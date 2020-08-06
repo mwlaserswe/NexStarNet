@@ -25,10 +25,9 @@ Partial Class MainForm
         Me.components = New System.ComponentModel.Container()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.SetupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LoadStarKatalogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TesteJulianischesDatumToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Test1ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CovertToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Test2ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VisualisierungToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CommunicationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -192,28 +191,21 @@ Partial Class MainForm
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SetupToolStripMenuItem, Me.TestToolStripMenuItem, Me.CommunicationToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(2042, 40)
+        Me.MenuStrip1.Size = New System.Drawing.Size(2042, 42)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'SetupToolStripMenuItem
         '
-        Me.SetupToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadStarKatalogToolStripMenuItem})
         Me.SetupToolStripMenuItem.Name = "SetupToolStripMenuItem"
-        Me.SetupToolStripMenuItem.Size = New System.Drawing.Size(97, 36)
-        Me.SetupToolStripMenuItem.Text = "Setup"
-        '
-        'LoadStarKatalogToolStripMenuItem
-        '
-        Me.LoadStarKatalogToolStripMenuItem.Name = "LoadStarKatalogToolStripMenuItem"
-        Me.LoadStarKatalogToolStripMenuItem.Size = New System.Drawing.Size(334, 44)
-        Me.LoadStarKatalogToolStripMenuItem.Text = "Load Star Katalog"
+        Me.SetupToolStripMenuItem.Size = New System.Drawing.Size(193, 38)
+        Me.SetupToolStripMenuItem.Text = "Stern-Kataloge"
         '
         'TestToolStripMenuItem
         '
-        Me.TestToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TesteJulianischesDatumToolStripMenuItem, Me.Test1ToolStripMenuItem, Me.Test2ToolStripMenuItem, Me.VisualisierungToolStripMenuItem})
+        Me.TestToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TesteJulianischesDatumToolStripMenuItem, Me.CovertToolStripMenuItem, Me.Test2ToolStripMenuItem, Me.VisualisierungToolStripMenuItem})
         Me.TestToolStripMenuItem.Name = "TestToolStripMenuItem"
-        Me.TestToolStripMenuItem.Size = New System.Drawing.Size(77, 36)
+        Me.TestToolStripMenuItem.Size = New System.Drawing.Size(77, 38)
         Me.TestToolStripMenuItem.Text = "Test"
         '
         'TesteJulianischesDatumToolStripMenuItem
@@ -222,11 +214,11 @@ Partial Class MainForm
         Me.TesteJulianischesDatumToolStripMenuItem.Size = New System.Drawing.Size(415, 44)
         Me.TesteJulianischesDatumToolStripMenuItem.Text = "Teste Julianisches Datum"
         '
-        'Test1ToolStripMenuItem
+        'CovertToolStripMenuItem
         '
-        Me.Test1ToolStripMenuItem.Name = "Test1ToolStripMenuItem"
-        Me.Test1ToolStripMenuItem.Size = New System.Drawing.Size(415, 44)
-        Me.Test1ToolStripMenuItem.Text = "Test1"
+        Me.CovertToolStripMenuItem.Name = "CovertToolStripMenuItem"
+        Me.CovertToolStripMenuItem.Size = New System.Drawing.Size(415, 44)
+        Me.CovertToolStripMenuItem.Text = "Convert"
         '
         'Test2ToolStripMenuItem
         '
@@ -243,7 +235,7 @@ Partial Class MainForm
         'CommunicationToolStripMenuItem
         '
         Me.CommunicationToolStripMenuItem.Name = "CommunicationToolStripMenuItem"
-        Me.CommunicationToolStripMenuItem.Size = New System.Drawing.Size(205, 36)
+        Me.CommunicationToolStripMenuItem.Size = New System.Drawing.Size(205, 38)
         Me.CommunicationToolStripMenuItem.Text = "Communication"
         '
         'C_SetEncoder_Az
@@ -1713,10 +1705,9 @@ Partial Class MainForm
 
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents SetupToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents LoadStarKatalogToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TestToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TesteJulianischesDatumToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents Test1ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CovertToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Test2ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VisualisierungToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CommunicationToolStripMenuItem As ToolStripMenuItem

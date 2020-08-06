@@ -20,7 +20,7 @@ Module GlobalVariables
         Dim TimeDec As Double
         Dim H As Double
         Dim M As Double
-        Dim s As Double
+        Dim S As Double
     End Structure
 
     Public Structure GeoDegMinSec
@@ -73,7 +73,7 @@ Module GlobalVariables
 
     Public SimOffline As Boolean
     Public ErrorCount As Long
-    Public CommTest As Boolean
+    Public ManualMovement As Boolean
     Public DefaultPath As String
     Public DefaultStarKatalog As String
     Public CommFileName As String

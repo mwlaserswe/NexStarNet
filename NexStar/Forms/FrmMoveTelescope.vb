@@ -6,7 +6,7 @@ Public Class FrmMoveTelescope
         Dim Y As Integer
     End Structure
 
-    Public MoveGalvoAKT As Boolean
+    Public MoveTelescopeActive As Boolean
 
     Dim PixelFaktor As Double
     Dim GalvoLastPositionX As Double
@@ -29,6 +29,8 @@ Public Class FrmMoveTelescope
 
 
     Private Sub FrmMoveTelescope_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        TrackingisON = False
+        ManualMovement = True
         InitMoveGalvo()
         MoveGalvoStartToolStripMenuItem1.PerformClick()
     End Sub
@@ -55,13 +57,13 @@ Public Class FrmMoveTelescope
     Private Sub MoveGalvoStartToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles MoveGalvoStartToolStripMenuItem1.Click
         ' https://activevb.de/tipps/vbnettipps/tipp0125.html
 
-        MoveGalvoAKT = True
+        MoveTelescopeActive = True
         MouseTimer.Enabled = True
     End Sub
 
 
     Private Sub ESCMoveGalvoStopToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ESCMoveGalvoStopToolStripMenuItem1.Click
-        MoveGalvoAKT = False
+        MoveTelescopeActive = False
         MouseTimer.Enabled = False
 
         L_SpeedX.Text = 0
@@ -113,7 +115,7 @@ Public Class FrmMoveTelescope
         PicBoxCenter.X = PicPos.X + FormPos.X + PicSize.X / 2
         PicBoxCenter.Y = PicPos.Y + FormPos.Y + PicSize.Y / 2
 
-        If MoveGalvoAKT = True Then
+        If MoveTelescopeActive = True Then
             GetCursorPos(GlobalMousePosition)
 
             XDiffPix = Limit(GlobalMousePosition.X - PicBoxCenter.X, -100, 100)
@@ -210,7 +212,7 @@ Public Class FrmMoveTelescope
 
 
     Private Sub Picture_Mouse_Move_Click()
-        If MoveGalvoAKT Then MouseTimer.Enabled = True
+        If MoveTelescopeActive Then MouseTimer.Enabled = True
     End Sub
 
 
@@ -232,13 +234,13 @@ Public Class FrmMoveTelescope
 
     Private Sub InitMoveGalvo()
         PixelFaktorGrob = 1000
-        PixelFaktorMittel = 500
+        PixelFaktorMittel = 200
         PixelFaktorFein = 100
 
         PixelFaktor = PixelFaktorMittel
         L_PixelFaktor.Text = DisplayPixelFaktor(PixelFaktor)
 
-        MoveGalvoAKT = False
+        MoveTelescopeActive = False
     End Sub
 
 
