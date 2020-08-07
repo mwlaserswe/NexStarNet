@@ -449,6 +449,18 @@ Namespace My
                 Me("Backlash") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property Cursor() As String
+            Get
+                Return CType(Me("Cursor"),String)
+            End Get
+            Set
+                Me("Cursor") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

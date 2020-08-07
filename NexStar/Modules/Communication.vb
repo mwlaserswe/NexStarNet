@@ -45,11 +45,15 @@ Module Communication
         If Mode = ProtokollMode.Send Then
             PrintLine(CommFile, NexStarCmd.No & " --> Send:    " & NexStarCmd.Comment)
             FrmCommunication.ListBox1.Items.Add(NexStarCmd.No & " --> Send:    " & NexStarCmd.Comment)
-            FrmCommunication.ListBox1.SelectedIndex = FrmCommunication.ListBox1.Items.Count - 1
+            If Not FrmCommunication.StopFlag Then
+                FrmCommunication.ListBox1.SelectedIndex = FrmCommunication.ListBox1.Items.Count - 1
+            End If
         ElseIf Mode = ProtokollMode.Receive Then
             PrintLine(CommFile, NexStarCmd.No & " --> Receive: " & NexStarCmd.Comment)
             FrmCommunication.ListBox1.Items.Add(NexStarCmd.No & " --> Receive: " & NexStarCmd.Comment)
-            FrmCommunication.ListBox1.SelectedIndex = FrmCommunication.ListBox1.Items.Count - 1
+            If Not FrmCommunication.StopFlag Then
+                FrmCommunication.ListBox1.SelectedIndex = FrmCommunication.ListBox1.Items.Count - 1
+            End If
         End If
 
         FileClose(CommFile)

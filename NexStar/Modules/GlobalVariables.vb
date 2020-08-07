@@ -147,8 +147,12 @@ Module GlobalVariables
     Public MatrixSystemDiffPerSec As AzAlt
     Public TrackingSpeed As AzAlt
 
+    '=== Communication ===
     Public ReadComm As String
     Public NexStarCommand As String
+
+    '=== Cursors ===
+    Public CursorFileName As String
 
     '=== Test Only ===
     Public LastVal As AzAlt

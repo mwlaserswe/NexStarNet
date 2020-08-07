@@ -102,7 +102,12 @@ Module Visualisierung
         LclPolar.Az = LclPolar.Az - Pi / 2
 
         ' convert 0..Pi/2 to 0..1
-        LclPolar.Alt = LclPolar.Alt * (1 / (Pi / 2))
+        ' LclPolar.Alt comes as 0..360°. Not OK here. hac to bey converted to +/-
+        If LclPolar.Alt > Math.PI Then
+            LclPolar.Alt = LclPolar.Alt - 2 * Math.PI
+        End If
+
+        LclPolar.Alt = LclPolar.Alt * (1 / (Math.PI / 2))
 
         Center.Az = (Math.Cos(LclPolar.Az) * (1 - LclPolar.Alt) + GlbCx) * GlbScale
         Center.Alt = (Math.Sin(LclPolar.Az) * (1 - LclPolar.Alt) + GlbCY) * -GlbScale
@@ -128,9 +133,10 @@ Module Visualisierung
         DrawCircle(LastCenter.Az, LastCenter.Alt, 1, Color.Gray, True)
 
         ' Rotate -90°: North is below
-        LclPolar.Az = LclPolar.Az - Pi / 2
+        LclPolar.Az = -LclPolar.Az - Pi / 2
 
         ' convert 0..Pi/2 to 0..1
+        ' LclPolar.Alt comes as +/-.  Thats OK here
         LclPolar.Alt = LclPolar.Alt * (1 / (Pi / 2))
 
 

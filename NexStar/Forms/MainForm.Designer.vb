@@ -28,7 +28,7 @@ Partial Class MainForm
         Me.TestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TesteJulianischesDatumToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CovertToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Test2ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CursorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VisualisierungToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CommunicationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.C_SetEncoder_Az = New System.Windows.Forms.Button()
@@ -176,6 +176,8 @@ Partial Class MainForm
         Me.Tim_Comm = New System.Windows.Forms.Timer(Me.components)
         Me.B_Comm = New System.Windows.Forms.Button()
         Me.L_NumerOfCmd = New System.Windows.Forms.Label()
+        Me.OpenCursorDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.B_SetCurrentPos = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.F_StarInfo.SuspendLayout()
@@ -191,21 +193,21 @@ Partial Class MainForm
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SetupToolStripMenuItem, Me.TestToolStripMenuItem, Me.CommunicationToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(2042, 42)
+        Me.MenuStrip1.Size = New System.Drawing.Size(2042, 40)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'SetupToolStripMenuItem
         '
         Me.SetupToolStripMenuItem.Name = "SetupToolStripMenuItem"
-        Me.SetupToolStripMenuItem.Size = New System.Drawing.Size(193, 38)
+        Me.SetupToolStripMenuItem.Size = New System.Drawing.Size(193, 36)
         Me.SetupToolStripMenuItem.Text = "Stern-Kataloge"
         '
         'TestToolStripMenuItem
         '
-        Me.TestToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TesteJulianischesDatumToolStripMenuItem, Me.CovertToolStripMenuItem, Me.Test2ToolStripMenuItem, Me.VisualisierungToolStripMenuItem})
+        Me.TestToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TesteJulianischesDatumToolStripMenuItem, Me.CovertToolStripMenuItem, Me.CursorToolStripMenuItem, Me.VisualisierungToolStripMenuItem})
         Me.TestToolStripMenuItem.Name = "TestToolStripMenuItem"
-        Me.TestToolStripMenuItem.Size = New System.Drawing.Size(77, 38)
+        Me.TestToolStripMenuItem.Size = New System.Drawing.Size(77, 36)
         Me.TestToolStripMenuItem.Text = "Test"
         '
         'TesteJulianischesDatumToolStripMenuItem
@@ -220,11 +222,11 @@ Partial Class MainForm
         Me.CovertToolStripMenuItem.Size = New System.Drawing.Size(415, 44)
         Me.CovertToolStripMenuItem.Text = "Convert"
         '
-        'Test2ToolStripMenuItem
+        'CursorToolStripMenuItem
         '
-        Me.Test2ToolStripMenuItem.Name = "Test2ToolStripMenuItem"
-        Me.Test2ToolStripMenuItem.Size = New System.Drawing.Size(415, 44)
-        Me.Test2ToolStripMenuItem.Text = "Test2"
+        Me.CursorToolStripMenuItem.Name = "CursorToolStripMenuItem"
+        Me.CursorToolStripMenuItem.Size = New System.Drawing.Size(415, 44)
+        Me.CursorToolStripMenuItem.Text = "Cursor"
         '
         'VisualisierungToolStripMenuItem
         '
@@ -235,7 +237,7 @@ Partial Class MainForm
         'CommunicationToolStripMenuItem
         '
         Me.CommunicationToolStripMenuItem.Name = "CommunicationToolStripMenuItem"
-        Me.CommunicationToolStripMenuItem.Size = New System.Drawing.Size(205, 38)
+        Me.CommunicationToolStripMenuItem.Size = New System.Drawing.Size(205, 36)
         Me.CommunicationToolStripMenuItem.Text = "Communication"
         '
         'C_SetEncoder_Az
@@ -388,7 +390,7 @@ Partial Class MainForm
         '
         Me.VS_ManualSlewingSpeed.LargeChange = 100
         Me.VS_ManualSlewingSpeed.Location = New System.Drawing.Point(802, 524)
-        Me.VS_ManualSlewingSpeed.Maximum = 1000
+        Me.VS_ManualSlewingSpeed.Maximum = 10000
         Me.VS_ManualSlewingSpeed.Name = "VS_ManualSlewingSpeed"
         Me.VS_ManualSlewingSpeed.Size = New System.Drawing.Size(40, 295)
         Me.VS_ManualSlewingSpeed.TabIndex = 22
@@ -1600,12 +1602,27 @@ Partial Class MainForm
         Me.L_NumerOfCmd.TabIndex = 25
         Me.L_NumerOfCmd.Text = "--"
         '
+        'OpenCursorDialog
+        '
+        Me.OpenCursorDialog.FileName = "OpenFileDialog1"
+        '
+        'B_SetCurrentPos
+        '
+        Me.B_SetCurrentPos.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.B_SetCurrentPos.Location = New System.Drawing.Point(433, 322)
+        Me.B_SetCurrentPos.Name = "B_SetCurrentPos"
+        Me.B_SetCurrentPos.Size = New System.Drawing.Size(384, 175)
+        Me.B_SetCurrentPos.TabIndex = 86
+        Me.B_SetCurrentPos.Text = "Set Current Position"
+        Me.B_SetCurrentPos.UseVisualStyleBackColor = True
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(2042, 1382)
+        Me.Controls.Add(Me.B_SetCurrentPos)
         Me.Controls.Add(Me.L_NumerOfCmd)
         Me.Controls.Add(Me.B_Comm)
         Me.Controls.Add(Me.CB_Find)
@@ -1708,7 +1725,7 @@ Partial Class MainForm
     Friend WithEvents TestToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TesteJulianischesDatumToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CovertToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents Test2ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CursorToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VisualisierungToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CommunicationToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents C_SetEncoder_Az As Button
@@ -1856,4 +1873,6 @@ Partial Class MainForm
     Friend WithEvents Tim_Comm As Timer
     Friend WithEvents B_Comm As Button
     Friend WithEvents L_NumerOfCmd As Label
+    Friend WithEvents OpenCursorDialog As OpenFileDialog
+    Friend WithEvents B_SetCurrentPos As Button
 End Class

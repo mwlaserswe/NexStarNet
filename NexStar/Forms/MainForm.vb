@@ -814,12 +814,19 @@ Public Class MainForm
         'SWE   
 
 
-        'Me.Cursor = Cursors.Arrow
-        'http://cool-web.de/mouse-pointer/cursors.htm
-        'Me.Cursor = AdvancedCursors.Create(Path.Combine(DefaultPath, "bigarrow.cur"))
-        'Me.Cursor = AdvancedCursors.Create(Path.Combine(DefaultPath, "rocket.cur"))
-        'Me.Cursor = AdvancedCursors.Create(Path.Combine(DefaultPath, "globe.ani"))
-        Me.Cursor = AdvancedCursors.Create(Path.Combine(DefaultPath, "moon.ani"))
+        Dim CursorFullPath As String
+        CursorFileName = My.Settings.Cursor
+        CursorFullPath = Path.Combine(DefaultPath, "Cursors", CursorFileName)
+        If System.IO.File.Exists(CursorFullPath) Then
+            'Me.Cursor = Cursors.Arrow
+            'http://cool-web.de/mouse-pointer/cursors.htm
+            'Me.Cursor = AdvancedCursors.Create(Path.Combine(DefaultPath, "globe.ani"))
+            Me.Cursor = AdvancedCursors.Create(Path.Combine(CursorFullPath))
+        Else
+            MsgBox("Datei nicht gefunden: " & CursorFullPath)
+        End If
+
+
 
         Vis.Show()
 
@@ -905,10 +912,6 @@ v24error:
 
     End Sub
 
-
-    Private Sub Test2ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Test2ToolStripMenuItem.Click
-        'swe   Test2.Show
-    End Sub
 
     Private Sub TesteJulianischesDatumToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TesteJulianischesDatumToolStripMenuItem.Click
         TestJulianischesDatum.Show()
@@ -1215,16 +1218,22 @@ v24error:
             If CheckDeltaIncr(SimGoto.Az, SimIncr.Az, SimGotoStep * 2) Then
                 SimIncr.Az = SimGoto.Az
             Else
-                SimIncr.Az = SimIncr.Az + GetShortestWay(SimGoto.Az, SimIncr.Az) * SimGotoStep
+                SimIncr.Az = SimIncr.Az + GetShortestWayAz(SimGoto.Az, SimIncr.Az) * SimGotoStep
             End If
 
             If CheckDeltaIncr(SimGoto.Alt, SimIncr.Alt, SimGotoStep * 2) Then
                 SimIncr.Alt = SimGoto.Alt
-            ElseIf SimGoto.Alt > SimIncr.Alt Then
-                SimIncr.Alt = SimIncr.Alt + SimGotoStep
             Else
-                SimIncr.Alt = SimIncr.Alt - SimGotoStep
+                SimIncr.Alt = SimIncr.Alt + GetShortestWayAlt(SimGoto.Alt, SimIncr.Alt) * SimGotoStep
             End If
+
+            'SWE   If CheckDeltaIncr(SimGoto.Alt, SimIncr.Alt, SimGotoStep * 2) Then
+            'SWE       SimIncr.Alt = SimGoto.Alt
+            'SWE   ElseIf SimGoto.Alt > SimIncr.Alt Then
+            'SWE       SimIncr.Alt = SimIncr.Alt + SimGotoStep
+            'SWE   Else
+            'SWE       SimIncr.Alt = SimIncr.Alt - SimGotoStep
+            'SWE   End If
 
             ' movement finished
             If (SimIncr.Az = SimGoto.Az) And (SimIncr.Alt = SimGoto.Alt) Then
@@ -1760,7 +1769,7 @@ openErr:
                     NexStarAnswer.Comment = "Alt = " & TelIncr.Alt
                     Writelog(NexStarAnswer, ProtokollMode.Receive)
                 Case 13
-                    If FrmCommunication.Ch_InPos.Checked Then
+                    If Not SimGotoAzAltActive Then
                         StatusMoving = 2      'Idle
                         NexStarAnswer.Comment = " In Position"
                         Writelog(NexStarAnswer, ProtokollMode.Receive)
@@ -1812,10 +1821,10 @@ openErr:
                             Case Else
 
                         End Select
+
                     End If
 
                 End If
-
 
             End If
 
@@ -1831,8 +1840,10 @@ openErr:
         Dim BytesToRead As Integer
         Dim ByteArray(19) As Byte
 
-        BytesToRead = MSComm1.BytesToRead()
-        MSComm1.Read(ByteArray, 0, BytesToRead)
+        If MSComm1.IsOpen Then
+            BytesToRead = MSComm1.BytesToRead()
+            MSComm1.Read(ByteArray, 0, BytesToRead)
+        End If
 
     End Sub
 
@@ -1842,5 +1853,49 @@ openErr:
 
     Private Sub CovertToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CovertToolStripMenuItem.Click
         FrmConvert.Show()
+    End Sub
+
+    Private Sub CursorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CursorToolStripMenuItem.Click
+
+        'Dim StarKatalogFile As String
+
+        OpenCursorDialog.InitialDirectory = Path.Combine(DefaultPath, "Cursors")
+        OpenCursorDialog.FileName = CursorFileName
+        OpenCursorDialog.Filter = "Cursors (*.cur;*.ani)|*.cur;*.ani"
+
+
+        Dim result As Integer = OpenCursorDialog.ShowDialog()
+        If result = System.Windows.Forms.DialogResult.Cancel Then
+            Exit Sub
+        End If
+
+        If OpenCursorDialog.FileName = "" Then
+            Exit Sub
+        End If
+
+        CursorFileName = Path.GetFileName(OpenCursorDialog.FileName)
+
+        My.Settings.Cursor = CursorFileName
+        My.Settings.Save()
+
+        Dim CursorFullPath As String
+        CursorFullPath = Path.Combine(DefaultPath, "Cursors", CursorFileName)
+        If System.IO.File.Exists(CursorFullPath) Then
+            'Me.Cursor = Cursors.Arrow
+            'http://cool-web.de/mouse-pointer/cursors.htm
+            'Me.Cursor = AdvancedCursors.Create(Path.Combine(DefaultPath, "bigarrow.cur"))
+            Me.Cursor = AdvancedCursors.Create(CursorFullPath)
+        Else
+            MsgBox("Datei nicht gefunden: " & CursorFullPath)
+        End If
+
+
+        Exit Sub
+    End Sub
+
+
+    Private Sub B_SetCurrentPos_Click(sender As Object, e As EventArgs) Handles B_SetCurrentPos.Click
+        MatrixSystemSoll = AzAlt_to_MatrixSystem(PreviewAzAlt)
+        GlobalOffset = SubAzAlt(MatrixSystemIst, MatrixSystemSoll)
     End Sub
 End Class

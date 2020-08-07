@@ -308,7 +308,7 @@ Module MathSky
         sin_h = Math.Cos(GeoPos.Latitude) * Math.Cos(LocalHourAngleRad) * Math.Cos(RaDec_Star.Dec) + Math.Sin(GeoPos.Latitude) * Math.Sin(RaDec_Star.Dec)
         Alt = arcsin(sin_h)
 
-        RA_DEC_to_AZ_ALT_new.Az = Az
+        RA_DEC_to_AZ_ALT_new.Az = CutRad(Az)
         RA_DEC_to_AZ_ALT_new.Alt = Alt
 
     End Function
@@ -609,10 +609,13 @@ Module MathSky
         'Alt
         Matrix_To_MotorIncrSystem.Alt = CutRad(phi.Alt) * EncoderResolution / (2 * Pi)
 
-        'ist der Winkel größer als 90°, dann ist wahrscheinlich negativ
-        'dann muß der Fehler bei der Umrechnung in Incremente berücksichtight werden
-        If Matrix_To_MotorIncrSystem.Alt > 181639 Then
-            Matrix_To_MotorIncrSystem.Alt = Matrix_To_MotorIncrSystem.Alt + 780050
+        If Not SimOffline Then
+
+            'ist der Winkel größer als 90°, dann ist wahrscheinlich negativ
+            'dann muß der Fehler bei der Umrechnung in Incremente berücksichtight werden
+            If Matrix_To_MotorIncrSystem.Alt > 181639 Then
+                Matrix_To_MotorIncrSystem.Alt = Matrix_To_MotorIncrSystem.Alt + 780050
+            End If
         End If
     End Function
 
@@ -625,11 +628,13 @@ Module MathSky
         MotorIncr_To_MatrixSystem.Az = tmp
 
         'Alt
+        If Not SimOffline Then
 
-        '=== Das gleicht den Fehler bei der Fahrt in negative Alt-Werte aus
-        ' der Zähler springt nicht auf 726559 (richtig) sondern auf ca. 1506609 (falsch)
-        If Incr.Alt > 780050 Then
-            Incr.Alt = Incr.Alt - 780050
+            '=== Das gleicht den Fehler bei der Fahrt in negative Alt-Werte aus
+            ' der Zähler springt nicht auf 726559 (richtig) sondern auf ca. 1506609 (falsch)
+            If Incr.Alt > 780050 Then
+                Incr.Alt = Incr.Alt - 780050
+            End If
         End If
 
         MotorIncr_To_MatrixSystem.Alt = Incr.Alt * (2 * Pi) / EncoderResolution
@@ -670,20 +675,31 @@ Module MathSky
 
     End Function
 
-    Public Function GetShortestWay(Dest As Double, From As Double) As Double
+    Public Function GetShortestWayAz(Dest As Double, From As Double) As Double
         If (Dest >= From) And ((Dest - From) <= EncoderResolution / 2) Then
-            GetShortestWay = 1
+            GetShortestWayAz = 1
         ElseIf (From >= Dest) And ((From - Dest) <= EncoderResolution / 2) Then
-            GetShortestWay = -1
+            GetShortestWayAz = -1
         ElseIf (From >= Dest) And ((From - Dest) >= EncoderResolution / 2) Then
-            GetShortestWay = 1
+            GetShortestWayAz = 1
         Else
-            GetShortestWay = -1
+            GetShortestWayAz = -1
         End If
 
     End Function
 
+    Public Function GetShortestWayAlt(Dest As Double, From As Double) As Double
+        If (Dest >= From) And ((Dest - From) <= EncoderResolution / 4) Then
+            GetShortestWayAlt = 1
+        ElseIf (From >= Dest) And ((From - Dest) <= EncoderResolution / 4) Then
+            GetShortestWayAlt = -1
+        ElseIf (From >= Dest) And ((From - Dest) >= EncoderResolution / 4) Then
+            GetShortestWayAlt = 1
+        Else
+            GetShortestWayAlt = -1
+        End If
 
+    End Function
     Public Function GetShortestRad(Dest As Double, From As Double) As Double
         If (Dest >= From) And ((Dest - From) <= Pi) Then
             GetShortestRad = Dest - From
