@@ -1126,7 +1126,7 @@ Partial Class MainForm
         'MSComm1
         '
         Me.MSComm1.BaudRate = 4800
-        Me.MSComm1.PortName = "COM10"
+        Me.MSComm1.PortName = "COM4"
         '
         'LoadStarKatalogDialog
         '

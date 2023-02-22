@@ -3,12 +3,15 @@
 3	zz_Aldebaran	Tau	Alpha	87	4,616666	16,55	0.9
 4	Sonne	---	---	13	9,1211	16,5500	-26.8
 5	-Komet NoeWise	---	---	---	13,3797	15,0939	2
-6	-Jupiter	---	---	---	19,3967	-22,4333	2
-7	-Saturn	---	---	---	19,9494	-20,9833	2
-8	-Mars	---	---	---	1,3583	4,3167	2
+6	-Jupiter	---	---	---	0,0733	-1,2500	2
+7	-Saturn	---	---	---	21,4300	-16,4833	2
+8	-Mars	---	---	---	5,6500	23,4500	2
 9 	Polaris	UMi	Alpha	1	2,53000000	89,2641667	2.0
 10	Mond	---	---	13	23,70666667	-8,4	-26.8
 11	Epsilon Lyrae	Epsilon	Lyrae	1	18,7500	39,5833	5
 12	Sigma Coronae Borealis	Sigma	Coronae	1	16,2444	33,8506	5
 13	Zeta Coronae Borealis	Zeta	Coronae	1	15,6561	36,6367	5
 14	Zeta Herculis	Zeta	Herculis	1	16,6881	31,6025	5
+15	Theta Librae (Mein Stern)	Theta	Libra	1	15,8971	-16,7293	5
+16 	Komet_1	UMi	Alpha	1	11,3797	79,9953	2.0
+17 	Komet_2	UMi	Alpha	1	9,0097	79,6325	2.0
